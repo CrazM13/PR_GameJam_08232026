@@ -54,7 +54,7 @@ public partial class CrowdBoid : Node3D {
 				if (boids[i] == boid) continue; // Skip self
 
 				float distance = boids[i].Position.DistanceSquaredTo(boid.Position);
-				if (distance < 4) { // Very close
+				if (distance < 25) { // Very close
 					tooCloseNeighbors.Add(boids[i]);
 				} else if (distance < 100) { // Close
 					closeNeighbors.Add(boids[i]);
@@ -97,8 +97,8 @@ public partial class CrowdBoid : Node3D {
 
 			// Apply weights
 			separation *= 8.5f;
-			alignment *= 0.1f;
-			cohesion *= 2.0f;
+			alignment *= 2.0f;
+			cohesion *= 1.0f;
 
 			// Combine forces
 			steer = separation + alignment + cohesion;
