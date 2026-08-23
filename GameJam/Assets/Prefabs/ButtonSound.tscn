@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dtcexqvfgltqp"]
+
+[ext_resource type="Script" uid="uid://dpj1nyhslkiqg" path="res://Scripts/UI/ButtonSound.cs" id="1_342g8"]
+[ext_resource type="AudioStream" uid="uid://cd6np7b64niyx" path="res://Assets/Audio/SFX/Click Failed.wav" id="2_g20qo"]
+[ext_resource type="AudioStream" uid="uid://bwtoerfm0g78e" path="res://Assets/Audio/SFX/Click.wav" id="3_usuet"]
+
+[node name="ButtonSound" type="AudioStreamPlayer" unique_id=965715202]
+script = ExtResource("1_342g8")
+hover = ExtResource("2_g20qo")
+press = ExtResource("3_usuet")

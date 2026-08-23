@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cg4mjjlhws8py"]
+
+[ext_resource type="Shader" uid="uid://bmcg3nbxeoc0u" path="res://Assets/Shaders/BlurScreen.gdshader" id="1_tt5f1"]
+[ext_resource type="PackedScene" uid="uid://dtcexqvfgltqp" path="res://Assets/Prefabs/ButtonSound.tscn" id="2_8saeu"]
+[ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="2_853f1"]
+[ext_resource type="Script" uid="uid://cmjk3bt08epsl" path="res://Scripts/UI/BounceOnHover.cs" id="3_ghw46"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_853f1"]
+shader = ExtResource("1_tt5f1")
+shader_parameter/blur_amount = 2.000000095
+
+[sub_resource type="LabelSettings" id="LabelSettings_8saeu"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghw46"]
+font_size = 32
+
+[node name="MainMenu" type="Node3D" unique_id=318111437]
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1321742401]
+
+[node name="BluePanel" type="ColorRect" parent="Hud" unique_id=24177147]
+material = SubResource("ShaderMaterial_853f1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud" unique_id=1140314823]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/CenterContainer" unique_id=1595906833]
+custom_minimum_size = Vector2(768, 512)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud/CenterContainer/HBoxContainer" unique_id=1363675966]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/CenterContainer/HBoxContainer/CenterContainer" unique_id=890201216]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Hud/CenterContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=670832739]
+layout_mode = 2
+size_flags_vertical = 3
+text = "TITLE"
+label_settings = SubResource("LabelSettings_8saeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubTitle" type="Label" parent="Hud/CenterContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=1642641463]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Subtitle"
+label_settings = SubResource("LabelSettings_ghw46")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Hud/CenterContainer/HBoxContainer" unique_id=412615660]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Hud/CenterContainer/HBoxContainer" unique_id=1284856423]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/CenterContainer/HBoxContainer/Panel" unique_id=645333902]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Menu" type="VBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer" unique_id=748963261]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=987893052]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="ButtonSound" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" unique_id=965715202 instance=ExtResource("2_8saeu")]
+
+[node name="BounceEffect" type="Node" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" unique_id=581145692 node_paths=PackedStringArray("target")]
+script = ExtResource("3_ghw46")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="HSeparator" type="HSeparator" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=1123571922]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=986252790]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="ButtonSound" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" unique_id=1850060983 instance=ExtResource("2_8saeu")]
+
+[node name="BounceEffect" type="Node" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" unique_id=2146883303 node_paths=PackedStringArray("target")]
+script = ExtResource("3_ghw46")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="HSeparator2" type="HSeparator" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=1490691944]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=1525838478]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[node name="ButtonSound" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit" unique_id=490627720 instance=ExtResource("2_8saeu")]
+
+[node name="BounceEffect" type="Node" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit" unique_id=1955916625 node_paths=PackedStringArray("target")]
+script = ExtResource("3_ghw46")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2022812364]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 10)
+
+[node name="SceneManager" type="Node" parent="." unique_id=550374927]
+script = ExtResource("2_853f1")
+
+[connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play/ButtonSound" method="PlayPress"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
+[connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options/ButtonSound" method="PlayPress"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
+[connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit" to="SceneManager" method="Quit"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Quit/ButtonSound" method="PlayPress"]
