@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://7yqa4sdj4m2q"]
+
+[ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="1_5lt6y"]
+[ext_resource type="Script" uid="uid://c81f2ybm1u371" path="res://Scripts/Character/PlayerController.cs" id="1_b5ayd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b64ip"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b64ip"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
+
+[node name="TestScene" type="Node3D" unique_id=1283872560]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=60908113]
+mesh = SubResource("PlaneMesh_b64ip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=269214857]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=2063892393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_b64ip")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1402137645]
+script = ExtResource("1_5lt6y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1197499148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_b64ip")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=707815335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="Controller" type="Node" parent="Player" unique_id=62246721 node_paths=PackedStringArray("body", "camera")]
+script = ExtResource("1_b5ayd")
+body = NodePath("..")
+camera = NodePath("../Camera3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1363177215]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -100, 0)
