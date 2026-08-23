@@ -19,6 +19,7 @@ shape = SubResource("WorldBoundaryShape3D_b64ip")
 
 [node name="Player" parent="." unique_id=1400048558 instance=ExtResource("1_2wl7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+collision_layer = 64
 
 [node name="Controller" parent="Player" index="2" unique_id=4052710]
 speed = 2.5

@@ -8,6 +8,7 @@ radius = 0.14501953
 height = 1.6259766
 
 [node name="CrowdNPC" type="CharacterBody3D" unique_id=375130802]
+collision_layer = 128
 script = ExtResource("1_cxcb8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1919385197]
