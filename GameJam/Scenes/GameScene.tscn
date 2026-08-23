@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="3_3mbwn"]
 [ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="3_jwv4s"]
 [ext_resource type="Script" uid="uid://fa1natc1ttio" path="res://Scripts/Character/ChaserController.cs" id="5_lohlh"]
+[ext_resource type="Script" uid="uid://bsw44qjuykrn" path="res://Scripts/UI/HUDClock.cs" id="7_x6js8"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b64ip"]
 
@@ -67,5 +68,34 @@ mesh = SubResource("BoxMesh_jwv4s")
 [node name="ChaserAI" type="Node" parent="CharacterBody3D" unique_id=1062208103 node_paths=PackedStringArray("body")]
 script = ExtResource("5_lohlh")
 body = NodePath("..")
+duration = 40.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=584235836]
+
+[node name="Clock" type="Panel" parent="HUD" unique_id=1697081945 node_paths=PackedStringArray("text")]
+custom_minimum_size = Vector2(128, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_x6js8")
+text = NodePath("MarginContainer/ClockText")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Clock" unique_id=1528339914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ClockText" type="Label" parent="HUD/Clock/MarginContainer" unique_id=659681808]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "00:00 AM"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Player"]

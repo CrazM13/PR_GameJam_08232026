@@ -15,32 +15,33 @@ public partial class ChaserController : Node {
 		if (PlayerController.player != null) {
 
 			if (isChasing) {
-				body.LookAt(new Vector3(PlayerController.player.Position.X, 0, PlayerController.player.Position.Z), Vector3.Up);
-				body.Move(-body.Basis.Z);
+				if (!hasCaught) {
+					body.LookAt(new Vector3(PlayerController.player.Position.X, 0, PlayerController.player.Position.Z), Vector3.Up);
+					body.Move(-body.Basis.Z);
 
-				float distance = body.Position.DistanceSquaredTo(PlayerController.player.Position);
+					float distance = body.Position.DistanceSquaredTo(PlayerController.player.Position);
 
-				if (distance < 4) {
-					if (!hasCaught) {
+					if (distance < 4) {
+						body.ForceStop();
 						hasCaught = true;
 						PlayerController.controller.Enabled = false;
 						PlayerController.player.LookAt(body.Position);
 
-						Engine.TimeScale = 2f;
+						Engine.TimeScale = 10f;
 
-						GetTree().CreateTimer(duration).Timeout += () => {
+						GetTree().CreateTimer(duration / Engine.TimeScale, true, false, true).Timeout += () => {
 							isChasing = false;
 							Engine.TimeScale = 1f;
 							PlayerController.controller.Enabled = true;
 							body.RotateY(GD.Randf() * Mathf.Pi);
 
-							GetTree().CreateTimer(10).Timeout += () => {
+							GetTree().CreateTimer(10, true, false, true).Timeout += () => {
 								body.QueueFree();
 							};
 						};
+					} else if (distance < 16) {
+						Engine.TimeScale = 0.25f;
 					}
-				} else if (distance < 16) {
-					Engine.TimeScale = 0.25f;
 				}
 			} else {
 				body.Move(-body.Basis.Z);

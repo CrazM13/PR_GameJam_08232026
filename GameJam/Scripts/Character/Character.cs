@@ -25,4 +25,8 @@ public partial class Character : CharacterBody3D {
 		}
 	}
 
+	public void ForceStop() {
+		this.Velocity = Vector3.Zero;
+	}
+
 }
