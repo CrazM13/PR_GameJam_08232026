@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://uxvdi3fs6qvf"]
+
+[ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_l5whd"]
+[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="2_ib5ce"]
+
+[node name="PropMarker3D" type="Marker3D" unique_id=399134664]
+script = ExtResource("1_l5whd")
+prefabs = Array[PackedScene]([ExtResource("2_ib5ce")])

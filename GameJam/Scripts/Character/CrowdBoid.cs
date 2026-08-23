@@ -7,6 +7,7 @@ public partial class CrowdBoid : Node3D {
 	[Export] private PackedScene[] prefabs;
 	[Export] private int count = 256;
 	[Export] private Vector3 bounds;
+	[Export] private Node3D container;
 
 	private RandomNumberGenerator rng;
 
@@ -24,7 +25,7 @@ public partial class CrowdBoid : Node3D {
 			Character boid = prefabs[rng.RandiRange(0, prefabs.Length - 1)].Instantiate<Character>();
 			boid.Position = new Vector3(rng.RandfRange(-extends.X, extends.X), 0, rng.RandfRange(-extends.Z, extends.Z));
 			boid.Rotation = new Vector3(0, Mathf.Pi + rng.RandfRange(-Mathf.Pi, Mathf.Pi), 0);
-			AddChild(boid);
+			container.AddChild(boid);
 			boids.Add(boid);
 		}
 
@@ -36,15 +37,16 @@ public partial class CrowdBoid : Node3D {
 		foreach (Character boid in boids) {
 
 			// Wrap around bounds
-			if (boid.Position.X > extends.X) {
-				boid.Position = new Vector3(boid.Position.X - bounds.X, boid.Position.Y, boid.Position.Z);
-			} else if (boid.Position.X < -extends.X) {
-				boid.Position = new Vector3(boid.Position.X + bounds.X, boid.Position.Y, boid.Position.Z);
+			Vector3 localPos = boid.GlobalPosition - this.GlobalPosition;
+			if (localPos.X > extends.X) {
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X - bounds.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z);
+			} else if (localPos.X < -extends.X) {
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X + bounds.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z);
 			}
-			if (boid.Position.Z > extends.Z) {
-				boid.Position = new Vector3(boid.Position.X, boid.Position.Y, boid.Position.Z - bounds.Z);
-			} else if (boid.Position.Z < -extends.Z) {
-				boid.Position = new Vector3(boid.Position.X, boid.Position.Y, boid.Position.Z + bounds.Z);
+			if (localPos.Z > extends.Z) {
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z - bounds.Z);
+			} else if (localPos.Z < -extends.Z) {
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z + bounds.Z);
 			}
 
 			// Get neighbors
@@ -53,7 +55,7 @@ public partial class CrowdBoid : Node3D {
 			for (int i = 0; i < boids.Count; i++) {
 				if (boids[i] == boid) continue; // Skip self
 
-				float distance = boids[i].Position.DistanceSquaredTo(boid.Position);
+				float distance = boids[i].GlobalPosition.DistanceSquaredTo(boid.GlobalPosition);
 				if (distance < 25) { // Very close
 					tooCloseNeighbors.Add(boids[i]);
 				} else if (distance < 100) { // Close
@@ -69,7 +71,7 @@ public partial class CrowdBoid : Node3D {
 
 			// Separation - avoid crowding
 			foreach (Character neighbor in tooCloseNeighbors) {
-				Vector3 diff = boid.Position - neighbor.Position;
+				Vector3 diff = boid.GlobalPosition - neighbor.GlobalPosition;
 				diff = diff.Normalized();
 				diff /= diff.Length(); // Weight by distance
 				separation += diff;
@@ -84,14 +86,14 @@ public partial class CrowdBoid : Node3D {
 			alignment = alignment.Normalized();
 
 			// Cohesion - move toward center of mass
-			Vector3 center = boid.Position;
+			Vector3 center = boid.GlobalPosition;
 			foreach (Character neighbor in closeNeighbors) {
-				center += neighbor.Position;
+				center += neighbor.GlobalPosition;
 			}
 
 			if (closeNeighbors.Count > 0) {
 				center /= closeNeighbors.Count;
-				cohesion = (center - boid.Position).Normalized();
+				cohesion = (center - boid.GlobalPosition).Normalized();
 			}
 			cohesion = cohesion.Normalized();
 
@@ -107,7 +109,7 @@ public partial class CrowdBoid : Node3D {
 			if (steer.Length() > 0) {
 				steer = steer.Normalized();
 
-				//boid.LookAt(boid.Position + steer, Vector3.Up);
+				//boid.LookAt(boid.GlobalPosition + steer, Vector3.Up);
 
 				boid.Rotation = boid.Rotation.Lerp(new Vector3(0, Mathf.Atan2(steer.Z, steer.X), 0), (float) delta);
 			}

@@ -1,25 +1,14 @@
 [gd_scene format=3 uid="uid://crer85hd07xk1"]
 
 [ext_resource type="PackedScene" uid="uid://1wpmv07cy572" path="res://Assets/Prefabs/player.tscn" id="1_2wl7v"]
-[ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="2_3mbwn"]
 [ext_resource type="Script" uid="uid://boths1im3cv72" path="res://Scripts/Character/CrowdBoid.cs" id="2_4bvgx"]
 [ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="3_3mbwn"]
-[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="3_jwv4s"]
-[ext_resource type="Script" uid="uid://fa1natc1ttio" path="res://Scripts/Character/ChaserController.cs" id="5_lohlh"]
+[ext_resource type="Script" uid="uid://c7dfkpigjhol4" path="res://Scripts/Generation/LevelGenerator.cs" id="6_kilg5"]
+[ext_resource type="PackedScene" uid="uid://bxmyvnu3vosdo" path="res://Assets/Prefabs/street.tscn" id="7_lg2j6"]
 [ext_resource type="Script" uid="uid://bsw44qjuykrn" path="res://Scripts/UI/HUDClock.cs" id="7_x6js8"]
+[ext_resource type="AudioStream" uid="uid://bkb6ylmig3oaw" path="res://Assets/Audio/Music/AtTheClub.wav" id="8_lg2j6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b64ip"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_b64ip"]
-size = Vector2(5, 100)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imxm8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_b64ip"]
-size = Vector3(0.2, 0.75, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jwv4s"]
-size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D" unique_id=73439093]
 
@@ -28,47 +17,20 @@ size = Vector3(0.2, 0.2, 0.2)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1190566651]
 shape = SubResource("WorldBoundaryShape3D_b64ip")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=858268717]
-mesh = SubResource("PlaneMesh_b64ip")
-
 [node name="Player" parent="." unique_id=1400048558 instance=ExtResource("1_2wl7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61003876, 2.3841858e-07, -48.34516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
 [node name="Controller" parent="Player" index="2" unique_id=4052710]
 speed = 2.5
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1396134774]
-transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, -100, 0)
-
-[node name="BoidArea" type="Node3D" parent="." unique_id=1810391309]
+[node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container")]
 script = ExtResource("2_4bvgx")
 prefabs = Array[PackedScene]([ExtResource("3_3mbwn")])
-bounds = Vector3(10, 10, 100)
+bounds = Vector3(25, 10, 25)
+container = NodePath("../../Container")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=372974032]
-script = ExtResource("2_3mbwn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1914648556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_imxm8")
-
-[node name="Model" type="Node3D" parent="CharacterBody3D" unique_id=1261953874]
-
-[node name="Rigged base mesh" parent="CharacterBody3D/Model" unique_id=1565000082 instance=ExtResource("3_jwv4s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Model" unique_id=2068844269]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7012124, 0)
-mesh = SubResource("BoxMesh_b64ip")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D/Model" unique_id=625220506]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0787451, 0)
-mesh = SubResource("BoxMesh_jwv4s")
-
-[node name="ChaserAI" type="Node" parent="CharacterBody3D" unique_id=1062208103 node_paths=PackedStringArray("body")]
-script = ExtResource("5_lohlh")
-body = NodePath("..")
-duration = 40.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1396134774]
+transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, -100, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=584235836]
 
@@ -97,5 +59,18 @@ layout_mode = 2
 text = "00:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1326168312]
+process_mode = 3
+stream = ExtResource("8_lg2j6")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="Container" type="Node3D" parent="." unique_id=1815079335]
+
+[node name="LevelGenerator" type="Node3D" parent="." unique_id=824151208]
+script = ExtResource("6_kilg5")
+prefabs = Array[PackedScene]([ExtResource("7_lg2j6")])
 
 [editable path="Player"]

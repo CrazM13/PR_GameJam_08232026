@@ -16,16 +16,16 @@ public partial class ChaserController : Node {
 
 			if (isChasing) {
 				if (!hasCaught) {
-					body.LookAt(new Vector3(PlayerController.player.Position.X, 0, PlayerController.player.Position.Z), Vector3.Up);
+					body.LookAt(new Vector3(PlayerController.player.GlobalPosition.X, 0, PlayerController.player.GlobalPosition.Z), Vector3.Up);
 					body.Move(-body.Basis.Z);
 
-					float distance = body.Position.DistanceSquaredTo(PlayerController.player.Position);
+					float distance = body.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition);
 
 					if (distance < 4) {
 						body.ForceStop();
 						hasCaught = true;
 						PlayerController.controller.Enabled = false;
-						PlayerController.player.LookAt(body.Position);
+						PlayerController.player.LookAt(body.GlobalPosition);
 
 						Engine.TimeScale = 10f;
 
@@ -39,8 +39,6 @@ public partial class ChaserController : Node {
 								body.QueueFree();
 							};
 						};
-					} else if (distance < 16) {
-						Engine.TimeScale = 0.25f;
 					}
 				}
 			} else {

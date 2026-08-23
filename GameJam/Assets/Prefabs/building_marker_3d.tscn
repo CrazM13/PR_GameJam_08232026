@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cep8tk0skprib"]
+
+[ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_412bw"]
+[ext_resource type="PackedScene" uid="uid://nhssbbiq1j53" path="res://Assets/Prefabs/building_0.tscn" id="2_1tchj"]
+
+[node name="BuildingMarker3D" type="Marker3D" unique_id=846293703]
+script = ExtResource("1_412bw")
+prefabs = Array[PackedScene]([ExtResource("2_1tchj")])

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c2cf03kg4u3rb"]
+
+[ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_q1p4k"]
+[ext_resource type="PackedScene" uid="uid://bxmyvnu3vosdo" path="res://Assets/Prefabs/street.tscn" id="2_rneny"]
+
+[node name="StreetMarker3D" type="Marker3D" unique_id=1296878561]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
+script = ExtResource("1_q1p4k")
+prefabs = Array[PackedScene]([ExtResource("2_rneny")])

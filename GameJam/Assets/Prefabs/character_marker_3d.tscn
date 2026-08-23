@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d0yewkshx61pv"]
+
+[ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_tsmhs"]
+[ext_resource type="PackedScene" uid="uid://bo5sceuhe3qvt" path="res://Assets/Prefabs/chaser.tscn" id="2_hif0n"]
+
+[node name="CharacterMarker3D" type="Marker3D" unique_id=467390130]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_tsmhs")
+prefabs = Array[PackedScene]([ExtResource("2_hif0n")])
