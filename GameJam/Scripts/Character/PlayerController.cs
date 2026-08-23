@@ -30,7 +30,7 @@ public partial class PlayerController : Node {
 		body.Move(movement.Normalized() * speed);
 
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;
-		body.RotateY(Mathf.DegToRad(-mouseVel.X));
+		body.RotateY(Mathf.DegToRad(-mouseVel.X * 0.25f));
 		camera.Rotation = new Vector3(Mathf.Clamp(camera.Rotation.X + Mathf.DegToRad(-mouseVel.Y * 0.25f), -Mathf.Pi * 0.5f, Mathf.Pi * 0.5f), 0, 0);
 
 		if (Input.MouseMode == Input.MouseModeEnum.Captured && Input.IsActionJustPressed("ui_cancel")) {

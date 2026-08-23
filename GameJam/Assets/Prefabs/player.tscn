@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="1_tgki7"]
 [ext_resource type="Script" uid="uid://c81f2ybm1u371" path="res://Scripts/Character/PlayerController.cs" id="2_ebihn"]
+[ext_resource type="Texture2D" uid="uid://otm3mmr63ino" path="res://Assets/Models/LooseTextures/crosshair.png" id="2_x4ukv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
 
@@ -14,6 +15,19 @@ shape = SubResource("CapsuleShape3D_b64ip")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2030165823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=2086854084]
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera3D/CanvasLayer" unique_id=2018299885]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/CanvasLayer/CenterContainer" unique_id=1715585943]
+layout_mode = 2
+texture = ExtResource("2_x4ukv")
 
 [node name="Controller" type="Node" parent="." unique_id=4052710 node_paths=PackedStringArray("body", "camera")]
 script = ExtResource("2_ebihn")
