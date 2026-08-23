@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://bwtoerfm0g78e" path="res://Assets/Audio/SFX/Click.wav" id="3_usuet"]
 
 [node name="ButtonSound" type="AudioStreamPlayer" unique_id=965715202]
+process_mode = 3
+bus = &"SFX"
 script = ExtResource("1_342g8")
 hover = ExtResource("2_g20qo")
 press = ExtResource("3_usuet")

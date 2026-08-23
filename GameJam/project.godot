@@ -14,6 +14,10 @@ config/name="GameJam"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://crde2fyicjs3s"
+
 [dotnet]
 
 project/assembly_name="GameJam"

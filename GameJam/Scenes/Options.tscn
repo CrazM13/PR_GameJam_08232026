@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://ckkl64ns8naqk"]
+
+[ext_resource type="Shader" uid="uid://bmcg3nbxeoc0u" path="res://Assets/Shaders/BlurScreen.gdshader" id="1_cbhj7"]
+[ext_resource type="Script" uid="uid://l5dfodxyta2y" path="res://Scripts/UI/VolumeSlider.cs" id="2_6f4k2"]
+[ext_resource type="PackedScene" uid="uid://dtcexqvfgltqp" path="res://Assets/Prefabs/ButtonSound.tscn" id="2_q4at1"]
+[ext_resource type="Script" uid="uid://cmjk3bt08epsl" path="res://Scripts/UI/BounceOnHover.cs" id="3_6f4k2"]
+[ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="4_bdxpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cja8r"]
+shader = ExtResource("1_cbhj7")
+shader_parameter/blur_amount = 2.000000095
+
+[sub_resource type="LabelSettings" id="LabelSettings_pke3u"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfnrp"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4at1"]
+font_size = 24
+
+[node name="Options" type="Node3D" unique_id=1353455617]
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1027274859]
+
+[node name="BluePanel" type="ColorRect" parent="Hud" unique_id=1413854141]
+material = SubResource("ShaderMaterial_cja8r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud" unique_id=897646806]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/CenterContainer" unique_id=434695140]
+custom_minimum_size = Vector2(768, 512)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud/CenterContainer/HBoxContainer" unique_id=1284660539]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/CenterContainer/HBoxContainer/CenterContainer" unique_id=137672145]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Hud/CenterContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=1743429930]
+layout_mode = 2
+size_flags_vertical = 3
+text = "TITLE"
+label_settings = SubResource("LabelSettings_pke3u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubTitle" type="Label" parent="Hud/CenterContainer/HBoxContainer/CenterContainer/VBoxContainer" unique_id=458469258]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+label_settings = SubResource("LabelSettings_kfnrp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Hud/CenterContainer/HBoxContainer" unique_id=1198921263]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Hud/CenterContainer/HBoxContainer" unique_id=615280224]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/CenterContainer/HBoxContainer/Panel" unique_id=1726214730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Menu" type="VBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer" unique_id=1188844046]
+layout_mode = 2
+
+[node name="RealMenu" type="VBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=456151293]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu" unique_id=1949540541]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_q4at1")
+
+[node name="Master Volume Slider" type="HBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu" unique_id=1490287349]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Master Volume Slider" unique_id=1797863929]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Master Volume Slider" unique_id=1436238277]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("2_6f4k2")
+
+[node name="Music Volume Slider2" type="HBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu" unique_id=1728610734]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Music Volume Slider2" unique_id=1444088661]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Music Volume Slider2" unique_id=1416074800]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("2_6f4k2")
+bus = &"Music"
+
+[node name="SFX Volume Slider3" type="HBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu" unique_id=472072685]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/SFX Volume Slider3" unique_id=1580460901]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/SFX Volume Slider3" unique_id=627434262]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("2_6f4k2")
+bus = &"SFX"
+
+[node name="Voice Volume Slider3" type="HBoxContainer" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu" unique_id=1127600598]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Voice Volume Slider3" unique_id=2101441741]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Voice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/RealMenu/Voice Volume Slider3" unique_id=1231215945]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("2_6f4k2")
+bus = &"Voice"
+
+[node name="HSeparator2" type="HSeparator" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=1466000655]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu" unique_id=1860551567]
+layout_mode = 2
+text = "Back"
+
+[node name="ButtonSound" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" unique_id=965715202 instance=ExtResource("2_q4at1")]
+
+[node name="BounceEffect" type="Node" parent="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" unique_id=525727593 node_paths=PackedStringArray("target")]
+script = ExtResource("3_6f4k2")
+target = NodePath("..")
+speed = 10.0
+strength = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1012896928]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 10)
+
+[node name="SceneManager" type="Node" parent="." unique_id=1223198652]
+script = ExtResource("4_bdxpv")
+
+[connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayPress"]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
