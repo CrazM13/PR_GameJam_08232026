@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cpq5w1fvibl7m" path="res://Assets/Models/street_and_apt_street.png" id="1_l2rh3"]
 [ext_resource type="PackedScene" uid="uid://uxvdi3fs6qvf" path="res://Assets/Prefabs/prop_marker_3d.tscn" id="2_y63ml"]
-[ext_resource type="PackedScene" uid="uid://cep8tk0skprib" path="res://Assets/Prefabs/building_marker_3d.tscn" id="3_uj5km"]
-[ext_resource type="PackedScene" uid="uid://d0yewkshx61pv" path="res://Assets/Prefabs/character_marker_3d.tscn" id="4_64btr"]
+[ext_resource type="PackedScene" uid="uid://bx5dasfbfe6ax" path="res://Assets/Prefabs/level_collision.tscn" id="5_l2rh3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_taumf"]
 resource_name = "Material.002"
@@ -54,14 +53,7 @@ mesh = SubResource("ArrayMesh_bv7eo")
 [node name="PropMarker3D" parent="." unique_id=399134664 instance=ExtResource("2_y63ml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.807327, 0, 6.8845997)
 
-[node name="BuildingMarker3D" parent="." unique_id=846293703 instance=ExtResource("3_uj5km")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.192673, 0, 0.8845997)
-
-[node name="BuildingMarker3D2" parent="." unique_id=2064016968 instance=ExtResource("3_uj5km")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.807327, 0, 0.8845997)
-
-[node name="CharacterMarker3D" parent="." unique_id=467390130 instance=ExtResource("4_64btr")]
-transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
-
 [node name="PropMarker3D2" parent="." unique_id=436432720 instance=ExtResource("2_y63ml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.491529, 0, -8.214016)
+
+[node name="LevelCollision" parent="." unique_id=384331929 instance=ExtResource("5_l2rh3")]

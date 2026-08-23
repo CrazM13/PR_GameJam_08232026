@@ -4,22 +4,17 @@
 [ext_resource type="Script" uid="uid://boths1im3cv72" path="res://Scripts/Character/CrowdBoid.cs" id="2_4bvgx"]
 [ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="3_3mbwn"]
 [ext_resource type="Script" uid="uid://c7dfkpigjhol4" path="res://Scripts/Generation/LevelGenerator.cs" id="6_kilg5"]
-[ext_resource type="PackedScene" uid="uid://bxmyvnu3vosdo" path="res://Assets/Prefabs/street.tscn" id="7_lg2j6"]
 [ext_resource type="Script" uid="uid://bsw44qjuykrn" path="res://Scripts/UI/HUDClock.cs" id="7_x6js8"]
+[ext_resource type="PackedScene" uid="uid://btiueegk5reer" path="res://Assets/Prefabs/street_framed.tscn" id="7_y30xb"]
 [ext_resource type="AudioStream" uid="uid://bkb6ylmig3oaw" path="res://Assets/Audio/Music/AtTheClub.wav" id="8_lg2j6"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b64ip"]
+[ext_resource type="PackedScene" uid="uid://ck4k5yefbhll2" path="res://Assets/Prefabs/street_chaser.tscn" id="8_xhjei"]
+[ext_resource type="PackedScene" uid="uid://i57uca3mamf8" path="res://Assets/Prefabs/street_win.tscn" id="10_xhjei"]
+[ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="11_6vvcf"]
 
 [node name="Node3D" type="Node3D" unique_id=73439093]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=761134198]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1190566651]
-shape = SubResource("WorldBoundaryShape3D_b64ip")
-
 [node name="Player" parent="." unique_id=1400048558 instance=ExtResource("1_2wl7v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-collision_layer = 64
 
 [node name="Controller" parent="Player" index="2" unique_id=4052710]
 speed = 2.5
@@ -72,6 +67,9 @@ bus = &"Music"
 
 [node name="LevelGenerator" type="Node3D" parent="." unique_id=824151208]
 script = ExtResource("6_kilg5")
-prefabs = Array[PackedScene]([ExtResource("7_lg2j6")])
+prefabs = Array[PackedScene]([ExtResource("10_xhjei"), ExtResource("8_xhjei"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb")])
+
+[node name="SceneManager" type="Node" parent="." unique_id=1587712128]
+script = ExtResource("11_6vvcf")
 
 [editable path="Player"]

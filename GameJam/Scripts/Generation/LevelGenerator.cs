@@ -43,6 +43,7 @@ public partial class LevelGenerator : Node3D {
 		levelComponents.Add(prop);
 
 		if (levelComponents.Count > 10) {
+			levelComponents[0].QueueFree();
 			levelComponents.RemoveAt(0);
 		}
 	}

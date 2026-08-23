@@ -10,6 +10,7 @@ radius = 0.24853516
 height = 1.5107422
 
 [node name="Player" type="CharacterBody3D" unique_id=1400048558]
+collision_layer = 64
 collision_mask = 129
 script = ExtResource("1_tgki7")
 

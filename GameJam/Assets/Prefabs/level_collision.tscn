@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bx5dasfbfe6ax"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b64ip"]
+
+[node name="LevelCollision" type="StaticBody3D" unique_id=384331929]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1232327045]
+shape = SubResource("WorldBoundaryShape3D_b64ip")
