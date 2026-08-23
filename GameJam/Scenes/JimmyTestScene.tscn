@@ -1,7 +1,34 @@
 [gd_scene format=3 uid="uid://chgr3bd3espbw"]
 
 [ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="1_661ac"]
+[ext_resource type="PackedScene" uid="uid://1wpmv07cy572" path="res://Assets/Prefabs/player.tscn" id="2_0k0sy"]
+[ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="2_bsogl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kkaft"]
+size = Vector3(16.249573, 1, 17.619507)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kkaft"]
+size = Vector3(16.63086, 1, 17.857544)
 
 [node name="Node3D" type="Node3D" unique_id=1299487288]
 
 [node name="Rigged base mesh" parent="." unique_id=1363327039 instance=ExtResource("1_661ac")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=877099834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45474243, -0.50676626, -0.22833252)
+mesh = SubResource("BoxMesh_kkaft")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1149664028]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1519787447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03125, 0, 0.03717041)
+shape = SubResource("BoxShape3D_kkaft")
+
+[node name="player_hands2" parent="." unique_id=949062774 instance=ExtResource("2_bsogl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4496739, -0.006766081, -0.013366461)
+
+[node name="Player" parent="." unique_id=1400048558 instance=ExtResource("2_0k0sy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1898515, -0.0067663193, -0.63397545)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=1021250224]
+transform = Transform3D(1, 0, 0, 0, 0.6467898, 0.7626684, 0, -0.7626684, 0.6467898, 0, 0, 0)
