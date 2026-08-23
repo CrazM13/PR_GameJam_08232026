@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://crde2fyicjs3s"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="GameJam"
