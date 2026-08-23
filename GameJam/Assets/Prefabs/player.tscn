@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="1_tgki7"]
 [ext_resource type="Script" uid="uid://c81f2ybm1u371" path="res://Scripts/Character/PlayerController.cs" id="2_ebihn"]
 [ext_resource type="Texture2D" uid="uid://otm3mmr63ino" path="res://Assets/Models/LooseTextures/crosshair.png" id="2_x4ukv"]
+[ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="4_x4ukv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
 
@@ -14,7 +15,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_b64ip")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2030165823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.402005, 0)
+
+[node name="player_hands2" parent="Camera3D" unique_id=1471925360 instance=ExtResource("4_x4ukv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.4188668, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=2086854084]
 
