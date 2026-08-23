@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://chgr3bd3espbw"]
+
+[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="1_661ac"]
+
+[node name="Node3D" type="Node3D" unique_id=1299487288]
+
+[node name="Rigged base mesh" parent="." unique_id=1363327039 instance=ExtResource("1_661ac")]
