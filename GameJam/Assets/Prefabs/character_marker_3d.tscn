@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://d0yewkshx61pv"]
 
 [ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_tsmhs"]
-[ext_resource type="PackedScene" uid="uid://bo5sceuhe3qvt" path="res://Assets/Prefabs/chaser.tscn" id="2_hif0n"]
+[ext_resource type="PackedScene" uid="uid://bm43eqk0utag5" path="res://Assets/Prefabs/chaser_cop.tscn" id="2_0byko"]
+[ext_resource type="PackedScene" uid="uid://7k35ua5ugby6" path="res://Assets/Prefabs/chaser_coworker.tscn" id="3_blimr"]
+[ext_resource type="PackedScene" uid="uid://bm0ugs1v6l5eu" path="res://Assets/Prefabs/chaser_family.tscn" id="4_2lknm"]
 
 [node name="CharacterMarker3D" type="Marker3D" unique_id=467390130]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_tsmhs")
-prefabs = Array[PackedScene]([ExtResource("2_hif0n")])
+prefabs = Array[PackedScene]([ExtResource("2_0byko"), ExtResource("3_blimr"), ExtResource("4_2lknm")])

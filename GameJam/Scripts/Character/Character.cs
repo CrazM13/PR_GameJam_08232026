@@ -3,30 +3,40 @@ using System;
 
 public partial class Character : CharacterBody3D {
 
+	private Vector3 controlledVelocity;
+	private Vector3 uncontrolledVelocity;
+
 	public override void _PhysicsProcess(double delta) {
 		base._PhysicsProcess(delta);
 
 		if (!this.IsOnFloor()) {
-			this.Velocity += this.GetGravity() * 3f * (float) delta;
+			uncontrolledVelocity += this.GetGravity() * 3f * (float) delta;
 		}
+
+		this.Velocity = uncontrolledVelocity + controlledVelocity;
 
 		this.MoveAndSlide();
 
-		this.Velocity = new Vector3(this.Velocity.X * 0.7f, this.Velocity.Y, this.Velocity.Z * 0.7f);
+		controlledVelocity = new Vector3(controlledVelocity.X * 0.7f, controlledVelocity.Y, controlledVelocity.Z * 0.7f);
+		if (IsOnFloor()) uncontrolledVelocity = new Vector3(uncontrolledVelocity.X * 0.7f, uncontrolledVelocity.Y, uncontrolledVelocity.Z * 0.7f);
 	}
 
 	public void Move(Vector3 direction) {
-		this.Velocity += direction;
+		controlledVelocity += direction;
+	}
+
+	public void Knockback(Vector3 direction) {
+		uncontrolledVelocity += direction;
 	}
 
 	public void AttemptJump() {
 		if (this.IsOnFloor()) {
-			this.Velocity += this.GetGravity() * -1f;
+			controlledVelocity += this.GetGravity() * -1f;
 		}
 	}
 
 	public void ForceStop() {
-		this.Velocity = Vector3.Zero;
+		controlledVelocity = uncontrolledVelocity = Vector3.Zero;
 	}
 
 }

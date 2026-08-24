@@ -6,7 +6,10 @@ using System.Collections.Generic;
 public partial class LevelGenerator : Node3D {
 
 	[Export] private PackedScene[] prefabs;
+	[Export] private PackedScene winPrefab;
 	private List<Node3D> levelComponents;
+
+	private int tilesSpawned = 0;
 
 	public override void _Ready() {
 		base._Ready();
@@ -32,7 +35,14 @@ public partial class LevelGenerator : Node3D {
 	}
 
 	private void Spawn(Node3D last) {
-		PackedScene selected = prefabs[GD.Randi() % prefabs.Length];
+
+		PackedScene selected = prefabs[0];
+
+		if (tilesSpawned < 32) {
+			selected = prefabs[GD.Randi() % prefabs.Length];
+		} else if (tilesSpawned == 32) {
+			selected = winPrefab;
+		}
 
 		Node3D prop = selected.Instantiate<Node3D>();
 
@@ -46,6 +56,8 @@ public partial class LevelGenerator : Node3D {
 			levelComponents[0].QueueFree();
 			levelComponents.RemoveAt(0);
 		}
+
+		tilesSpawned++;
 	}
 
 }

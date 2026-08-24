@@ -5,11 +5,18 @@ using System.Collections.Generic;
 public partial class CrowdBoid : Node3D {
 
 	[Export] private PackedScene[] prefabs;
+	[Export] private float speed = 0.5f;
 	[Export] private int count = 256;
 	[Export] private Vector3 bounds;
 	[Export] private Node3D container;
+	[Export] private AudioStreamPlayer jeerSource;
+	[Export] private AudioStream[] jeers;
 
 	private RandomNumberGenerator rng;
+
+	private AudioStreamPlaybackPolyphonic playback;
+
+	private float voCooldown = 3f;
 
 	private List<Character> boids;
 
@@ -29,10 +36,16 @@ public partial class CrowdBoid : Node3D {
 			boids.Add(boid);
 		}
 
+		jeerSource.Play();
+		playback = (AudioStreamPlaybackPolyphonic)jeerSource.GetStreamPlayback();
+
 	}
 
 	public override void _Process(double delta) {
 		base._Process(delta);
+
+		voCooldown -= (float) delta;
+
 		Vector3 extends = bounds / 2f;
 		foreach (Character boid in boids) {
 
@@ -49,7 +62,12 @@ public partial class CrowdBoid : Node3D {
 				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z + bounds.Z);
 			}
 
-			boid.Move(boid.Basis.Z);
+			if (voCooldown <= 0 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition) < 2 && Engine.TimeScale == 1) {
+				voCooldown = (GD.Randf() * 2);
+				playback.PlayStream(jeers[GD.Randi() % jeers.Length]);
+			}
+
+			if (boid.IsOnFloor()) boid.Move(-boid.GlobalBasis.Z * speed);
 		}
 	}
 

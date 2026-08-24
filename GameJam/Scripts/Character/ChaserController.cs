@@ -5,8 +5,10 @@ public partial class ChaserController : Node {
 
 	[Export] private Character body;
 	[Export] private float duration = 5f;
+	[Export] private AudioStreamPlayer audio;
 
 	private bool isChasing = true;
+	private bool isClose = false;
 	private bool hasCaught = false;
 
 	public override void _Process(double delta) {
@@ -16,33 +18,44 @@ public partial class ChaserController : Node {
 
 			if (isChasing) {
 				if (!hasCaught) {
-					body.LookAt(new Vector3(PlayerController.player.GlobalPosition.X, 0, PlayerController.player.GlobalPosition.Z), Vector3.Up);
-					body.Move(-body.Basis.Z);
+					if (Engine.TimeScale == 1) {
+						body.LookAt(new Vector3(PlayerController.player.GlobalPosition.X, 0, PlayerController.player.GlobalPosition.Z), Vector3.Up);
+						body.Move(-body.Basis.Z);
 
-					float distance = body.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition);
+						float distance = body.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition);
 
-					if (distance < 4) {
-						body.ForceStop();
-						hasCaught = true;
-						PlayerController.controller.Enabled = false;
-						PlayerController.player.LookAt(body.GlobalPosition);
+						if (distance < 4) {
+							body.ForceStop();
+							hasCaught = true;
+							PlayerController.controller.Enabled = false;
+							PlayerController.player.LookAt(body.GlobalPosition);
 
-						Engine.TimeScale = 10f;
+							audio.Play();
 
-						GetTree().CreateTimer(duration / Engine.TimeScale, true, false, true).Timeout += () => {
-							isChasing = false;
-							Engine.TimeScale = 1f;
-							PlayerController.controller.Enabled = true;
-							body.RotateY(GD.Randf() * Mathf.Pi);
+							Engine.TimeScale = 5f;
 
-							GetTree().CreateTimer(10, true, false, true).Timeout += () => {
-								body.QueueFree();
+							GetTree().CreateTimer(duration / Engine.TimeScale, true, false, true).Timeout += () => {
+								isChasing = false;
+								Engine.TimeScale = 1f;
+								PlayerController.controller.Enabled = true;
+								body.RotateY(GD.Randf() * Mathf.Pi);
+
+								GetTree().CreateTimer(10, true, false, true).Timeout += () => {
+									body.QueueFree();
+								};
 							};
-						};
+						} else if (distance < 36) {
+							isClose = true;
+						} else if (isClose) {
+							isChasing = false;
+						}
 					}
+				} else {
+					body.LookAt(PlayerController.player.GlobalPosition);
+					PlayerController.player.LookAt(body.GlobalPosition);
 				}
 			} else {
-				body.Move(-body.Basis.Z);
+				body.Move(-body.GlobalTransform.Basis.Z);
 			}
 		}
 

@@ -13,7 +13,7 @@ size = Vector3(0.2, 0.75, 0.2)
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Chaser" type="CharacterBody3D" unique_id=1131340803]
-collision_layer = 128
+collision_layer = 16
 script = ExtResource("1_ljdcm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1505739027]
@@ -33,7 +33,11 @@ mesh = SubResource("BoxMesh_b64ip")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0787451, 0)
 mesh = SubResource("BoxMesh_jwv4s")
 
-[node name="ChaserAI" type="Node" parent="." unique_id=1619019962 node_paths=PackedStringArray("body")]
+[node name="ChaserAI" type="Node" parent="." unique_id=1619019962 node_paths=PackedStringArray("body", "audio")]
 script = ExtResource("3_50wl4")
 body = NodePath("..")
 duration = 40.0
+audio = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1860562438]
+bus = &"Voice"

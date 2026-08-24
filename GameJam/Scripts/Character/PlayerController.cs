@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class PlayerController : Node {
@@ -8,8 +9,12 @@ public partial class PlayerController : Node {
 
 	[Export] private Character body;
 	[Export] private Camera3D camera;
+	[Export] private AudioStreamPlayer slapSFX;
+	[Export] private AnimationPlayer firstPersonAnimations;
 
 	[Export] private float speed = 1;
+
+	private float slapCooldown = 0;
 
 	public bool Enabled { get; set; } = true;
 
@@ -38,6 +43,12 @@ public partial class PlayerController : Node {
 			body.AttemptJump();
 		}
 
+
+		slapCooldown -= (float) delta;
+		if (slapCooldown <= 0 && Input.IsMouseButtonPressed(MouseButton.Left)) {
+			AttaptSlap();
+		}
+
 		Vector3 forward = body.Transform.Basis.X;
 		Vector3 right = body.Transform.Basis.Z;
 
@@ -48,6 +59,34 @@ public partial class PlayerController : Node {
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;
 		body.RotateY(Mathf.DegToRad(-mouseVel.X * 0.25f));
 		camera.Rotation = new Vector3(Mathf.Clamp(camera.Rotation.X + Mathf.DegToRad(-mouseVel.Y * 0.25f), -Mathf.Pi * 0.5f, Mathf.Pi * 0.5f), 0, 0);
+	}
+
+	private void AttaptSlap() {
+
+		firstPersonAnimations.Play("slap");
+		slapCooldown = 1f;
+
+		GetTree().CreateTimer(0.2f).Timeout += () => {
+			PhysicsDirectSpaceState3D spaceState = player.GetWorld3D().DirectSpaceState;
+			PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition - (camera.GlobalTransform.Basis.Z * 3));
+			Dictionary result = spaceState.IntersectRay(query);
+
+			if (result.Count <= 0) return;
+
+			Node target = (Node)result["collider"].AsGodotObject();
+
+			if (target is Character enemy) {
+				Vector3 hitDirection = -camera.GlobalTransform.Basis.Z;
+
+				hitDirection = new Vector3(hitDirection.X, 0, hitDirection.Z);
+
+				enemy.ForceStop();
+				enemy.AttemptJump();
+				enemy.Knockback(hitDirection * 10);
+
+				slapSFX.Play();
+			}
+		};
 	}
 
 	public override void _ExitTree() {
