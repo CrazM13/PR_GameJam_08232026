@@ -44,7 +44,9 @@ public partial class CrowdBoid : Node3D {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		voCooldown -= (float) delta;
+		if (voCooldown > 0) voCooldown -= (float) delta;
+
+		int skip = 3;
 
 		Vector3 extends = bounds / 2f;
 		foreach (Character boid in boids) {
@@ -62,9 +64,13 @@ public partial class CrowdBoid : Node3D {
 				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z + bounds.Z);
 			}
 
-			if (voCooldown <= 0 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition) < 2 && Engine.TimeScale == 1) {
-				voCooldown = (GD.Randf() * 2);
-				playback.PlayStream(jeers[GD.Randi() % jeers.Length]);
+			if (voCooldown <= 0) {
+				if (skip > 0) skip--;
+
+				if (skip == 0 && Engine.TimeScale == 1 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition) < 2) {
+					voCooldown = (GD.Randf() * 2);
+					playback.PlayStream(jeers[GD.Randi() % jeers.Length]);
+				}
 			}
 
 			if (boid.IsOnFloor()) boid.Move(-boid.GlobalBasis.Z * speed);

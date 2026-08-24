@@ -6,6 +6,7 @@ public partial class ChaserController : Node {
 	[Export] private Character body;
 	[Export] private float duration = 5f;
 	[Export] private AudioStreamPlayer audio;
+	[Export] private PackedScene minigamePrefab;
 
 	private bool isChasing = true;
 	private bool isClose = false;
@@ -34,7 +35,9 @@ public partial class ChaserController : Node {
 
 							Engine.TimeScale = 5f;
 
-							GetTree().CreateTimer(duration / Engine.TimeScale, true, false, true).Timeout += () => {
+							DialogueMinigame minigame = minigamePrefab.Instantiate<DialogueMinigame>();
+							minigame.SetDuration(duration);
+							minigame.OnMinigameEnd += _ => {
 								isChasing = false;
 								Engine.TimeScale = 1f;
 								PlayerController.controller.Enabled = true;
@@ -43,7 +46,11 @@ public partial class ChaserController : Node {
 								GetTree().CreateTimer(10, true, false, true).Timeout += () => {
 									body.QueueFree();
 								};
+
+								audio.Stop();
 							};
+
+							AddChild(minigame);
 						} else if (distance < 36) {
 							isClose = true;
 						} else if (isClose) {

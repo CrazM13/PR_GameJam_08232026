@@ -37,9 +37,6 @@ bones/32/scale = Vector3(1, 1, 0.99999976)
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
 transform = Transform3D(0.580857, 0.0015824665, 0.8140035, 0.8138224, 0.020066189, -0.5807665, -0.017252998, 0.99979705, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 
-[node name="Controller" parent="Player" index="2" unique_id=4052710]
-speed = 2.5
-
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container", "jeerSource")]
 script = ExtResource("2_4bvgx")
 prefabs = Array[PackedScene]([ExtResource("3_3mbwn")])
