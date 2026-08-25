@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dkdue12cxh8pw"]
+
+[ext_resource type="Script" uid="uid://cj0cn3kmtddk6" path="res://Scripts/UI/ItemSlotContainer.cs" id="1_rfm2v"]
+[ext_resource type="Texture2D" uid="uid://ism2b6wqb8dr" path="res://Assets/Models/LooseTextures/circle.png" id="2_62brg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_62brg"]
+size = Vector2(128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b64ip"]
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b64ip"]
+bg_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_imxm8"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[node name="ItemContainer" type="CenterContainer" unique_id=1603535490 node_paths=PackedStringArray("keyDisplay", "iconDisplay", "countDisplay")]
+size_flags_horizontal = 3
+offset_transform_enabled = true
+script = ExtResource("1_rfm2v")
+keyDisplay = NodePath("Icon/KeyPanel/Label")
+iconDisplay = NodePath("Icon")
+countDisplay = NodePath("Icon/Count")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=112233618]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("PlaceholderTexture2D_62brg")
+stretch_mode = 3
+
+[node name="Count" type="Label" parent="Icon" unique_id=112646025]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "x0"
+label_settings = SubResource("LabelSettings_b64ip")
+
+[node name="KeyPanel" type="Panel" parent="Icon" unique_id=675061003]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b64ip")
+
+[node name="Label" type="Label" parent="Icon/KeyPanel" unique_id=202126025]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "K"
+label_settings = SubResource("LabelSettings_imxm8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Icon" unique_id=1420244228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("2_62brg")
+tint_progress = Color(0.5019608, 0.5019608, 0.5019608, 0.5019608)

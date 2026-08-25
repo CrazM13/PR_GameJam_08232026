@@ -19,8 +19,7 @@ public partial class DialoguePiece : Control {
 	public enum PieceState {
 		READY,
 		WARNING,
-		ACTION,
-		RETURN
+		ACTION
 	}
 
 	private PieceState currentState = PieceState.READY;
@@ -99,9 +98,9 @@ public partial class DialoguePiece : Control {
 		if (currentState == PieceState.ACTION) {
 			InnerScale = Vector2.One * 1.5f;
 			Modulate = new Color(0x00ff7cff);
-		} else if (currentState == PieceState.RETURN) {
-			InnerScale = Vector2.One * 0.25f;
-			Modulate = Colors.Gray;
+		} else {
+			InnerScale = Vector2.One;
+			Modulate = Colors.White;
 		}
 	}
 

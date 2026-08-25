@@ -88,7 +88,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="Skeleton3D" parent="Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1471925360, 728882225) index="0" unique_id=1309671596]
 bones/32/position = Vector3(-5.9604645e-08, 0.1861544, -1.7881393e-07)
 bones/32/rotation = Quaternion(0.0064828023, -0.7890775, -0.0075952783, 0.6142125)
-bones/32/scale = Vector3(1, 1.0000001, 0.99999976)
+bones/32/scale = Vector3(1, 0.99999994, 0.99999976)
 bones/33/position = Vector3(0, 0.21043618, 0)
 bones/33/rotation = Quaternion(-0.12556261, 1.4082922e-08, -0.3564499, 0.9258388)
 bones/33/scale = Vector3(1, 1.0000001, 1)
@@ -97,7 +97,7 @@ bones/35/rotation = Quaternion(-0.06885233, -1.3495323e-07, -0.14621401, 0.98685
 bones/35/scale = Vector3(1, 0.99999994, 1.0000001)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824666, 0.8140035, 0.8138224, 0.020066189, -0.5807665, -0.017252998, 0.9997971, 0.010367742, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824663, 0.8140035, 0.8138224, 0.020066185, -0.5807665, -0.017252998, 0.99979687, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 bone_name = "forearm.R"
 bone_idx = 32
 override_pose = true

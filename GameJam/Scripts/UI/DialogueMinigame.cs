@@ -9,8 +9,9 @@ public partial class DialogueMinigame : CanvasLayer {
 
 	[Export] private PackedScene prefab;
 	[Export] private Control mainGame;
-	[Export] private Control container;
+	[Export] private DialoguePiece activePiece;
 	[Export] private Control[] targets;
+	[Export] private ProgressBar timeBar;
 	[Export] private AudioStreamPlayer audio;
 	[Export] private AudioStream[] sfxs;
 
@@ -22,24 +23,27 @@ public partial class DialogueMinigame : CanvasLayer {
 	private float duration;
 
 	private Vector2 direction;
-	private DialoguePiece activePiece;
 
 	private AudioStreamPlaybackPolyphonic polyphonic;
 
 	public override void _Ready() {
 		base._Ready();
 
-		activePiece = container.GetChild<DialoguePiece>(0);
+		SetDuration(256);
+
 		activePiece.Reset();
 
 		audio.Play();
 		polyphonic = (AudioStreamPlaybackPolyphonic) audio.GetStreamPlayback();
 
-		direction = GetRandomDirection();
+		direction = Vector2.Right;
 	}
 
 	public void SetDuration(float duration) {
 		this.duration = duration;
+
+		timeBar.MaxValue = duration;
+		timeBar.Value = duration;
 	}
 
 	public override void _Process(double delta) {
@@ -65,21 +69,13 @@ public partial class DialogueMinigame : CanvasLayer {
 			this.QueueFree();
 		}
 
+		timeBar.Value = duration;
 	}
 
 	private void UpdatePiece() {
 		DialoguePiece.PieceState currentState = activePiece.GetCurrentState();
 
-		if (currentState == DialoguePiece.PieceState.RETURN) {
-			activePiece.InnerOffset = activePiece.InnerOffset.MoveToward(Vector2.Zero, speed * 2);
-
-			if (activePiece.InnerOffset == Vector2.Zero) {
-				activePiece.Reset();
-				direction = GetRandomDirection();
-
-				for (int i = 0; i < targets.Length; i++) targets[i].Modulate = Colors.Gray;
-			}
-		} else {
+		{
 			activePiece.InnerOffset += direction * speed;
 
 			Rect2 movingRect = activePiece.GetGlobalRect();
@@ -90,6 +86,10 @@ public partial class DialogueMinigame : CanvasLayer {
 			if (!finishedCheck) finishedCheck = CheckTargets(activePiece, 1, "move_left");
 			if (!finishedCheck) finishedCheck = CheckTargets(activePiece, 2, "move_backward");
 			if (!finishedCheck) CheckTargets(activePiece, 3, "move_right");
+
+			if (activePiece.InnerOffset.X < -540 || activePiece.InnerOffset.X > 540) {
+				direction *= -1;
+			}
 		}
 	}
 
@@ -98,14 +98,13 @@ public partial class DialogueMinigame : CanvasLayer {
 		Rect2 movingRect = piece.GetMovingRect();
 
 		if (targetRect.Encloses(movingRect)) {
-			piece.SetState(DialoguePiece.PieceState.ACTION);
-			targets[target].Modulate = Colors.Yellow;
+			
 
 			if (Input.IsActionJustPressed(input)) {
 				speed += 0.01f;
 				polyphonic.PlayStream(sfxs[target]);
 
-				piece.SetState(DialoguePiece.PieceState.RETURN);
+				piece.SetState(DialoguePiece.PieceState.ACTION);
 				targets[target].Modulate = Colors.Green;
 
 				duration -= 5f;
@@ -114,14 +113,8 @@ public partial class DialogueMinigame : CanvasLayer {
 			return true;
 
 		} else if (targetRect.Intersects(movingRect)) {
-			if (piece.GetCurrentState() == DialoguePiece.PieceState.ACTION) {
-				piece.SetState(DialoguePiece.PieceState.RETURN);
-				targets[target].Modulate = Colors.Gray;
-				shakeStrength = MAX_SHAKE;
-			} else {
-				piece.SetState(DialoguePiece.PieceState.WARNING);
-				targets[target].Modulate = Colors.Gray;
-			}
+			piece.SetState(DialoguePiece.PieceState.WARNING);
+			targets[target].Modulate = Colors.Gray;
 
 			return true;
 		}
@@ -129,14 +122,8 @@ public partial class DialogueMinigame : CanvasLayer {
 		return false;
 	}
 
-	private static Vector2 GetRandomDirection() {
-		return (GD.Randi() % 4) switch {
-			0 => Vector2.Up,
-			1 => Vector2.Down,
-			2 => Vector2.Left,
-			3 => Vector2.Right,
-			_ => Vector2.Up
-		};
+	private Vector2 GetRandomDirection() {
+		return new Vector2(direction.X * -1, 0);
 	}
 
 }
