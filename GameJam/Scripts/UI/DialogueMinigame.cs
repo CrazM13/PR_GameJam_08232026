@@ -29,8 +29,6 @@ public partial class DialogueMinigame : CanvasLayer {
 	public override void _Ready() {
 		base._Ready();
 
-		SetDuration(256);
-
 		activePiece.Reset();
 
 		audio.Play();
@@ -69,12 +67,12 @@ public partial class DialogueMinigame : CanvasLayer {
 			this.QueueFree();
 		}
 
+		for (int i = 0; i < targets.Length; i++) targets[i].Modulate = targets[i].Modulate.Lerp(Colors.Gray, (float)delta);
+
 		timeBar.Value = duration;
 	}
 
 	private void UpdatePiece() {
-		DialoguePiece.PieceState currentState = activePiece.GetCurrentState();
-
 		{
 			activePiece.InnerOffset += direction * speed;
 
@@ -114,7 +112,6 @@ public partial class DialogueMinigame : CanvasLayer {
 
 		} else if (targetRect.Intersects(movingRect)) {
 			piece.SetState(DialoguePiece.PieceState.WARNING);
-			targets[target].Modulate = Colors.Gray;
 
 			return true;
 		}
