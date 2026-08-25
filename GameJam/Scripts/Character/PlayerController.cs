@@ -54,7 +54,7 @@ public partial class PlayerController : Node {
 
 		Vector3 movement = (Input.GetAxis("move_left", "move_right") * forward) + (Input.GetAxis("move_forward", "move_backward") * right);
 
-		body.Move(movement.Normalized() * speed);
+		body.Move(movement.Normalized() * speed * (Input.IsActionPressed("move_sprint") ? 2 : 1));
 
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;
 		body.RotateY(Mathf.DegToRad(-mouseVel.X * 0.25f));
