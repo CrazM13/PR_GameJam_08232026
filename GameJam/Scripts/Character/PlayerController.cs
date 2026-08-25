@@ -4,13 +4,16 @@ using System;
 
 public partial class PlayerController : Node {
 
-	public static Character player;
-	public static PlayerController controller;
+	private readonly Attributes attributes = new Attributes();
+	public static Character playerInstance;
+	public static PlayerController controllerInstance;
+	public static Inventory inventoryInstance;
 
 	[Export] private Character body;
 	[Export] private Camera3D camera;
 	[Export] private AudioStreamPlayer slapSFX;
 	[Export] private AnimationPlayer firstPersonAnimations;
+	[Export] private Inventory inventory;
 
 	[Export] private float speed = 1;
 
@@ -23,8 +26,11 @@ public partial class PlayerController : Node {
 
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 
-		player = body;
-		controller = this;
+		playerInstance = body;
+		controllerInstance = this;
+		inventoryInstance = inventory;
+
+		this.attributes.SetBase(Attributes.SPEED, 1);
 
 	}
 
@@ -54,7 +60,7 @@ public partial class PlayerController : Node {
 
 		Vector3 movement = (Input.GetAxis("move_left", "move_right") * forward) + (Input.GetAxis("move_forward", "move_backward") * right);
 
-		body.Move(movement.Normalized() * speed * (Input.IsActionPressed("move_sprint") ? 2 : 1));
+		body.Move(movement.Normalized() * (speed * attributes.Get(Attributes.SPEED)) * (Input.IsActionPressed("move_sprint") ? 2 : 1));
 
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;
 		body.RotateY(Mathf.DegToRad(-mouseVel.X * 0.25f));
@@ -67,7 +73,7 @@ public partial class PlayerController : Node {
 		slapCooldown = 1f;
 
 		GetTree().CreateTimer(0.2f).Timeout += () => {
-			PhysicsDirectSpaceState3D spaceState = player.GetWorld3D().DirectSpaceState;
+			PhysicsDirectSpaceState3D spaceState = playerInstance.GetWorld3D().DirectSpaceState;
 			PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition - (camera.GlobalTransform.Basis.Z * 3));
 			Dictionary result = spaceState.IntersectRay(query);
 
@@ -92,8 +98,13 @@ public partial class PlayerController : Node {
 	public override void _ExitTree() {
 		base._ExitTree();
 
-		player = null;
-		controller = null;
+		playerInstance = null;
+		controllerInstance = null;
+		inventoryInstance = null;
+	}
+
+	public Attributes GetAttributes() {
+		return attributes;
 	}
 
 }

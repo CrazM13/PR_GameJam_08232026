@@ -3,8 +3,16 @@ using System;
 
 public partial class Character : CharacterBody3D {
 
+	
+
 	private Vector3 controlledVelocity;
 	private Vector3 uncontrolledVelocity;
+
+	public override void _Ready() {
+		base._Ready();
+
+		
+	}
 
 	public override void _PhysicsProcess(double delta) {
 		base._PhysicsProcess(delta);
@@ -31,7 +39,7 @@ public partial class Character : CharacterBody3D {
 
 	public void AttemptJump() {
 		if (this.IsOnFloor()) {
-			controlledVelocity += this.GetGravity() * -1f;
+			uncontrolledVelocity += this.GetGravity() * -1f;
 		}
 	}
 

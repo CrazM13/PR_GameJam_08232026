@@ -14,9 +14,12 @@ public partial class Inventory : Control {
 
 	}
 
-	public void Add(string item, int count = 1) {
+	public void Add(Item item) {
 		foreach (ItemSlotContainer slot in slots) {
-			if (slot.ItemID == item) slot.Count += count;
+			if (slot.GetItem() == null) {
+				slot.SetItem(item);
+				break;
+			}
 		}
 	}
 

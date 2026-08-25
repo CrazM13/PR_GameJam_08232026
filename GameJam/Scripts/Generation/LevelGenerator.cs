@@ -25,7 +25,7 @@ public partial class LevelGenerator : Node3D {
 		if (levelComponents.Count == 0) {
 			Spawn(this);
 		} else {
-			float distance = PlayerController.player.GlobalPosition.DistanceSquaredTo(levelComponents[^1].GlobalPosition);
+			float distance = PlayerController.playerInstance.GlobalPosition.DistanceSquaredTo(levelComponents[^1].GlobalPosition);
 
 			if (distance < 1600) {
 				Spawn(levelComponents[^1]);

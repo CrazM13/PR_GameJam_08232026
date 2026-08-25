@@ -67,7 +67,7 @@ public partial class CrowdBoid : Node3D {
 			if (voCooldown <= 0) {
 				if (skip > 0) skip--;
 
-				if (skip == 0 && Engine.TimeScale == 1 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.player.GlobalPosition) < 2) {
+				if (skip == 0 && Engine.TimeScale == 1 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.playerInstance.GlobalPosition) < 2) {
 					voCooldown = (GD.Randf() * 2);
 					playback.PlayStream(jeers[GD.Randi() % jeers.Length]);
 				}

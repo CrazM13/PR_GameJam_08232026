@@ -32,10 +32,11 @@
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.606575)
 
 [node name="Skeleton3D" parent="Player/Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1400048558, 1471925360, 728882225) index="0" unique_id=1309671596]
-bones/32/scale = Vector3(1, 0.9999998, 0.99999976)
+bones/32/rotation = Quaternion(0.006482802, -0.7890775, -0.0075952783, 0.6142125)
+bones/32/scale = Vector3(1, 0.9999996, 0.99999976)
 
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824662, 0.8140035, 0.8138224, 0.020066183, -0.5807665, -0.017252998, 0.9997968, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824657, 0.8140035, 0.8138224, 0.020066177, -0.5807665, -0.017252998, 0.9997965, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container", "jeerSource")]
 script = ExtResource("2_4bvgx")

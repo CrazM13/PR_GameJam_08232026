@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="2_7c1r2"]
 [ext_resource type="Script" uid="uid://fa1natc1ttio" path="res://Scripts/Character/ChaserController.cs" id="3_50wl4"]
 [ext_resource type="PackedScene" uid="uid://diikvfyefu6p0" path="res://Assets/Prefabs/DialogueMinigame.tscn" id="4_7c1r2"]
+[ext_resource type="Resource" uid="uid://b0jeaa45pnfaf" path="res://Assets/Data/CoffeeItem.tres" id="5_50wl4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imxm8"]
 
@@ -40,6 +41,8 @@ body = NodePath("..")
 duration = 40.0
 audio = NodePath("../AudioStreamPlayer")
 minigamePrefab = ExtResource("4_7c1r2")
+playMinigame = true
+giftedItem = ExtResource("5_50wl4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1860562438]
 bus = &"Voice"

@@ -3,11 +3,8 @@ using System;
 
 public partial class ItemSlotContainer : Control {
 
-	[Export] public string ItemID { get; private set; }
 	[Export] public string Action { get; private set; }
 	[Export] private string actionDisplay;
-	[Export] private Texture2D icon;
-	[Export] private ItemEffect effect;
 
 	[ExportGroup("References")]
 	[Export] private Label keyDisplay;
@@ -15,16 +12,17 @@ public partial class ItemSlotContainer : Control {
 	[Export] private Label countDisplay;
 	[Export] private TextureProgressBar progressDisplay;
 
-	private float progress = 1;
+	private float progress = -1;
 
-	private int count = 0;
+	private Item item = null;
 
 	private Vector2 targetPosition;
 
 	public override void _Ready() {
 		base._Ready();
 
-		this.OffsetTransformPosition = targetPosition = new Vector2(0, 640);
+		this.OffsetTransformPosition = targetPosition = new Vector2(0, 128);
+		this.progressDisplay.Visible = false;
 
 		UpdateVisuals();
 	}
@@ -32,35 +30,59 @@ public partial class ItemSlotContainer : Control {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		this.OffsetTransformPosition = this.OffsetTransformPosition.MoveToward(targetPosition, 64 * (float) delta);
+		this.OffsetTransformPosition = this.OffsetTransformPosition.MoveToward(targetPosition, 256 * (float) delta);
 
+		if (this.progressDisplay.Visible) {
+			progress -= (float) delta;
+			progressDisplay.Value = progress;
+
+			if (progress <= 0) {
+
+				if (this.item is ItemConsumable consumable) {
+					consumable.EndEffect();
+				}
+
+				this.SetItem(null);
+				UpdateVisuals();
+				this.progressDisplay.Visible = false;
+			}
+		}
 	}
 
 	private void UpdateVisuals() {
-		countDisplay.Text = $"x{count}";
+		if (item != null) {
+			countDisplay.Text = $"x{(item == null ? 0 : 1)}";
+			iconDisplay.Texture = item.Texture;
+		} else {
+			iconDisplay.Texture = null;
+			countDisplay.Text = "";
+		}
+
 		keyDisplay.Text = actionDisplay;
-		if (icon != null) iconDisplay.Texture = icon;
-		iconDisplay.SelfModulate = count > 0 ? Colors.White : Colors.Gray;
+
+		
 		progressDisplay.Value = progress;
 
-		targetPosition = count > 0 ? Vector2.Zero : new Vector2(0, 640);
-	}
-
-	public int Count {
-		get { 
-			return count;
-		}
-		set { 
-			count = value;
-			UpdateVisuals();
-		}
+		targetPosition = item != null ? Vector2.Zero : new Vector2(0, 128);
 	}
 
 	public void Use() {
-		if (count > 0) {
-			effect?.Use(this);
-			Count--;
-		}
+		if (!this.progressDisplay.Visible) item.Use(this);
+	}
+
+	public Item GetItem() {
+		return item;
+	}
+
+	public void SetItem(Item item) {
+		this.item = item;
+		UpdateVisuals();
+	}
+
+	public void SetCooldown(float cooldown) {
+		this.progress = cooldown;
+		this.progressDisplay.Value = this.progressDisplay.MaxValue = cooldown;
+		this.progressDisplay.Visible = true;
 	}
 
 }

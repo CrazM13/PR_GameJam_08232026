@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://dfpa4shbr8wei"]
+
+[ext_resource type="Texture2D" uid="uid://cfouiehs4uswq" path="res://Assets/Models/LooseTextures/Items/Cookie.png" id="1_qnp7i"]
+[ext_resource type="Script" uid="uid://bcl0tlp22xa50" path="res://Scripts/UI/Items/ItemConsumable.cs" id="2_qnp7i"]
+
+[resource]
+script = ExtResource("2_qnp7i")
+duration = 5.0
+ID = "test_item"
+Texture = ExtResource("1_qnp7i")
