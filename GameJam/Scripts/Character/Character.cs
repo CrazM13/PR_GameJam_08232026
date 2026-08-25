@@ -10,7 +10,7 @@ public partial class Character : CharacterBody3D {
 		base._PhysicsProcess(delta);
 
 		if (!this.IsOnFloor()) {
-			uncontrolledVelocity += this.GetGravity() * 3f * (float) delta;
+			uncontrolledVelocity += this.GetGravity() * 0.03f;
 		}
 
 		this.Velocity = uncontrolledVelocity + controlledVelocity;
