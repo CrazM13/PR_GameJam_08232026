@@ -73,6 +73,10 @@ public partial class PlayerController : Node {
 		camera.Rotation = new Vector3(Mathf.Clamp(camera.Rotation.X + Mathf.DegToRad(-mouseVel.Y * 0.25f), -Mathf.Pi * 0.5f, Mathf.Pi * 0.5f), 0, 0);
 
 		body.GravityModifier = attributes.Get(Attributes.GRAVITY_STRENGTH);
+
+		if (body.GlobalPosition.Y < -50) {
+			SceneManager.Instance.ReloadScene();
+		}
 	}
 
 	private void AttaptSlap() {
