@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://c7dfkpigjhol4" path="res://Scripts/Generation/LevelGenerator.cs" id="6_kilg5"]
 [ext_resource type="AudioStream" uid="uid://dsijox5g43oxq" path="res://Assets/Audio/Voice/crowd3.wav" id="7_leul7"]
 [ext_resource type="Script" uid="uid://bsw44qjuykrn" path="res://Scripts/UI/HUDClock.cs" id="7_x6js8"]
-[ext_resource type="PackedScene" uid="uid://btiueegk5reer" path="res://Assets/Prefabs/street_framed.tscn" id="7_y30xb"]
 [ext_resource type="AudioStream" uid="uid://bkb6ylmig3oaw" path="res://Assets/Audio/Music/AtTheClub.wav" id="8_lg2j6"]
 [ext_resource type="AudioStream" uid="uid://b2pfe1t1u21p6" path="res://Assets/Audio/Voice/crowd4.wav" id="8_wp4mh"]
 [ext_resource type="PackedScene" uid="uid://ck4k5yefbhll2" path="res://Assets/Prefabs/street_chaser.tscn" id="8_xhjei"]
@@ -23,6 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://cph7ea70ndeca" path="res://Assets/Audio/Voice/crowd10.wav" id="14_p4lnl"]
 [ext_resource type="AudioStream" uid="uid://c07rnejxbqmg5" path="res://Assets/Audio/Voice/crowd11.wav" id="15_6gwdq"]
 [ext_resource type="AudioStream" uid="uid://nvguvuecfrdn" path="res://Assets/Audio/Voice/crowd12.wav" id="16_rsfko"]
+[ext_resource type="PackedScene" uid="uid://dryguph46tffw" path="res://Assets/Prefabs/street_framed_collision.tscn" id="20_wukv0"]
+[ext_resource type="PackedScene" uid="uid://cxda4toqr4oes" path="res://Assets/Prefabs/street_start.tscn" id="22_4v654"]
+[ext_resource type="PackedScene" uid="uid://e3tsum7ndp2h" path="res://Assets/Prefabs/crossroad.tscn" id="22_ebcm8"]
 
 [node name="Node3D" type="Node3D" unique_id=73439093]
 
@@ -30,10 +32,10 @@
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.606575)
 
 [node name="Skeleton3D" parent="Player/Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1400048558, 1471925360, 728882225) index="0" unique_id=1309671596]
-bones/32/scale = Vector3(1, 0.9999994, 0.99999976)
+bones/32/scale = Vector3(1, 0.99999917, 0.99999976)
 
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824654, 0.8140035, 0.8138224, 0.020066174, -0.5807665, -0.017252998, 0.99979633, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824651, 0.8140035, 0.8138224, 0.02006617, -0.5807665, -0.017252998, 0.99979615, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container")]
 script = ExtResource("2_4bvgx")
@@ -44,7 +46,8 @@ container = NodePath("../../Container")
 jeers = Array[AudioStream]([ExtResource("4_hgvmy"), ExtResource("5_ebcm8"), ExtResource("6_4v654"), ExtResource("7_leul7"), ExtResource("8_wp4mh"), ExtResource("9_y0yaw"), ExtResource("10_yl3ua"), ExtResource("11_lko2l"), ExtResource("12_em6uu"), ExtResource("13_odb6r"), ExtResource("14_p4lnl"), ExtResource("15_6gwdq"), ExtResource("16_rsfko")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1396134774]
-transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, -100, 0)
+transform = Transform3D(1, 0, 0, 0, 0.6306758, 0.7760464, 0, -0.7760464, 0.6306758, 0, 10.594235, 0)
+light_angular_distance = 30.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=584235836]
 
@@ -85,7 +88,8 @@ bus = &"Music"
 
 [node name="LevelGenerator" type="Node3D" parent="." unique_id=824151208]
 script = ExtResource("6_kilg5")
-prefabs = Array[PackedScene]([ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("7_y30xb"), ExtResource("8_xhjei")])
+prefabs = Array[PackedScene]([ExtResource("20_wukv0"), ExtResource("22_ebcm8"), ExtResource("8_xhjei")])
+startPrefab = ExtResource("22_4v654")
 winPrefab = ExtResource("10_xhjei")
 
 [node name="SceneManager" type="Node" parent="." unique_id=1587712128]

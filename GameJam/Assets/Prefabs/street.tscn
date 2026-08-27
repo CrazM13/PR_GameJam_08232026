@@ -45,6 +45,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lkc0d")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h84id"]
+albedo_color = Color(0.09711718, 0.20852983, 0.059091225, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b64ip"]
+material = SubResource("StandardMaterial3D_h84id")
+size = Vector2(30, 30)
+
 [node name="Street" type="Node3D" unique_id=1885274950]
 
 [node name="Street" type="MeshInstance3D" parent="." unique_id=1189174258]
@@ -54,6 +61,10 @@ mesh = SubResource("ArrayMesh_bv7eo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.807327, 0, 6.8845997)
 
 [node name="PropMarker3D2" parent="." unique_id=436432720 instance=ExtResource("2_y63ml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.491529, 0, -8.214016)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.491529, 0, -8.214016)
 
 [node name="LevelCollision" parent="." unique_id=384331929 instance=ExtResource("5_l2rh3")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2095167128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("PlaneMesh_b64ip")

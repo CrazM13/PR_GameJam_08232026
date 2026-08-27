@@ -6,8 +6,11 @@ using System.Collections.Generic;
 public partial class LevelGenerator : Node3D {
 
 	[Export] private PackedScene[] prefabs;
+	[Export] private PackedScene startPrefab;
 	[Export] private PackedScene winPrefab;
 	private List<Node3D> levelComponents;
+
+	private int lastComponent = -1;
 
 	private int tilesSpawned = 0;
 
@@ -38,8 +41,15 @@ public partial class LevelGenerator : Node3D {
 
 		PackedScene selected = prefabs[0];
 
-		if (tilesSpawned < 32) {
-			selected = prefabs[GD.Randi() % prefabs.Length];
+		if (tilesSpawned == 0) {
+			selected = startPrefab;
+		} else if (tilesSpawned < 32) {
+			int nextSelected = (int) (GD.Randi() % prefabs.Length);
+			if (prefabs.Length > 1 && nextSelected == lastComponent) {
+				nextSelected = (nextSelected + 1) % prefabs.Length;
+			}
+			selected = prefabs[nextSelected];
+			lastComponent = nextSelected;
 		} else if (tilesSpawned == 32) {
 			selected = winPrefab;
 		}
@@ -48,7 +58,7 @@ public partial class LevelGenerator : Node3D {
 
 		GetParent().AddChild(prop);
 
-		prop.GlobalPosition = last.GlobalPosition + new Vector3(0, 0, 20);
+		prop.GlobalPosition = new Vector3(0, 0, 20 * tilesSpawned);
 
 		levelComponents.Add(prop);
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ck4k5yefbhll2"]
 
-[ext_resource type="PackedScene" uid="uid://btiueegk5reer" path="res://Assets/Prefabs/street_framed.tscn" id="1_enug8"]
+[ext_resource type="PackedScene" uid="uid://dryguph46tffw" path="res://Assets/Prefabs/street_framed_collision.tscn" id="1_clwti"]
 [ext_resource type="PackedScene" uid="uid://d0yewkshx61pv" path="res://Assets/Prefabs/character_marker_3d.tscn" id="2_tws07"]
 
-[node name="Street" unique_id=1885274950 instance=ExtResource("1_enug8")]
+[node name="Street" unique_id=1885274950 instance=ExtResource("1_clwti")]
 
-[node name="CharacterMarker3D" parent="." index="8" unique_id=467390130 instance=ExtResource("2_tws07")]
+[node name="CharacterMarker3D" parent="." index="0" unique_id=467390130 instance=ExtResource("2_tws07")]

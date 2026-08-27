@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://uxvdi3fs6qvf"]
 
 [ext_resource type="Script" uid="uid://d0dwvf03yaoyl" path="res://Scripts/Generation/RandomPlacer.cs" id="1_l5whd"]
-[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="2_ib5ce"]
+[ext_resource type="PackedScene" uid="uid://c87u64pl5xlf1" path="res://Assets/Prefabs/mailbox.tscn" id="2_lh0q2"]
+[ext_resource type="PackedScene" uid="uid://cjr72pdusee6h" path="res://Assets/Prefabs/street_lamp.tscn" id="3_vgl3w"]
+[ext_resource type="PackedScene" uid="uid://cboy7utyrrnp5" path="res://Assets/Prefabs/traffic_light.tscn" id="4_cgfyp"]
+[ext_resource type="PackedScene" uid="uid://cvd8myvspstu6" path="res://Assets/Prefabs/bench.tscn" id="5_vgl3w"]
 
 [node name="PropMarker3D" type="Marker3D" unique_id=399134664]
 script = ExtResource("1_l5whd")
-prefabs = Array[PackedScene]([ExtResource("2_ib5ce")])
+prefabs = Array[PackedScene]([ExtResource("2_lh0q2"), ExtResource("3_vgl3w"), ExtResource("4_cgfyp"), ExtResource("5_vgl3w")])
