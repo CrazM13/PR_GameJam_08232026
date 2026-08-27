@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://bhc2nnjsnw0nx"]
+
+[ext_resource type="Texture2D" uid="uid://8nyg84yer4kj" path="res://Assets/Models/LooseTextures/Items/GreenTea.png" id="1_l3stl"]
+[ext_resource type="Script" uid="uid://bmpjtmynfoen" path="res://Scripts/UI/Items/ItemSpeed.cs" id="2_84om5"]
+
+[resource]
+script = ExtResource("2_84om5")
+speedModifier = -0.25
+duration = 10.0
+ID = "green_tea"
+Texture = ExtResource("1_l3stl")

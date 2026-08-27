@@ -8,6 +8,7 @@ public partial class ChaserController : Node {
 	[Export] private AudioStreamPlayer audio;
 	[Export] private PackedScene minigamePrefab;
 	[Export] private bool playMinigame;
+	[Export] private Item paymentItem;
 	[Export] private Item giftedItem;
 
 	private bool isChasing = true;
@@ -21,7 +22,7 @@ public partial class ChaserController : Node {
 
 			if (isChasing) {
 				if (!hasCaught) {
-					if (Engine.TimeScale == 1) {
+					if (!PlayerController.controllerInstance.IsBusy) {
 						body.LookAt(new Vector3(PlayerController.playerInstance.GlobalPosition.X, 0, PlayerController.playerInstance.GlobalPosition.Z), Vector3.Up);
 						body.Move(-body.Basis.Z);
 
@@ -31,6 +32,7 @@ public partial class ChaserController : Node {
 							body.ForceStop();
 							hasCaught = true;
 							PlayerController.controllerInstance.Enabled = false;
+							PlayerController.controllerInstance.IsBusy = true;
 							PlayerController.playerInstance.LookAt(body.GlobalPosition);
 
 							audio.Play();
@@ -44,6 +46,7 @@ public partial class ChaserController : Node {
 									isChasing = false;
 									Engine.TimeScale = 1f;
 									PlayerController.controllerInstance.Enabled = true;
+									PlayerController.controllerInstance.IsBusy = false;
 									body.RotateY(GD.Randf() * Mathf.Pi);
 
 									GetTree().CreateTimer(10, true, false, true).Timeout += () => {
@@ -52,9 +55,7 @@ public partial class ChaserController : Node {
 
 									audio.Stop();
 
-									if (giftedItem != null) {
-										PlayerController.inventoryInstance.Add(giftedItem);
-									}
+									AttemptGift();
 								};
 
 								AddChild(minigame);
@@ -63,6 +64,7 @@ public partial class ChaserController : Node {
 									isChasing = false;
 									Engine.TimeScale = 1f;
 									PlayerController.controllerInstance.Enabled = true;
+									PlayerController.controllerInstance.IsBusy = false;
 									body.RotateY(GD.Randf() * Mathf.Pi);
 
 									GetTree().CreateTimer(10, true, false, true).Timeout += () => {
@@ -71,9 +73,7 @@ public partial class ChaserController : Node {
 
 									audio.Stop();
 
-									if (giftedItem != null) {
-										PlayerController.inventoryInstance.Add(giftedItem);
-									}
+									AttemptGift();
 								};
 							}
 
@@ -94,6 +94,18 @@ public partial class ChaserController : Node {
 		}
 
 
+	}
+
+	private void AttemptGift() {
+		if (paymentItem != null) {
+			if (PlayerController.inventoryInstance.RemoveItem(paymentItem)) {
+				if (giftedItem != null) {
+					PlayerController.inventoryInstance.Add(giftedItem);
+				}
+			}
+		} else if (giftedItem != null) {
+			PlayerController.inventoryInstance.Add(giftedItem);
+		}
 	}
 
 }

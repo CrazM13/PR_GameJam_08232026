@@ -9,7 +9,6 @@ public partial class ItemSlotContainer : Control {
 	[ExportGroup("References")]
 	[Export] private Label keyDisplay;
 	[Export] private TextureRect iconDisplay;
-	[Export] private Label countDisplay;
 	[Export] private TextureProgressBar progressDisplay;
 
 	private float progress = -1;
@@ -51,11 +50,9 @@ public partial class ItemSlotContainer : Control {
 
 	private void UpdateVisuals() {
 		if (item != null) {
-			countDisplay.Text = $"x{(item == null ? 0 : 1)}";
 			iconDisplay.Texture = item.Texture;
 		} else {
 			iconDisplay.Texture = null;
-			countDisplay.Text = "";
 		}
 
 		keyDisplay.Text = actionDisplay;

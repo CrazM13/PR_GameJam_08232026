@@ -23,4 +23,23 @@ public partial class Inventory : Control {
 		}
 	}
 
+	public bool HasItem(Item item) {
+		foreach (ItemSlotContainer slot in slots) {
+			if (slot.GetItem() == item) return true;
+		}
+
+		return false;
+	}
+
+	public bool RemoveItem(Item item) {
+		foreach (ItemSlotContainer slot in slots) {
+			if (slot.GetItem() == item) {
+				slot.SetItem(null);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 }

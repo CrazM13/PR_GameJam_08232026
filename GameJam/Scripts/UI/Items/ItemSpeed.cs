@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public partial class ItemCoffee : ItemConsumable {
+public partial class ItemSpeed : ItemConsumable {
 
-	[Export] private float coffeeSpeed = 2;
+	[Export] private float speedModifier = 2;
 
 	public override void StartEffect() {
 		base.StartEffect();
 
-		PlayerController.controllerInstance.GetAttributes().SetModifier(this.ID, Attributes.SPEED, coffeeSpeed);
+		PlayerController.controllerInstance.GetAttributes().SetModifier(this.ID, Attributes.SPEED, speedModifier);
 	}
 
 	public override void EndEffect() {

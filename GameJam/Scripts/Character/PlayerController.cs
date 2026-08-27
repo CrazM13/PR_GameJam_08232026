@@ -16,10 +16,12 @@ public partial class PlayerController : Node {
 	[Export] private Inventory inventory;
 
 	[Export] private float speed = 1;
+	[Export] private Item[] startingItems;
 
 	private float slapCooldown = 0;
 
 	public bool Enabled { get; set; } = true;
+	public bool IsBusy { get; set; } = false;
 
 	public override void _Ready() {
 		base._Ready();
@@ -30,7 +32,11 @@ public partial class PlayerController : Node {
 		controllerInstance = this;
 		inventoryInstance = inventory;
 
-		this.attributes.SetBase(Attributes.SPEED, 1);
+		if (startingItems?.Length > 0) {
+			foreach (Item item in startingItems) {
+				inventory.Add(item);
+			}
+		}
 
 	}
 
@@ -65,6 +71,8 @@ public partial class PlayerController : Node {
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;
 		body.RotateY(Mathf.DegToRad(-mouseVel.X * 0.25f));
 		camera.Rotation = new Vector3(Mathf.Clamp(camera.Rotation.X + Mathf.DegToRad(-mouseVel.Y * 0.25f), -Mathf.Pi * 0.5f, Mathf.Pi * 0.5f), 0, 0);
+
+		body.GravityModifier = attributes.Get(Attributes.GRAVITY_STRENGTH);
 	}
 
 	private void AttaptSlap() {
@@ -88,7 +96,7 @@ public partial class PlayerController : Node {
 
 				enemy.ForceStop();
 				enemy.AttemptJump();
-				enemy.Knockback(hitDirection * 10);
+				enemy.Knockback(hitDirection * 10 * this.attributes.Get(Attributes.ATTACK_POWER));
 
 				slapSFX.Play();
 			}

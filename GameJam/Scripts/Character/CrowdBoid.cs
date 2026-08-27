@@ -9,14 +9,11 @@ public partial class CrowdBoid : Node3D {
 	[Export] private int count = 256;
 	[Export] private Vector3 bounds;
 	[Export] private Node3D container;
-	[Export] private AudioStreamPlayer jeerSource;
 	[Export] private AudioStream[] jeers;
 
 	private RandomNumberGenerator rng;
 
-	private AudioStreamPlaybackPolyphonic playback;
-
-	private float voCooldown = 3f;
+	private float voCooldown = 0.1f;
 
 	private List<Character> boids;
 
@@ -35,9 +32,6 @@ public partial class CrowdBoid : Node3D {
 			container.AddChild(boid);
 			boids.Add(boid);
 		}
-
-		jeerSource.Play();
-		playback = (AudioStreamPlaybackPolyphonic)jeerSource.GetStreamPlayback();
 
 	}
 
@@ -67,14 +61,31 @@ public partial class CrowdBoid : Node3D {
 			if (voCooldown <= 0) {
 				if (skip > 0) skip--;
 
-				if (skip == 0 && Engine.TimeScale == 1 && boid.GlobalPosition.DistanceSquaredTo(PlayerController.playerInstance.GlobalPosition) < 2) {
-					voCooldown = (GD.Randf() * 2);
-					playback.PlayStream(jeers[GD.Randi() % jeers.Length]);
+				if (skip == 0 && !PlayerController.controllerInstance.IsBusy) {
+					voCooldown = (GD.Randf() * 0.5f) + 0.1f;
+					DropAudio(jeers[GD.Randi() % jeers.Length], boid.GlobalPosition);
 				}
 			}
 
 			if (boid.IsOnFloor()) boid.Move(-boid.GlobalBasis.Z * speed);
 		}
+	}
+
+	private void DropAudio(AudioStream audio, Vector3 position) {
+		AudioStreamPlayer3D source = new() {
+			Bus = "Voice",
+			Stream = audio,
+			MaxDistance = 9
+		};
+
+		source.Finished += source.QueueFree;
+
+		GetTree().CurrentScene.AddChild(source);
+
+		source.GlobalPosition = position;
+
+		source.Play();
+
 	}
 
 }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class Attributes {
 
 	public const string SPEED = "SPEED";
+	public const string GRAVITY_STRENGTH = "GRAVITY";
+	public const string ATTACK_POWER = "ATTACK_POWER";
 
 	public Dictionary<string, float> attributes;
 	public Dictionary<string, (string, float)> modifiers;
@@ -12,20 +14,6 @@ public class Attributes {
 	public Attributes() {
 		attributes = [];
 		modifiers = [];
-	}
-
-	public void SetBase(string key, float value) {
-		if (!attributes.TryAdd(key, value)) {
-			attributes[key] = value;
-		}
-	}
-
-	public float GetBase(string key) {
-		if (attributes.TryGetValue(key, out float value)) {
-			return value;
-		}
-
-		return 0;
 	}
 
 	public void SetModifier(string key, string attribute, float value) {
@@ -47,7 +35,7 @@ public class Attributes {
 	}
 
 	public float Get(string key) {
-		float baseValue = GetBase(key);
+		float baseValue = 1;
 
 		foreach (KeyValuePair<string, (string, float)> modifier in modifiers) {
 			if (modifier.Value.Item1 == key) {

@@ -6,9 +6,6 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_62brg"]
 size = Vector2(128, 128)
 
-[sub_resource type="LabelSettings" id="LabelSettings_b64ip"]
-font_size = 64
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b64ip"]
 bg_color = Color(0.8039216, 0.8039216, 0.8039216, 1)
 border_width_left = 4
@@ -25,14 +22,13 @@ corner_radius_bottom_left = 8
 font_size = 26
 font_color = Color(0, 0, 0, 1)
 
-[node name="ItemContainer" type="CenterContainer" unique_id=1603535490 node_paths=PackedStringArray("keyDisplay", "iconDisplay", "countDisplay", "progressDisplay")]
+[node name="ItemContainer" type="CenterContainer" unique_id=1603535490 node_paths=PackedStringArray("keyDisplay", "iconDisplay", "progressDisplay")]
 size_flags_horizontal = 3
 offset_transform_enabled = true
 script = ExtResource("1_rfm2v")
 Action = "inv_debug"
 keyDisplay = NodePath("Icon/KeyPanel/Label")
 iconDisplay = NodePath("Icon")
-countDisplay = NodePath("Icon/Count")
 progressDisplay = NodePath("Icon/TextureProgressBar")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=112233618]
@@ -43,21 +39,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("PlaceholderTexture2D_62brg")
 stretch_mode = 3
-
-[node name="Count" type="Label" parent="Icon" unique_id=112646025]
-z_index = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "x0"
-label_settings = SubResource("LabelSettings_b64ip")
 
 [node name="KeyPanel" type="Panel" parent="Icon" unique_id=675061003]
 z_index = 1

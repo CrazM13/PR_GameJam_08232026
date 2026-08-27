@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://du21l12cmuqc2"]
+
+[ext_resource type="Texture2D" uid="uid://dvej03bmhwua2" path="res://Assets/Models/LooseTextures/Items/PoisonCoffee.png" id="1_yvuda"]
+[ext_resource type="Script" uid="uid://bmpjtmynfoen" path="res://Scripts/UI/Items/ItemSpeed.cs" id="2_yvuda"]
+
+[resource]
+script = ExtResource("2_yvuda")
+speedModifier = -0.75
+duration = 5.0
+ID = "coffee_poison"
+Texture = ExtResource("1_yvuda")

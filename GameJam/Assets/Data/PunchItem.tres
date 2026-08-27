@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://usuj8q0ispyb"]
+
+[ext_resource type="Script" uid="uid://cxus0w6xhkkt7" path="res://Scripts/UI/Items/ItemAttackPower.cs" id="1_efjcc"]
+[ext_resource type="Texture2D" uid="uid://kwragfjr1k10" path="res://Assets/Models/LooseTextures/Items/Punch.png" id="1_j8bbc"]
+
+[resource]
+script = ExtResource("1_efjcc")
+duration = 5.0
+ID = "punch"
+Texture = ExtResource("1_j8bbc")

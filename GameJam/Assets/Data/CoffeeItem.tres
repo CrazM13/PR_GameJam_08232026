@@ -1,10 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://b0jeaa45pnfaf"]
 
 [ext_resource type="Texture2D" uid="uid://dvtoy4lp74pty" path="res://Assets/Models/LooseTextures/Items/Coffee.png" id="1_tnyq3"]
-[ext_resource type="Script" uid="uid://7mg03colkdja" path="res://Scripts/UI/Items/ItemCoffee.cs" id="2_pucf3"]
+[ext_resource type="Script" uid="uid://bmpjtmynfoen" path="res://Scripts/UI/Items/ItemSpeed.cs" id="2_tnyq3"]
 
 [resource]
-script = ExtResource("2_pucf3")
+script = ExtResource("2_tnyq3")
 duration = 5.0
 ID = "coffee"
 Texture = ExtResource("1_tnyq3")

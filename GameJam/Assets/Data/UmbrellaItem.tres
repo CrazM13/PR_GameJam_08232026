@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://txu470544u5r"]
+
+[ext_resource type="Texture2D" uid="uid://dvsg33tkpg5c8" path="res://Assets/Models/LooseTextures/Items/Umbrella.png" id="1_qylwk"]
+[ext_resource type="Script" uid="uid://ccdlc47s8b3bn" path="res://Scripts/UI/Items/ItemFallSpeed.cs" id="2_qylwk"]
+
+[resource]
+script = ExtResource("2_qylwk")
+modifier = -0.9
+duration = 5.0
+ID = "umbrella"
+Texture = ExtResource("1_qylwk")
