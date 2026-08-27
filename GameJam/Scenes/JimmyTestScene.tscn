@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="1_661ac"]
 [ext_resource type="PackedScene" uid="uid://1wpmv07cy572" path="res://Assets/Prefabs/player.tscn" id="2_0k0sy"]
 [ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="2_bsogl"]
+[ext_resource type="PackedScene" uid="uid://b6f304p2ld6p5" path="res://Assets/Models/traffic_light.glb" id="4_ywhfp"]
+[ext_resource type="PackedScene" uid="uid://bh4ee7lbgt8yj" path="res://Assets/Models/mailbox.glb" id="5_endr4"]
+[ext_resource type="PackedScene" uid="uid://ndiygugkyotj" path="res://Assets/Models/street_crossroad.glb" id="6_uoaxf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kkaft"]
 size = Vector3(16.249573, 1, 17.619507)
@@ -32,3 +35,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1898515, -0.0067663193, -0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=1021250224]
 transform = Transform3D(1, 0, 0, 0, 0.6467898, 0.7626684, 0, -0.7626684, 0.6467898, 0, 0, 0)
+
+[node name="traffic_light2" parent="." unique_id=2005315336 instance=ExtResource("4_ywhfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.336561, -0.0067663193, 1.2343225)
+
+[node name="mailbox2" parent="." unique_id=688243467 instance=ExtResource("5_endr4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20034695, -0.0067663193, -1.2127585)
+
+[node name="street_crossroad2" parent="." unique_id=2137906534 instance=ExtResource("6_uoaxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3345585, 0, 18.650284)
