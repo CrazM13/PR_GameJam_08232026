@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="4_x4ukv"]
 [ext_resource type="AudioStream" uid="uid://chbybkrprafo7" path="res://Assets/Audio/SFX/Slap.wav" id="5_m0ojv"]
 [ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/Items/MoneyItem.tres" id="7_j73l1"]
+[ext_resource type="Script" uid="uid://plrstg8ug71m" path="res://Scripts/UI/PauseMenu.cs" id="9_8nnst"]
+[ext_resource type="Shader" uid="uid://bmcg3nbxeoc0u" path="res://Assets/Shaders/BlurScreen.gdshader" id="10_2ehil"]
+[ext_resource type="PackedScene" uid="uid://dtcexqvfgltqp" path="res://Assets/Prefabs/ButtonSound.tscn" id="10_v0672"]
+[ext_resource type="Script" uid="uid://cmjk3bt08epsl" path="res://Scripts/UI/BounceOnHover.cs" id="11_2ehil"]
+[ext_resource type="Script" uid="uid://l5dfodxyta2y" path="res://Scripts/UI/VolumeSlider.cs" id="13_b5xh7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
 radius = 0.24853516
@@ -73,6 +78,13 @@ _data = {
 &"slap": SubResource("Animation_1kvxw")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5xh7"]
+shader = ExtResource("10_2ehil")
+shader_parameter/blur_amount = 2.000000095
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmsos"]
+font_size = 24
+
 [node name="Player" type="CharacterBody3D" unique_id=1400048558]
 collision_layer = 64
 collision_mask = 129
@@ -91,7 +103,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="Skeleton3D" parent="Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1471925360, 728882225) index="0" unique_id=1309671596]
 bones/32/position = Vector3(-5.9604645e-08, 0.1861544, -1.7881393e-07)
 bones/32/rotation = Quaternion(0.006482802, -0.7890775, -0.0075952783, 0.6142125)
-bones/32/scale = Vector3(1, 0.9999997, 0.99999976)
+bones/32/scale = Vector3(1, 0.9999996, 0.99999976)
 bones/33/position = Vector3(0, 0.21043618, 0)
 bones/33/rotation = Quaternion(-0.12556261, 1.4082922e-08, -0.3564499, 0.9258388)
 bones/33/scale = Vector3(1, 1.0000001, 1)
@@ -100,25 +112,25 @@ bones/35/rotation = Quaternion(-0.06885233, -1.3495323e-07, -0.14621401, 0.98685
 bones/35/scale = Vector3(1, 0.99999994, 1.0000001)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824658, 0.8140035, 0.8138224, 0.02006618, -0.5807665, -0.017252998, 0.9997966, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824657, 0.8140035, 0.8138224, 0.02006618, -0.5807665, -0.017252998, 0.99979657, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 bone_name = "forearm.R"
 bone_idx = 32
 override_pose = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=2086854084]
+[node name="HUD" type="CanvasLayer" parent="Camera3D" unique_id=2086854084]
 
-[node name="CenterContainer" type="CenterContainer" parent="Camera3D/CanvasLayer" unique_id=2018299885]
+[node name="CenterContainer" type="CenterContainer" parent="Camera3D/HUD" unique_id=2018299885]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Camera3D/CanvasLayer/CenterContainer" unique_id=1715585943]
+[node name="TextureRect" type="TextureRect" parent="Camera3D/HUD/CenterContainer" unique_id=1715585943]
 layout_mode = 2
 texture = ExtResource("2_x4ukv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/CanvasLayer" unique_id=1615195916 node_paths=PackedStringArray("slots")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/HUD" unique_id=1615195916 node_paths=PackedStringArray("slots")]
 custom_minimum_size = Vector2(0, 128)
 anchors_preset = 12
 anchor_top = 1.0
@@ -130,32 +142,32 @@ alignment = 1
 script = ExtResource("4_iesjv")
 slots = [NodePath("ItemContainer"), NodePath("ItemContainer2"), NodePath("ItemContainer3"), NodePath("ItemContainer4"), NodePath("ItemContainer5"), NodePath("ItemContainer6")]
 
-[node name="ItemContainer" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=1603535490 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer" parent="Camera3D/HUD/HBoxContainer" unique_id=1603535490 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_1"
 actionDisplay = "1"
 
-[node name="ItemContainer2" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=246456814 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer2" parent="Camera3D/HUD/HBoxContainer" unique_id=246456814 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_2"
 actionDisplay = "2"
 
-[node name="ItemContainer3" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=918336738 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer3" parent="Camera3D/HUD/HBoxContainer" unique_id=918336738 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_3"
 actionDisplay = "3"
 
-[node name="ItemContainer4" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=1995713188 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer4" parent="Camera3D/HUD/HBoxContainer" unique_id=1995713188 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_4"
 actionDisplay = "4"
 
-[node name="ItemContainer5" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=376151955 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer5" parent="Camera3D/HUD/HBoxContainer" unique_id=376151955 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_5"
 actionDisplay = "5"
 
-[node name="ItemContainer6" parent="Camera3D/CanvasLayer/HBoxContainer" unique_id=1407920640 instance=ExtResource("4_1kvxw")]
+[node name="ItemContainer6" parent="Camera3D/HUD/HBoxContainer" unique_id=1407920640 instance=ExtResource("4_1kvxw")]
 layout_mode = 2
 Action = "inv_6"
 actionDisplay = "6"
@@ -166,7 +178,7 @@ body = NodePath("..")
 camera = NodePath("../Camera3D")
 slapSFX = NodePath("../SlapSFX")
 firstPersonAnimations = NodePath("../AnimationPlayer")
-inventory = NodePath("../Camera3D/CanvasLayer/HBoxContainer")
+inventory = NodePath("../Camera3D/HUD/HBoxContainer")
 startingItems = Array[Resource]([ExtResource("7_j73l1")])
 
 [node name="SlapSFX" type="AudioStreamPlayer" parent="." unique_id=894703269]
@@ -177,5 +189,240 @@ bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1099053859]
 libraries/ = SubResource("AnimationLibrary_iesjv")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2030631410 node_paths=PackedStringArray("subMenus")]
+process_mode = 3
+layer = 90
+script = ExtResource("9_8nnst")
+subMenus = [NodePath("../InGameOptions")]
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=36399872]
+material = SubResource("ShaderMaterial_b5xh7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1897765974]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="PauseMenu/VBoxContainer" unique_id=1879081203]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Paused[/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/VBoxContainer" unique_id=1511077979]
+layout_mode = 2
+alignment = 1
+
+[node name="Unpause" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer" unique_id=561872928]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="ButtonSound" parent="PauseMenu/VBoxContainer/HBoxContainer/Unpause" unique_id=965715202 instance=ExtResource("10_v0672")]
+
+[node name="BounceEffect" type="Node" parent="PauseMenu/VBoxContainer/HBoxContainer/Unpause" unique_id=829592898 node_paths=PackedStringArray("target")]
+script = ExtResource("11_2ehil")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="Options" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer" unique_id=146578398]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="ButtonSound" parent="PauseMenu/VBoxContainer/HBoxContainer/Options" unique_id=682635276 instance=ExtResource("10_v0672")]
+
+[node name="BounceEffect" type="Node" parent="PauseMenu/VBoxContainer/HBoxContainer/Options" unique_id=1450707723 node_paths=PackedStringArray("target")]
+script = ExtResource("11_2ehil")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer" unique_id=1043634889]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="ButtonSound" parent="PauseMenu/VBoxContainer/HBoxContainer/Quit" unique_id=621589813 instance=ExtResource("10_v0672")]
+
+[node name="BounceEffect" type="Node" parent="PauseMenu/VBoxContainer/HBoxContainer/Quit" unique_id=1132275530 node_paths=PackedStringArray("target")]
+script = ExtResource("11_2ehil")
+target = NodePath("..")
+speed = 10.0
+strength = 5.0
+
+[node name="InGameOptions" type="CanvasLayer" parent="." unique_id=1856006690]
+process_mode = 3
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="InGameOptions" unique_id=692631479]
+material = SubResource("ShaderMaterial_b5xh7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InGameOptions" unique_id=377871399]
+custom_minimum_size = Vector2(512, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameOptions/Panel" unique_id=1245439494]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Menu" type="VBoxContainer" parent="InGameOptions/Panel/MarginContainer" unique_id=790503852]
+layout_mode = 2
+
+[node name="RealMenu" type="VBoxContainer" parent="InGameOptions/Panel/MarginContainer/Menu" unique_id=420554975]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu" unique_id=308361085]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_hmsos")
+
+[node name="Master Volume Slider" type="HBoxContainer" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu" unique_id=1151639178]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Master Volume Slider" unique_id=509355374]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Master Volume Slider" unique_id=1065370355]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("13_b5xh7")
+
+[node name="Music Volume Slider2" type="HBoxContainer" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu" unique_id=1124780282]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Music Volume Slider2" unique_id=503278530]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Music Volume Slider2" unique_id=25728753]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("13_b5xh7")
+bus = &"Music"
+
+[node name="SFX Volume Slider3" type="HBoxContainer" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu" unique_id=328833866]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/SFX Volume Slider3" unique_id=1553441779]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/SFX Volume Slider3" unique_id=788397664]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("13_b5xh7")
+bus = &"SFX"
+
+[node name="Voice Volume Slider3" type="HBoxContainer" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu" unique_id=58567254]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Voice Volume Slider3" unique_id=104472894]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Voice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="InGameOptions/Panel/MarginContainer/Menu/RealMenu/Voice Volume Slider3" unique_id=2146333970]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+script = ExtResource("13_b5xh7")
+bus = &"Voice"
+
+[node name="HSeparator2" type="HSeparator" parent="InGameOptions/Panel/MarginContainer/Menu" unique_id=530486720]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="InGameOptions/Panel/MarginContainer/Menu" unique_id=1856320017]
+layout_mode = 2
+text = "Back"
+
+[node name="ButtonSound" parent="InGameOptions/Panel/MarginContainer/Menu/Back" unique_id=2011567898 instance=ExtResource("10_v0672")]
+
+[node name="BounceEffect" type="Node" parent="InGameOptions/Panel/MarginContainer/Menu/Back" unique_id=393174092 node_paths=PackedStringArray("target")]
+script = ExtResource("11_2ehil")
+target = NodePath("..")
+speed = 10.0
+strength = 3.0
+
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/Unpause" to="PauseMenu/VBoxContainer/HBoxContainer/Unpause/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Unpause" to="PauseMenu" method="Unpause"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Unpause" to="PauseMenu/VBoxContainer/HBoxContainer/Unpause/ButtonSound" method="PlayPress"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/Options" to="PauseMenu/VBoxContainer/HBoxContainer/Options/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Options" to="PauseMenu/VBoxContainer/HBoxContainer/Options/ButtonSound" method="PlayPress"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Options" to="InGameOptions" method="show"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/HBoxContainer/Quit" to="PauseMenu/VBoxContainer/HBoxContainer/Quit/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Quit" to="PauseMenu" method="Quit"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/Quit" to="PauseMenu/VBoxContainer/HBoxContainer/Quit/ButtonSound" method="PlayPress"]
+[connection signal="mouse_entered" from="InGameOptions/Panel/MarginContainer/Menu/Back" to="InGameOptions/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayHover"]
+[connection signal="pressed" from="InGameOptions/Panel/MarginContainer/Menu/Back" to="InGameOptions" method="hide"]
+[connection signal="pressed" from="InGameOptions/Panel/MarginContainer/Menu/Back" to="InGameOptions/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayPress"]
 
 [editable path="Camera3D/player_hands2"]

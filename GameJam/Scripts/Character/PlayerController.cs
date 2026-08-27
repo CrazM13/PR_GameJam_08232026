@@ -26,7 +26,7 @@ public partial class PlayerController : Node {
 	public override void _Ready() {
 		base._Ready();
 
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+		
 
 		playerInstance = body;
 		controllerInstance = this;
@@ -42,12 +42,6 @@ public partial class PlayerController : Node {
 
 	public override void _Process(double delta) {
 		base._Process(delta);
-
-		if (Input.MouseMode == Input.MouseModeEnum.Captured && Input.IsActionJustPressed("ui_cancel")) {
-			Input.MouseMode = Input.MouseModeEnum.Visible;
-		} else if (Input.MouseMode == Input.MouseModeEnum.Visible && Input.IsMouseButtonPressed(MouseButton.Left)) {
-			Input.MouseMode = Input.MouseModeEnum.Captured;
-		}
 
 		if (!Enabled) return;
 

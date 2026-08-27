@@ -8,7 +8,6 @@
 
 [resource]
 script = ExtResource("1_25ok1")
-Duration = 32.0
 PaymentItem = ExtResource("3_p76bi")
 GiftedItem = ExtResource("2_5b5l4")
 SuccessAudio = ExtResource("4_c2lsj")

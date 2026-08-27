@@ -37,4 +37,5 @@ audio = NodePath("../AudioStreamPlayer")
 minigamePrefab = ExtResource("4_7c1r2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1860562438]
+volume_db = 5.0
 bus = &"Voice"

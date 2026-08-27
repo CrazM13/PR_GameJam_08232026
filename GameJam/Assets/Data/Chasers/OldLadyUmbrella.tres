@@ -6,7 +6,6 @@
 
 [resource]
 script = ExtResource("1_vwnlb")
-Duration = 47.0
 GiftedItem = ExtResource("1_k7sww")
 SuccessAudio = ExtResource("2_q1r06")
 metadata/_custom_type_script = "uid://c6xtinajdyx8u"
