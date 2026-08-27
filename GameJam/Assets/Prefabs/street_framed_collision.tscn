@@ -5,15 +5,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_b64ip"]
 size = Vector3(1, 20, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkw6x"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 0.61960787, 0.5647059, 0.48235294)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b64ip"]
-material = SubResource("StandardMaterial3D_kkw6x")
-size = Vector3(1, 20, 20)
-
 [node name="Street" unique_id=1885274950 instance=ExtResource("1_kkw6x")]
 
 [node name="SecondaryCollision" type="StaticBody3D" parent="." index="5" unique_id=1260146933]
@@ -23,14 +14,6 @@ collision_layer = 128
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 10, 0)
 shape = SubResource("BoxShape3D_b64ip")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SecondaryCollision/CollisionShape3D3" index="0" unique_id=750224818]
-cast_shadow = 0
-mesh = SubResource("BoxMesh_b64ip")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SecondaryCollision" index="1" unique_id=1425908076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 10, 0)
 shape = SubResource("BoxShape3D_b64ip")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SecondaryCollision/CollisionShape3D2" index="0" unique_id=271431410]
-cast_shadow = 0
-mesh = SubResource("BoxMesh_b64ip")

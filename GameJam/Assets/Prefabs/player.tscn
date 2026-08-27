@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cm6iaqo2lhqc2" path="res://Scripts/UI/Inventory.cs" id="4_iesjv"]
 [ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="4_x4ukv"]
 [ext_resource type="AudioStream" uid="uid://chbybkrprafo7" path="res://Assets/Audio/SFX/Slap.wav" id="5_m0ojv"]
-[ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/MoneyItem.tres" id="7_j73l1"]
+[ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/Items/MoneyItem.tres" id="7_j73l1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
 radius = 0.24853516

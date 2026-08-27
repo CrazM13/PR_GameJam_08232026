@@ -122,6 +122,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g7c2k")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odb6r"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8yam"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lbrv"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_imxm8"]
 size = Vector3(0.39013672, 5.444977, 0.31744385)
 
@@ -136,6 +151,9 @@ collision_layer = 128
 
 [node name="traffic_light" type="MeshInstance3D" parent="." unique_id=1086272098]
 mesh = SubResource("ArrayMesh_sqajr")
+surface_material_override/1 = SubResource("StandardMaterial3D_odb6r")
+surface_material_override/2 = SubResource("StandardMaterial3D_u8yam")
+surface_material_override/3 = SubResource("StandardMaterial3D_4lbrv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1997513583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008056641, 2.7371979, -0.0077209473)

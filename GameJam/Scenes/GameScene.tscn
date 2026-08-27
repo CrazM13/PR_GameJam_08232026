@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crer85hd07xk1"]
 
 [ext_resource type="PackedScene" uid="uid://1wpmv07cy572" path="res://Assets/Prefabs/player.tscn" id="1_2wl7v"]
+[ext_resource type="Texture2D" uid="uid://dkgratqfg3i27" path="res://Assets/Models/LooseTextures/CityBG.png" id="1_odb6r"]
 [ext_resource type="Script" uid="uid://boths1im3cv72" path="res://Scripts/Character/CrowdBoid.cs" id="2_4bvgx"]
 [ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="3_3mbwn"]
 [ext_resource type="AudioStream" uid="uid://c7i0h73sspypo" path="res://Assets/Audio/Voice/crowd0.wav" id="4_hgvmy"]
@@ -22,20 +23,43 @@
 [ext_resource type="AudioStream" uid="uid://cph7ea70ndeca" path="res://Assets/Audio/Voice/crowd10.wav" id="14_p4lnl"]
 [ext_resource type="AudioStream" uid="uid://c07rnejxbqmg5" path="res://Assets/Audio/Voice/crowd11.wav" id="15_6gwdq"]
 [ext_resource type="AudioStream" uid="uid://nvguvuecfrdn" path="res://Assets/Audio/Voice/crowd12.wav" id="16_rsfko"]
+[ext_resource type="AudioStream" uid="uid://dv2i7jwr1ikqn" path="res://Assets/Audio/Voice/crowdVoiceChanger0.wav" id="17_em6uu"]
+[ext_resource type="AudioStream" uid="uid://bkxxmkb73whfl" path="res://Assets/Audio/Voice/crowdVoiceChanger1.wav" id="18_odb6r"]
+[ext_resource type="AudioStream" uid="uid://3gormnumspys" path="res://Assets/Audio/Voice/crowdVoiceChanger2.wav" id="19_p4lnl"]
+[ext_resource type="AudioStream" uid="uid://bx77d3axkrbid" path="res://Assets/Audio/Voice/crowdVoiceChanger3.wav" id="20_6gwdq"]
 [ext_resource type="PackedScene" uid="uid://dryguph46tffw" path="res://Assets/Prefabs/street_framed_collision.tscn" id="20_wukv0"]
+[ext_resource type="AudioStream" uid="uid://boxb1pbn4tpi5" path="res://Assets/Audio/Voice/crowdVoiceChanger4.wav" id="21_rsfko"]
 [ext_resource type="PackedScene" uid="uid://cxda4toqr4oes" path="res://Assets/Prefabs/street_start.tscn" id="22_4v654"]
+[ext_resource type="AudioStream" uid="uid://oylurxe4i4va" path="res://Assets/Audio/Voice/crowdVoiceChanger5.wav" id="22_82uqo"]
 [ext_resource type="PackedScene" uid="uid://e3tsum7ndp2h" path="res://Assets/Prefabs/crossroad.tscn" id="22_ebcm8"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2wdif"]
+panorama = ExtResource("1_odb6r")
+filter = false
+
+[sub_resource type="Sky" id="Sky_b0qu2"]
+sky_material = SubResource("PanoramaSkyMaterial_2wdif")
+
+[sub_resource type="Environment" id="Environment_b64ip"]
+background_mode = 2
+sky = SubResource("Sky_b0qu2")
+fog_enabled = true
+fog_mode = 1
+fog_aerial_perspective = 0.272
+
 [node name="Node3D" type="Node3D" unique_id=73439093]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=74879010]
+environment = SubResource("Environment_b64ip")
 
 [node name="Player" parent="." unique_id=1400048558 instance=ExtResource("1_2wl7v")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.606575)
 
 [node name="Skeleton3D" parent="Player/Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1400048558, 1471925360, 728882225) index="0" unique_id=1309671596]
-bones/32/scale = Vector3(1, 0.99999917, 0.99999976)
+bones/32/scale = Vector3(1, 0.9999991, 0.99999976)
 
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824651, 0.8140035, 0.8138224, 0.02006617, -0.5807665, -0.017252998, 0.99979615, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.001582465, 0.8140035, 0.8138224, 0.02006617, -0.5807665, -0.017252998, 0.9997961, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container")]
 script = ExtResource("2_4bvgx")
@@ -43,11 +67,10 @@ prefabs = Array[PackedScene]([ExtResource("3_3mbwn")])
 count = 64
 bounds = Vector3(25, 10, 25)
 container = NodePath("../../Container")
-jeers = Array[AudioStream]([ExtResource("4_hgvmy"), ExtResource("5_ebcm8"), ExtResource("6_4v654"), ExtResource("7_leul7"), ExtResource("8_wp4mh"), ExtResource("9_y0yaw"), ExtResource("10_yl3ua"), ExtResource("11_lko2l"), ExtResource("12_em6uu"), ExtResource("13_odb6r"), ExtResource("14_p4lnl"), ExtResource("15_6gwdq"), ExtResource("16_rsfko")])
+jeers = Array[AudioStream]([ExtResource("4_hgvmy"), ExtResource("5_ebcm8"), ExtResource("6_4v654"), ExtResource("7_leul7"), ExtResource("8_wp4mh"), ExtResource("9_y0yaw"), ExtResource("10_yl3ua"), ExtResource("11_lko2l"), ExtResource("12_em6uu"), ExtResource("13_odb6r"), ExtResource("14_p4lnl"), ExtResource("15_6gwdq"), ExtResource("16_rsfko"), ExtResource("17_em6uu"), ExtResource("18_odb6r"), ExtResource("19_p4lnl"), ExtResource("20_6gwdq"), ExtResource("21_rsfko"), ExtResource("22_82uqo")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1396134774]
 transform = Transform3D(1, 0, 0, 0, 0.6306758, 0.7760464, 0, -0.7760464, 0.6306758, 0, 10.594235, 0)
-light_angular_distance = 30.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=584235836]
 

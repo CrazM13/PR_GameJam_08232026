@@ -1,27 +1,40 @@
 [gd_scene format=3 uid="uid://i57uca3mamf8"]
 
 [ext_resource type="PackedScene" uid="uid://btiueegk5reer" path="res://Assets/Prefabs/street_framed.tscn" id="1_j2apg"]
-[ext_resource type="PackedScene" uid="uid://cep8tk0skprib" path="res://Assets/Prefabs/building_marker_3d.tscn" id="2_qcd3j"]
+[ext_resource type="PackedScene" uid="uid://dbp0jyaly8jx2" path="res://Assets/Models/WorkCo/WorkCo.glb" id="3_5mh8o"]
 [ext_resource type="Script" uid="uid://rldsmvlxw1uj" path="res://Scripts/SceneManagement/WinTrigger.cs" id="3_qcd3j"]
+[ext_resource type="Texture2D" uid="uid://bstci7smpwytf" path="res://Assets/Models/WorkCo/WorkCoSign.png" id="4_5mh8o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b64ip"]
-size = Vector3(21.785, 9.285, 18.65)
+size = Vector3(21.785, 9.285, 5.5341063)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax1c1"]
+transparency = 1
+albedo_texture = ExtResource("4_5mh8o")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b64ip"]
+material = SubResource("StandardMaterial3D_ax1c1")
+size = Vector2(8, 4)
 
 [node name="Street" unique_id=1885274950 instance=ExtResource("1_j2apg")]
 
-[node name="BuildingMarker3D5" parent="." index="6" unique_id=846293703 instance=ExtResource("2_qcd3j")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.19267273, 0, 9.8846)
-
-[node name="Area3D" type="Area3D" parent="." index="7" unique_id=580682520]
+[node name="Area3D" type="Area3D" parent="." index="6" unique_id=580682520]
 collision_mask = 64
 gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=571823504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4948683, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4948683, 6.5579467)
 shape = SubResource("BoxShape3D_b64ip")
 
 [node name="WinTrigger" type="Node" parent="Area3D" index="1" unique_id=1539411636]
 script = ExtResource("3_qcd3j")
+
+[node name="WorkCo2" parent="." index="7" unique_id=1795705166 instance=ExtResource("3_5mh8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorkCo2" index="1" unique_id=1117992563]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 15, 0)
+mesh = SubResource("QuadMesh_b64ip")
 
 [connection signal="body_entered" from="Area3D" to="Area3D/WinTrigger" method="Trigger"]

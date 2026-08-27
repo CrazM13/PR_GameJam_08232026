@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bbnhnkkx7h5fl"]
+
+[ext_resource type="PackedScene" uid="uid://bo5sceuhe3qvt" path="res://Assets/Prefabs/chaser.tscn" id="1_ntud3"]
+[ext_resource type="Resource" uid="uid://t0csvryso086" path="res://Assets/Data/Chasers/BarestaCoffee.tres" id="2_urrr3"]
+
+[node name="Chaser" unique_id=1131340803 instance=ExtResource("1_ntud3")]
+
+[node name="ChaserAI" parent="." index="2" unique_id=1619019962]
+behaviour = ExtResource("2_urrr3")

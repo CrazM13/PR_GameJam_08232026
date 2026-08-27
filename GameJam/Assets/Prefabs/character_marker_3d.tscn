@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bm43eqk0utag5" path="res://Assets/Prefabs/chaser_cop.tscn" id="2_0byko"]
 [ext_resource type="PackedScene" uid="uid://7k35ua5ugby6" path="res://Assets/Prefabs/chaser_coworker.tscn" id="3_blimr"]
 [ext_resource type="PackedScene" uid="uid://bm0ugs1v6l5eu" path="res://Assets/Prefabs/chaser_family.tscn" id="4_2lknm"]
+[ext_resource type="PackedScene" uid="uid://bbnhnkkx7h5fl" path="res://Assets/Prefabs/chaser_baresta.tscn" id="5_laor3"]
+[ext_resource type="PackedScene" uid="uid://dl0hj4qk7fa53" path="res://Assets/Prefabs/chaser_old_lady_tea.tscn" id="6_huhkl"]
+[ext_resource type="PackedScene" uid="uid://bl1hsykxtn0m8" path="res://Assets/Prefabs/chaser_old_lady_umbrella.tscn" id="7_4pa5e"]
 
 [node name="CharacterMarker3D" type="Marker3D" unique_id=467390130]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_tsmhs")
-prefabs = Array[PackedScene]([ExtResource("2_0byko"), ExtResource("3_blimr"), ExtResource("4_2lknm")])
+prefabs = Array[PackedScene]([ExtResource("2_0byko"), ExtResource("3_blimr"), ExtResource("4_2lknm"), ExtResource("5_laor3"), ExtResource("6_huhkl"), ExtResource("7_4pa5e")])

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bl1hsykxtn0m8"]
+
+[ext_resource type="PackedScene" uid="uid://bo5sceuhe3qvt" path="res://Assets/Prefabs/chaser.tscn" id="1_fnqvj"]
+[ext_resource type="Resource" uid="uid://cy6ilieqfxt02" path="res://Assets/Data/Chasers/OldLadyUmbrella.tres" id="2_6k5dq"]
+[ext_resource type="PackedScene" uid="uid://2nwacs6s5xr0" path="res://Assets/Prefabs/ChaserVisuals/OldLadyPlaceholder.tscn" id="2_7ccfx"]
+
+[node name="Chaser" unique_id=1131340803 instance=ExtResource("1_fnqvj")]
+
+[node name="OldLadyPlaceholder" parent="Model" parent_id_path=PackedInt32Array(1684608405) index="0" unique_id=841392340 instance=ExtResource("2_7ccfx")]
+
+[node name="ChaserAI" parent="." index="2" unique_id=1619019962]
+behaviour = ExtResource("2_6k5dq")

@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dryguph46tffw" path="res://Assets/Prefabs/street_framed_collision.tscn" id="1_i6s7o"]
 [ext_resource type="PackedScene" uid="uid://cep8tk0skprib" path="res://Assets/Prefabs/building_marker_3d.tscn" id="2_majpv"]
+[ext_resource type="PackedScene" uid="uid://b2g1a0ropvoo8" path="res://Assets/Prefabs/movement_frame.tscn" id="3_u0k01"]
+[ext_resource type="Script" uid="uid://expe2brcuu80" path="res://Scripts/LevelStartTrigger.cs" id="4_na2xt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h84id"]
 albedo_color = Color(0.09711718, 0.20852983, 0.059091225, 1)
@@ -13,14 +15,8 @@ size = Vector2(30, 30)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b64ip"]
 size = Vector3(1, 20, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkw6x"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 0.61960787, 0.5647059, 0.48235294)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b64ip"]
-material = SubResource("StandardMaterial3D_kkw6x")
-size = Vector3(1, 20, 20)
+[sub_resource type="BoxShape3D" id="BoxShape3D_imxm8"]
+size = Vector3(40, 40, 1)
 
 [node name="Street" unique_id=1885274950 instance=ExtResource("1_i6s7o")]
 
@@ -32,17 +28,9 @@ mesh = SubResource("PlaneMesh_b64ip")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 10, -10)
 shape = SubResource("BoxShape3D_b64ip")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SecondaryCollision/CollisionShape3D4" index="0" unique_id=1783888121]
-cast_shadow = 0
-mesh = SubResource("BoxMesh_b64ip")
-
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="SecondaryCollision" parent_id_path=PackedInt32Array(1260146933) index="3" unique_id=1618716746]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 10, -10)
 shape = SubResource("BoxShape3D_b64ip")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SecondaryCollision/CollisionShape3D5" index="0" unique_id=661371115]
-cast_shadow = 0
-mesh = SubResource("BoxMesh_b64ip")
 
 [node name="BuildingMarker3D6" parent="." index="9" unique_id=846293703 instance=ExtResource("2_majpv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.192673, 0, -19.1154)
@@ -52,3 +40,15 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.
 
 [node name="BuildingMarker3D5" parent="." index="11" unique_id=2039562659 instance=ExtResource("2_majpv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8073273, 0, -15.1154)
+
+[node name="MovementFrame" parent="." index="12" unique_id=713156138 instance=ExtResource("3_u0k01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="LevelStartTrigger" type="Area3D" parent="." index="13" unique_id=2098516548]
+collision_mask = 64
+monitorable = false
+script = ExtResource("4_na2xt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelStartTrigger" index="0" unique_id=713032234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+shape = SubResource("BoxShape3D_imxm8")

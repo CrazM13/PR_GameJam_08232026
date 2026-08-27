@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://2nwacs6s5xr0"]
+
+[ext_resource type="Texture2D" uid="uid://yxwpd7o7qu3e" path="res://Assets/Models/LooseTextures/ChaserPlaceholders/OldLadyPlaceholder.png" id="1_y8j4o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imxm8"]
+albedo_texture = ExtResource("1_y8j4o")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_b64ip"]
+material = SubResource("StandardMaterial3D_imxm8")
+size = Vector2(1, 2)
+
+[node name="OldLadyPlaceholder" type="Node3D" unique_id=841392340]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=326950462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("QuadMesh_b64ip")

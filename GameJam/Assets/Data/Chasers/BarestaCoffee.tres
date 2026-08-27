@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ChaserBehaviour" format=3 uid="uid://t0csvryso086"]
+
+[ext_resource type="Script" uid="uid://c6xtinajdyx8u" path="res://Scripts/Character/ChaserBehaviour.cs" id="1_25ok1"]
+[ext_resource type="AudioStream" uid="uid://cabrd8wt450qg" path="res://Assets/Audio/Voice/RocketCoffeeNoSaleVoiceChanger.wav" id="1_q6bxf"]
+[ext_resource type="Resource" uid="uid://b0jeaa45pnfaf" path="res://Assets/Data/Items/CoffeeItem.tres" id="2_5b5l4"]
+[ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/Items/MoneyItem.tres" id="3_p76bi"]
+[ext_resource type="AudioStream" uid="uid://blc6or46k0itd" path="res://Assets/Audio/Voice/RocketCoffeeSaleVoiceChanger.wav" id="4_c2lsj"]
+
+[resource]
+script = ExtResource("1_25ok1")
+Duration = 32.0
+PaymentItem = ExtResource("3_p76bi")
+GiftedItem = ExtResource("2_5b5l4")
+SuccessAudio = ExtResource("4_c2lsj")
+FailAudio = ExtResource("1_q6bxf")
+metadata/_custom_type_script = "uid://c6xtinajdyx8u"

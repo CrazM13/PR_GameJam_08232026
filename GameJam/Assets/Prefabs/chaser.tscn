@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://bo5sceuhe3qvt"]
 
 [ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="1_ljdcm"]
-[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="2_7c1r2"]
 [ext_resource type="Script" uid="uid://fa1natc1ttio" path="res://Scripts/Character/ChaserController.cs" id="3_50wl4"]
 [ext_resource type="PackedScene" uid="uid://diikvfyefu6p0" path="res://Assets/Prefabs/DialogueMinigame.tscn" id="4_7c1r2"]
-[ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/MoneyItem.tres" id="5_50wl4"]
-[ext_resource type="Resource" uid="uid://usuj8q0ispyb" path="res://Assets/Data/PunchItem.tres" id="6_svnl3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imxm8"]
 
@@ -25,9 +22,6 @@ shape = SubResource("CapsuleShape3D_imxm8")
 
 [node name="Model" type="Node3D" parent="." unique_id=1684608405]
 
-[node name="Rigged base mesh" parent="Model" unique_id=1565000082 instance=ExtResource("2_7c1r2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1502844511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7012124, 0)
 mesh = SubResource("BoxMesh_b64ip")
@@ -39,12 +33,8 @@ mesh = SubResource("BoxMesh_jwv4s")
 [node name="ChaserAI" type="Node" parent="." unique_id=1619019962 node_paths=PackedStringArray("body", "audio")]
 script = ExtResource("3_50wl4")
 body = NodePath("..")
-duration = 40.0
 audio = NodePath("../AudioStreamPlayer")
 minigamePrefab = ExtResource("4_7c1r2")
-playMinigame = true
-paymentItem = ExtResource("5_50wl4")
-giftedItem = ExtResource("6_svnl3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1860562438]
 bus = &"Voice"

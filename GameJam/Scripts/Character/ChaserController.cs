@@ -4,12 +4,9 @@ using System;
 public partial class ChaserController : Node {
 
 	[Export] private Character body;
-	[Export] private float duration = 5f;
 	[Export] private AudioStreamPlayer audio;
 	[Export] private PackedScene minigamePrefab;
-	[Export] private bool playMinigame;
-	[Export] private Item paymentItem;
-	[Export] private Item giftedItem;
+	[Export] private ChaserBehaviour behaviour;
 
 	private bool isChasing = true;
 	private bool isClose = false;
@@ -35,16 +32,26 @@ public partial class ChaserController : Node {
 							PlayerController.controllerInstance.IsBusy = true;
 							PlayerController.playerInstance.LookAt(body.GlobalPosition);
 
+							if (behaviour.PaymentItem != null) {
+								if (PlayerController.inventoryInstance.HasItem(behaviour.PaymentItem)) {
+									audio.Stream = behaviour.SuccessAudio;
+								} else {
+									audio.Stream = behaviour.FailAudio;
+								}
+							} else {
+								audio.Stream = behaviour.SuccessAudio;
+							}
+
 							audio.Play();
 
-							Engine.TimeScale = 5f;
+							//Engine.TimeScale = 5f;
 
-							if (playMinigame) {
+							if (behaviour.PlayMinigame) {
 								DialogueMinigame minigame = minigamePrefab.Instantiate<DialogueMinigame>();
-								minigame.SetDuration(duration);
+								minigame.SetDuration((float) audio.Stream.GetLength());
 								minigame.OnMinigameEnd += _ => {
 									isChasing = false;
-									Engine.TimeScale = 1f;
+									//Engine.TimeScale = 1f;
 									PlayerController.controllerInstance.Enabled = true;
 									PlayerController.controllerInstance.IsBusy = false;
 									body.RotateY(GD.Randf() * Mathf.Pi);
@@ -60,9 +67,9 @@ public partial class ChaserController : Node {
 
 								AddChild(minigame);
 							} else {
-								GetTree().CreateTimer(duration).Timeout += () => {
+								GetTree().CreateTimer((float)audio.Stream.GetLength()).Timeout += () => {
 									isChasing = false;
-									Engine.TimeScale = 1f;
+									//Engine.TimeScale = 1f;
 									PlayerController.controllerInstance.Enabled = true;
 									PlayerController.controllerInstance.IsBusy = false;
 									body.RotateY(GD.Randf() * Mathf.Pi);
@@ -97,14 +104,14 @@ public partial class ChaserController : Node {
 	}
 
 	private void AttemptGift() {
-		if (paymentItem != null) {
-			if (PlayerController.inventoryInstance.RemoveItem(paymentItem)) {
-				if (giftedItem != null) {
-					PlayerController.inventoryInstance.Add(giftedItem);
+		if (behaviour.PaymentItem != null) {
+			if (PlayerController.inventoryInstance.RemoveItem(behaviour.PaymentItem)) {
+				if (behaviour.GiftedItem != null) {
+					PlayerController.inventoryInstance.Add(behaviour.GiftedItem);
 				}
 			}
-		} else if (giftedItem != null) {
-			PlayerController.inventoryInstance.Add(giftedItem);
+		} else if (behaviour.GiftedItem != null) {
+			PlayerController.inventoryInstance.Add(behaviour.GiftedItem);
 		}
 	}
 

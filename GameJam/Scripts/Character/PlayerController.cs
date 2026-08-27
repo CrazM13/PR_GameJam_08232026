@@ -21,7 +21,7 @@ public partial class PlayerController : Node {
 	private float slapCooldown = 0;
 
 	public bool Enabled { get; set; } = true;
-	public bool IsBusy { get; set; } = false;
+	public bool IsBusy { get; set; } = true;
 
 	public override void _Ready() {
 		base._Ready();

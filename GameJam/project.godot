@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="GameJam"
+run/main_scene="uid://cg4mjjlhws8py"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+run/max_fps=60
+config/icon="uid://dvtoy4lp74pty"
 
 [audio]
 
