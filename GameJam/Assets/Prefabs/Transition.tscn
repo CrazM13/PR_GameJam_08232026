@@ -347,7 +347,7 @@ process_mode = 3
 layer = 100
 script = ExtResource("1_su7rh")
 animation = NodePath("AnimationPlayer")
-transitionDuration = 1.0
+transitionDuration = 1.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=519857392]
 process_mode = 3

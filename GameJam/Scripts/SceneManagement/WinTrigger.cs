@@ -9,7 +9,14 @@ public partial class WinTrigger : Node {
 		if (!isTriggered) {
 			isTriggered = true;
 			Input.MouseMode = Input.MouseModeEnum.Visible;
-			SceneManager.Instance.LoadScene("res://Scenes/MainMenu.tscn");
+
+			if (GameManager.Time > 138) {
+				// TODO LOSE
+				SceneManager.Instance.LoadScene("res://Scenes/LoseCutscene.tscn");
+			} else {
+				SceneManager.Instance.LoadScene("res://Scenes/WinCutscene.tscn");
+			}
+			
 		}
 	}
 
