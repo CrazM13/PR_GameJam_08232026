@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtcexqvfgltqp" path="res://Assets/Prefabs/ButtonSound.tscn" id="2_q4at1"]
 [ext_resource type="Script" uid="uid://cmjk3bt08epsl" path="res://Scripts/UI/BounceOnHover.cs" id="3_6f4k2"]
 [ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="4_bdxpv"]
+[ext_resource type="PackedScene" uid="uid://ycand3513xkw" path="res://Assets/Prefabs/menu_world.tscn" id="6_6f4k2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cja8r"]
 shader = ExtResource("1_cbhj7")
@@ -188,11 +189,10 @@ target = NodePath("..")
 speed = 10.0
 strength = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1012896928]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 10)
-
 [node name="SceneManager" type="Node" parent="." unique_id=1223198652]
 script = ExtResource("4_bdxpv")
+
+[node name="World" parent="." unique_id=670004577 instance=ExtResource("6_6f4k2")]
 
 [connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayHover"]
 [connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Back/ButtonSound" method="PlayPress"]

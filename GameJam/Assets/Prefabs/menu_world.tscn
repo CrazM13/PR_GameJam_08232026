@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://ycand3513xkw"]
+
+[ext_resource type="Texture2D" uid="uid://dkgratqfg3i27" path="res://Assets/Models/LooseTextures/CityBG.png" id="1_ik711"]
+[ext_resource type="PackedScene" uid="uid://bx5dasfbfe6ax" path="res://Assets/Prefabs/level_collision.tscn" id="2_ajxws"]
+[ext_resource type="Script" uid="uid://boths1im3cv72" path="res://Scripts/Character/CrowdBoid.cs" id="3_oj10q"]
+[ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="4_3eyb2"]
+[ext_resource type="AudioStream" uid="uid://c7i0h73sspypo" path="res://Assets/Audio/Voice/crowd0.wav" id="5_oggnm"]
+[ext_resource type="AudioStream" uid="uid://bcgxa5lay1nq2" path="res://Assets/Audio/Voice/crowd1.wav" id="6_icdb0"]
+[ext_resource type="AudioStream" uid="uid://csdilfdstrle4" path="res://Assets/Audio/Voice/crowd2.wav" id="7_tdcl7"]
+[ext_resource type="AudioStream" uid="uid://dsijox5g43oxq" path="res://Assets/Audio/Voice/crowd3.wav" id="8_deeom"]
+[ext_resource type="AudioStream" uid="uid://b2pfe1t1u21p6" path="res://Assets/Audio/Voice/crowd4.wav" id="9_s2bk1"]
+[ext_resource type="AudioStream" uid="uid://cpjpidj0gwxe5" path="res://Assets/Audio/Voice/crowd5.wav" id="10_fab7r"]
+[ext_resource type="AudioStream" uid="uid://dc2s2gn8cj64m" path="res://Assets/Audio/Voice/crowd6.wav" id="11_kil1k"]
+[ext_resource type="AudioStream" uid="uid://0w0h4548b6wo" path="res://Assets/Audio/Voice/crowd7.wav" id="12_q86rd"]
+[ext_resource type="AudioStream" uid="uid://c0kup4xmxevnr" path="res://Assets/Audio/Voice/crowd8.wav" id="13_slr1o"]
+[ext_resource type="AudioStream" uid="uid://crtvxpbk7fymc" path="res://Assets/Audio/Voice/crowd9.wav" id="14_8ppls"]
+[ext_resource type="AudioStream" uid="uid://cph7ea70ndeca" path="res://Assets/Audio/Voice/crowd10.wav" id="15_4nam0"]
+[ext_resource type="AudioStream" uid="uid://c07rnejxbqmg5" path="res://Assets/Audio/Voice/crowd11.wav" id="16_vmb02"]
+[ext_resource type="AudioStream" uid="uid://nvguvuecfrdn" path="res://Assets/Audio/Voice/crowd12.wav" id="17_t6enm"]
+[ext_resource type="AudioStream" uid="uid://dv2i7jwr1ikqn" path="res://Assets/Audio/Voice/crowdVoiceChanger0.wav" id="18_iaay8"]
+[ext_resource type="AudioStream" uid="uid://bkxxmkb73whfl" path="res://Assets/Audio/Voice/crowdVoiceChanger1.wav" id="19_wm7l4"]
+[ext_resource type="AudioStream" uid="uid://3gormnumspys" path="res://Assets/Audio/Voice/crowdVoiceChanger2.wav" id="20_8lsrl"]
+[ext_resource type="AudioStream" uid="uid://bx77d3axkrbid" path="res://Assets/Audio/Voice/crowdVoiceChanger3.wav" id="21_ise8d"]
+[ext_resource type="AudioStream" uid="uid://boxb1pbn4tpi5" path="res://Assets/Audio/Voice/crowdVoiceChanger4.wav" id="22_jeee4"]
+[ext_resource type="AudioStream" uid="uid://oylurxe4i4va" path="res://Assets/Audio/Voice/crowdVoiceChanger5.wav" id="23_yfiuq"]
+[ext_resource type="PackedScene" uid="uid://e3tsum7ndp2h" path="res://Assets/Prefabs/crossroad.tscn" id="24_t7p4t"]
+[ext_resource type="PackedScene" uid="uid://btiueegk5reer" path="res://Assets/Prefabs/street_framed.tscn" id="25_o0yry"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_koqhg"]
+panorama = ExtResource("1_ik711")
+filter = false
+
+[sub_resource type="Sky" id="Sky_b0qu2"]
+sky_material = SubResource("PanoramaSkyMaterial_koqhg")
+
+[sub_resource type="Environment" id="Environment_cmrfp"]
+background_mode = 2
+sky = SubResource("Sky_b0qu2")
+fog_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_aerial_perspective = 0.272
+
+[node name="World" type="Node3D" unique_id=670004577]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782908073]
+environment = SubResource("Environment_cmrfp")
+
+[node name="LevelCollision" parent="." unique_id=384331929 instance=ExtResource("2_ajxws")]
+
+[node name="BoidArea" type="Node3D" parent="." unique_id=1499261269 node_paths=PackedStringArray("container")]
+script = ExtResource("3_oj10q")
+prefabs = Array[PackedScene]([ExtResource("4_3eyb2")])
+count = 64
+bounds = Vector3(100, 10, 100)
+container = NodePath(".")
+jeers = Array[AudioStream]([ExtResource("5_oggnm"), ExtResource("6_icdb0"), ExtResource("7_tdcl7"), ExtResource("8_deeom"), ExtResource("9_s2bk1"), ExtResource("10_fab7r"), ExtResource("11_kil1k"), ExtResource("12_q86rd"), ExtResource("13_slr1o"), ExtResource("14_8ppls"), ExtResource("15_4nam0"), ExtResource("16_vmb02"), ExtResource("17_t6enm"), ExtResource("18_iaay8"), ExtResource("19_wm7l4"), ExtResource("20_8lsrl"), ExtResource("21_ise8d"), ExtResource("22_jeee4"), ExtResource("23_yfiuq")])
+
+[node name="Crossroad" parent="." unique_id=1663000194 instance=ExtResource("24_t7p4t")]
+
+[node name="Street" parent="." unique_id=1885274950 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Street2" parent="." unique_id=2049957826 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="Street3" parent="." unique_id=180151943 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Street4" parent="." unique_id=2140054515 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="Street5" parent="." unique_id=127558359 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+
+[node name="Street6" parent="." unique_id=1675178237 instance=ExtResource("25_o0yry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=135976124]
+transform = Transform3D(0.792267, 0.34080294, -0.50612885, 0, 0.829482, 0.5585335, 0.6101746, -0.44250768, 0.6571712, -11.005991, 5.854883, 11.334358)

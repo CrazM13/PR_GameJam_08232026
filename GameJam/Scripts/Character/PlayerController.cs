@@ -60,6 +60,15 @@ public partial class PlayerController : Node {
 
 		Vector3 movement = (Input.GetAxis("move_left", "move_right") * forward) + (Input.GetAxis("move_forward", "move_backward") * right);
 
+		if (movement.LengthSquared() != 0) {
+			if (!firstPersonAnimations.IsPlaying()) {
+				firstPersonAnimations.Play("movement");
+			}
+		} else if (firstPersonAnimations.CurrentAnimation == "movement") {
+			firstPersonAnimations.Stop();
+		}
+		
+
 		body.Move(movement.Normalized() * (speed * attributes.Get(Attributes.SPEED)) * (Input.IsActionPressed("move_sprint") ? 2 : 1));
 
 		Vector2 mouseVel = Input.GetLastMouseVelocity() * (float)delta;

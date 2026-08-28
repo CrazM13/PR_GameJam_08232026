@@ -65,7 +65,7 @@ public partial class CrowdBoid : Node3D {
 			if (voCooldown <= 0) {
 				if (skip > 0) skip--;
 
-				if (skip == 0 && !PlayerController.controllerInstance.IsBusy) {
+				if (skip == 0 && (PlayerController.controllerInstance != null && !PlayerController.controllerInstance.IsBusy)) {
 					voCooldown = (GD.Randf() * 0.5f) + 0.1f;
 					DropAudio(jeers[GD.Randi() % jeers.Length], boid.GlobalPosition);
 				}

@@ -235,7 +235,6 @@ doppler_tracking = 2
 
 [node name="Honk" type="AudioStreamPlayer3D" parent="Engine" unique_id=293122154]
 stream = ExtResource("3_81q3x")
-autoplay = true
 max_polyphony = 4
 bus = &"SFX"
 doppler_tracking = 2
