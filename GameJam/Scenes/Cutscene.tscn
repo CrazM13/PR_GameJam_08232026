@@ -1,0 +1,723 @@
+[gd_scene format=3 uid="uid://bg7rbhx4iw3j6"]
+
+[ext_resource type="Texture2D" uid="uid://bcmf3wt1x5r4t" path="res://Assets/Models/LooseTextures/Fur.png" id="1_1srds"]
+[ext_resource type="AudioStream" uid="uid://dbes26hlpymki" path="res://Assets/Audio/SFX/TickTock.wav" id="2_g4us0"]
+[ext_resource type="AudioStream" uid="uid://dmmrdt64ksip5" path="res://Assets/Audio/SFX/BirdSFX.wav" id="2_idm0t"]
+[ext_resource type="AudioStream" uid="uid://caryhjog4u1s6" path="res://Assets/Audio/SFX/SoundEffectClanking.wav" id="3_qcpka"]
+[ext_resource type="AudioStream" uid="uid://b12glm3rghyhx" path="res://Assets/Audio/SFX/SoundEffectCreek.wav" id="4_qcpka"]
+[ext_resource type="AudioStream" uid="uid://bjo32433jmxyy" path="res://Assets/Audio/Voice/ImLate.wav" id="5_0m8yb"]
+[ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="6_kweal"]
+
+[sub_resource type="Environment" id="Environment_b64ip"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1xi3"]
+albedo_color = Color(0.8980392, 0.38431373, 0.23529412, 1)
+albedo_texture = ExtResource("1_1srds")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b64ip"]
+material = SubResource("StandardMaterial3D_c1xi3")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idm0t"]
+albedo_texture = ExtResource("1_1srds")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b64ip"]
+material = SubResource("StandardMaterial3D_idm0t")
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imxm8"]
+albedo_color = Color(0.5488367, 0.2503083, 0.019320454, 1)
+albedo_texture = ExtResource("1_1srds")
+roughness_texture = ExtResource("1_1srds")
+roughness_texture_channel = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_b64ip"]
+material = SubResource("StandardMaterial3D_imxm8")
+size = Vector3(1, 1, 2.586914)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0oc6"]
+cull_mode = 2
+albedo_color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+metallic_specular = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b64ip"]
+material = SubResource("StandardMaterial3D_l0oc6")
+top_radius = 0.3
+bottom_radius = 0.2
+height = 0.5
+cap_top = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_imxm8"]
+size = Vector3(0.2, 0.25, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1srds"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_imxm8"]
+material = SubResource("StandardMaterial3D_1srds")
+size = Vector2(0.4, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcpka"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_b64ip"]
+material = SubResource("StandardMaterial3D_qcpka")
+text = "7:00"
+
+[sub_resource type="Animation" id="Animation_c1xi3"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alarm Clock")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.5691894, 1.0485469, -1.4971236)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Alarm Clock/MeshInstance3D:mesh:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["7:00"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioVoice:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1srds"]
+resource_name = "StartingCutscene"
+length = 20.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ScreenTransition")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("transition_out", "transition_in", "transition_out", "transition_in", "transition_out"),
+"times": PackedFloat32Array(0, 2, 3, 5.2, 6.4333334)
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.68173605, 1.9989841, 0.10755253, 2.9666667, 1, -0.80744994, 1.5233693, -0.684449, 3.0333333, 1, 0.1205588, 1.7750931, -1.2763366, 5, 1, -0.44025713, 1.6166515, -1.4026365, 5.5000005, 1, 0.1205588, 1.7750931, -1.2763366, 6.266667, 1, 0.1205588, 1.7750931, -1.2763366, 6.4333334, 1, -0.04515329, 1.5479548, -0.8572808, 7.4333334, 1, -0.34732467, 1.3690664, -1.4030008)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.30237803, 0.0987366, 0.031508837, 0.9475367, 2.9666667, 1, -0.21314406, 0.272015, 0.06191985, 0.93634576, 3.0333333, 1, -0.15679064, 0.60103506, 0.12172429, 0.77418137, 5, 1, -0.15679064, 0.60103506, 0.12172429, 0.77418137, 6.266667, 1, -0.15679064, 0.60103506, 0.12172431, 0.77418137, 6.4333334, 1, -0.19805609, 0.52156204, 0.12592803, 0.82029814, 7.4333334, 1, -0.4529115, 0.3918648, 0.23150764, 0.76662725)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Alarm Clock")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -1.5691894, 1.0485469, -1.4971236, 5, 1, -1.5691894, 1.0485469, -1.4971236, 5.1, 1, -1.5691894, 1.2593461, -1.4971236, 5.3999996, 1, -1.5166432, 1.1106073, -1.4971236, 5.5, 1, -1.3957055, 1.4013768, -1.4971236, 5.766667, 1, -1.2850584, 1.1203613, -1.4971236, 6.266667, 1, -1.2850584, 1.1203613, -1.4971236, 6.4333334, 1, -0.77254635, 0.35805774, -1.658992)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Alarm Clock")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, -0.19721428, 0, 0.9803604, 5, 1, 0, -0.19721428, 0, 0.9803604, 5.1, 1, -0.176057, -0.193528, 0.036279, 0.964487, 5.3999996, 1, -0.068769015, -0.2056129, 0.07618297, 0.97323704, 5.5, 1, -0.09292967, -0.19482331, -0.04530968, 0.9753742, 5.766667, 1, -0.044656117, -0.22267339, -0.029963115, 0.9734087, 6.266667, 1, -0.044656117, -0.22267339, -0.029963115, 0.9734087, 6.4333334, 1, -0.54502887, -0.20570129, 0.09037812, 0.80775136)
+tracks/5/type = "scale_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Alarm Clock")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 1, 1, 1, 4.9333334, 1, 1, 1, 1, 5, 1, 1, 0.9, 1, 5.1, 1, 1, 1.1, 1, 5.3999996, 1, 1.2, 0.9, 1.2, 5.5, 1, 1, 1.1, 1, 5.766667, 1, 1, 1, 1, 6.266667, 1, 1, 1, 1, 6.4333334, 1, 1, 1, 1)
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Alarm Clock/MeshInstance3D:mesh:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3, 4.9666667, 6.1666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["5:27", "5:59", "6:00", "6:42"]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioSFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_g4us0")
+}, {
+"end_offset": 0.15344498,
+"start_offset": 0.0,
+"stream": ExtResource("2_idm0t")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_idm0t")
+}, {
+"end_offset": 4.1206,
+"start_offset": 0.5618,
+"stream": ExtResource("3_qcpka")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_qcpka")
+}],
+"times": PackedFloat32Array(0, 5.0333333, 5.4333334, 6.133333, 8.4)
+}
+tracks/7/use_blend = true
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioVoice")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_0m8yb")
+}],
+"times": PackedFloat32Array(7)
+}
+tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioVoice:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 8.066667, 10.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -60.0]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SceneManager")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(9.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["res://Scenes/GameScene.tscn"],
+"method": &"LoadScene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1xi3"]
+_data = {
+&"RESET": SubResource("Animation_c1xi3"),
+&"StartingCutscene": SubResource("Animation_1srds")
+}
+
+[sub_resource type="Animation" id="Animation_uxj5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect1:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect2:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect3:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect4:offset_transform_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect5:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect6:offset_transform_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect7:offset_transform_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect8:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect9:offset_transform_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+
+[sub_resource type="Animation" id="Animation_k3ylu"]
+resource_name = "transition_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect1:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect2:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect3:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect4:offset_transform_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect5:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect6:offset_transform_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect7:offset_transform_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect8:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.70000005, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect9:offset_transform_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.8000001, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rohf8"]
+resource_name = "transition_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect1:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect2:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect3:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.20000002, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect4:offset_transform_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect5:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect6:offset_transform_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect7:offset_transform_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect8:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.70000005, 0.90000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasLayer/HBoxContainer/ColorRect9:offset_transform_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.8000001, 1.0000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7klr"]
+_data = {
+&"RESET": SubResource("Animation_uxj5t"),
+&"transition_in": SubResource("Animation_k3ylu"),
+&"transition_out": SubResource("Animation_rohf8")
+}
+
+[node name="Cutscene" type="Node3D" unique_id=1764065463]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1215462596]
+environment = SubResource("Environment_b64ip")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1804511580]
+transform = Transform3D(0.9785166, -0.119423114, 0.16805795, 3.7252903e-09, 0.8151494, 0.5792507, -0.20616826, -0.56680644, 0.7976372, 0, 0, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=101835961]
+transform = Transform3D(0.75, 0.49999997, 0.43301272, -0.5, -3.7855173e-08, 0.8660254, 0.4330127, -0.8660254, 0.24999996, 0, 1.9835875, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1597453767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0036344528, 0.0067038536, -0.003809929)
+mesh = SubResource("PlaneMesh_b64ip")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=168939724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
+mesh = SubResource("QuadMesh_b64ip")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=797050229]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1, 1)
+mesh = SubResource("QuadMesh_b64ip")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1203531906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.607589, 0.44070542, -0.79345703)
+mesh = SubResource("BoxMesh_b64ip")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1115414624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7528367, 0.26711476, -1.6477435)
+mesh = SubResource("CylinderMesh_b64ip")
+
+[node name="Alarm Clock" type="MeshInstance3D" parent="." unique_id=1386439986]
+transform = Transform3D(0.9222131, 0, -0.38668215, 0, 1, 0, 0.38668215, 0, 0.9222131, -1.5691894, 1.0485469, -1.4971236)
+rotation_edit_mode = 1
+mesh = SubResource("BoxMesh_imxm8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Alarm Clock" unique_id=2072465909]
+transform = Transform3D(5.9604645e-08, 0, 0.99999946, 0, 1, 0, -0.99999946, 0, 5.9604645e-08, 0.115308285, 0.017485619, 0.008688629)
+mesh = SubResource("QuadMesh_imxm8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Alarm Clock" unique_id=1977791450]
+transform = Transform3D(-2.9802322e-08, 0, 0.9999995, 0, 1, 0, -0.9999995, 0, -2.9802322e-08, 0.10003686, 0.020276546, 0.009372473)
+mesh = SubResource("TextMesh_b64ip")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=958819926]
+libraries/ = SubResource("AnimationLibrary_c1xi3")
+autoplay = &"StartingCutscene"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455117704]
+
+[node name="ScreenTransition" type="AnimationPlayer" parent="CanvasLayer" unique_id=519857392]
+process_mode = 3
+deterministic = true
+libraries/ = SubResource("AnimationLibrary_t7klr")
+playback_auto_capture = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=684380038]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect1" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=703460806]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1489743257]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=522340264]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1910871853]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=2123564399]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1652466992]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1534747124]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1685205284]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=1560549283]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -648)
+color = Color(0, 0, 0, 1)
+
+[node name="AudioSFX" type="AudioStreamPlayer" parent="." unique_id=1514266962]
+bus = &"SFX"
+
+[node name="AudioVoice" type="AudioStreamPlayer" parent="." unique_id=1507045805]
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="SceneManager" type="Node" parent="." unique_id=1035341547]
+script = ExtResource("6_kweal")

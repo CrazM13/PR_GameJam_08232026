@@ -10,8 +10,8 @@ public partial class HUDClock : Node {
 
 		GameManager.Time += (float) delta;
 
-		text.Text = TimeSpan.FromSeconds(420 + GameManager.Time).ToString(@"mm\:ss") + " AM";
-		text.SelfModulate = GameManager.Time > 60 ? (GameManager.Time > 90 ? Colors.Red : Colors.Yellow) : Colors.White;
+		text.Text = TimeSpan.FromSeconds(402 + GameManager.Time).ToString(@"mm\:ss") + " AM";
+		text.SelfModulate = GameManager.Time > 78 ? (GameManager.Time > 138 ? Colors.Red : Colors.Yellow) : Colors.White;
 
 	}
 

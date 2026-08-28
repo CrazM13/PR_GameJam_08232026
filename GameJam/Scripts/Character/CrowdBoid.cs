@@ -48,17 +48,17 @@ public partial class CrowdBoid : Node3D {
 			// Wrap around bounds
 			Vector3 localPos = boid.GlobalPosition - this.GlobalPosition;
 			if (localPos.X > extends.X) {
-				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X - bounds.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z);
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X - bounds.X, 0, boid.GlobalPosition.Z);
 				boid.ForceStop();
 			} else if (localPos.X < -extends.X) {
-				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X + bounds.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z);
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X + bounds.X, 0, boid.GlobalPosition.Z);
 				boid.ForceStop();
 			}
 			if (localPos.Z > extends.Z) {
-				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z - bounds.Z);
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, 0, boid.GlobalPosition.Z - bounds.Z);
 				boid.ForceStop();
 			} else if (localPos.Z < -extends.Z) {
-				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, boid.GlobalPosition.Y, boid.GlobalPosition.Z + bounds.Z);
+				boid.GlobalPosition = new Vector3(boid.GlobalPosition.X, 0, boid.GlobalPosition.Z + bounds.Z);
 				boid.ForceStop();
 			}
 

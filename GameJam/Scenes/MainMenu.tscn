@@ -139,7 +139,7 @@ script = ExtResource("2_853f1")
 
 [connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play/ButtonSound" method="PlayHover"]
 [connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play/ButtonSound" method="PlayPress"]
-[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Play" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Cutscene.tscn"]]
 [connection signal="mouse_entered" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options/ButtonSound" method="PlayHover"]
 [connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options/ButtonSound" method="PlayPress"]
 [connection signal="pressed" from="Hud/CenterContainer/HBoxContainer/Panel/MarginContainer/Menu/Options" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]

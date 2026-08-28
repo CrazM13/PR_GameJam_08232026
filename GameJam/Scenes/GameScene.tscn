@@ -60,7 +60,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 bones/32/scale = Vector3(1, 0.99999905, 0.99999976)
 
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824649, 0.8140035, 0.8138224, 0.020066168, -0.5807665, -0.017252998, 0.99979603, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824648, 0.8140035, 0.8138224, 0.020066166, -0.5807665, -0.017252998, 0.999796, 0.010367741, -0.24445258, 1.097518, 0.11238017)
 
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container")]
 script = ExtResource("2_4bvgx")
@@ -104,6 +104,7 @@ vertical_alignment = 1
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1326168312]
 process_mode = 3
 stream = ExtResource("8_lg2j6")
+volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
