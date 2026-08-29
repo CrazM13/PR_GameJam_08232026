@@ -1,12 +1,193 @@
-[gd_scene format=3 uid="uid://bm43eqk0utag5"]
+[gd_scene format=4 uid="uid://bm43eqk0utag5"]
 
 [ext_resource type="PackedScene" uid="uid://bo5sceuhe3qvt" path="res://Assets/Prefabs/chaser.tscn" id="1_pa8or"]
 [ext_resource type="Resource" uid="uid://dysni822pkw6c" path="res://Assets/Data/Chasers/Cop.tres" id="2_gg1jf"]
-[ext_resource type="PackedScene" uid="uid://dsm555wedi13u" path="res://Assets/Prefabs/ChaserVisuals/CopPlaceholder.tscn" id="2_jjkjv"]
+[ext_resource type="PackedScene" uid="uid://bn3navtyi16vg" path="res://Assets/Models/CrowdNPC/CrowdNPC.glb" id="3_drvj5"]
+[ext_resource type="Texture2D" uid="uid://degelqmsjld4" path="res://Assets/Models/CrowdNPC/Chaser_Piggy.png" id="4_jdxq4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrg3t"]
+albedo_texture = ExtResource("4_jdxq4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpkso"]
+resource_name = "HatMaterial"
+cull_mode = 2
+albedo_color = Color(0.16145185, 0.30025294, 0.16558552, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kthkx"]
+_surfaces = [{
+"aabb": AABB(-0.08849535, 1.7055851, -0.10075138, 0.1769907, 0.07803929, 0.3166599),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYABwAEAAYABwAGAAgAAwAJAAUACQAIAAUACQAHAAgACQAKAAcACQALAAoA"),
+"name": "HatMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38sOwAAAAD/////BEoAAP9///8AAAAA//8sOwRKAAAAACw7BEoAAGv6//8bvwAAAAD//wRKAACTBSw7G78AAJMF//8bvwAAa/osOxu/AACTBQAA//8AAGv6AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_drvj5"]
+resource_name = "CharBarestaHat_Hat"
+_surfaces = [{
+"aabb": AABB(-0.08849535, 1.7055851, -0.10075138, 0.1769907, 0.07803929, 0.3166599),
+"attribute_data": PackedByteArray("/////8zMAAD//wAAzMz//8zM//+ZmQAAzMwAAJmZ//+Zmf//ZmYAAJmZAABmZv//Zmb//zMzAABmZgAAMzP//zMz//8AAAAAMzMAAAAA//+Zmf//Zmb//2Zm//+Zmf//"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_jpkso"),
+"name": "HatMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/38sOwAATt//////BEpO3/9///8AAE7f//8sOwRKTt///yw7BErpvmv6//8bv+m+/////wRK6b5r+iw7G7/pvmv6LDsbvwCAkwX//xu/AIBr+v//G78AgJMFLDsbvwCAkwUsOxu/6b4AAP//BErpvpMF//8bv+m+AAAsOwRK6b4AACw7BEpO3/9///8AAE7fAAD//wRKTt//fyw7AABO32v6LDsbvwFJkwUAAP//AUmTBSw7G78BSWv6AAD//wFJ/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/////f////3////9///////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kthkx")
+
+[sub_resource type="Skin" id="Skin_jdxq4"]
+resource_name = "Skin"
+bind_count = 31
+bind/0/name = &"Root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, -0.90000004)
+bind/1/name = &"LeftLeg0"
+bind/1/bone = -1
+bind/1/pose = Transform3D(0.99263525, 0.084454075, 0.086850084, 0.08478999, -0.9963988, -0.0001796088, 0.086522125, 0.007542407, -0.9962213, -0.17527221, 0.88827986, -0.015440379)
+bind/2/name = &"LeftLeg1"
+bind/2/bone = -1
+bind/2/pose = Transform3D(0.99384236, 0.078508176, 0.078190796, 0.07873079, -0.9968957, 0.00023583224, 0.07796658, 0.005921749, -0.9969383, -0.17279224, 0.43306145, -0.013532106)
+bind/3/name = &"LeftAnkle"
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, -2.190063e-06, -2.175569e-06, -2.2292948e-06, -0.9999999, 1.0058767e-07, -2.2128222e-06, 4.8462198e-12, -0.9999999, -0.16603675, 0.0990682, 2.5338102e-07)
+bind/4/name = &"LeftFoot0"
+bind/4/bone = -1
+bind/4/pose = Transform3D(-0.007898585, 0.9842932, 0.17636405, 0.17636406, -0.17223367, 0.96913946, 0.9842934, 0.03875917, -0.17223348, -0.035974875, -0.022758383, -0.16489726)
+bind/5/name = &"LeftFoot1"
+bind/5/bone = -1
+bind/5/pose = Transform3D(0.57278264, 0.8145976, 0.0913828, 0.091382675, -0.17424431, 0.9804529, 0.8145977, -0.55323565, -0.1742441, -0.13053748, -0.10109658, -0.12080442)
+bind/6/name = &"RightLeg0"
+bind/6/bone = -1
+bind/6/pose = Transform3D(0.99263525, -0.084454075, -0.086850084, -0.08478999, -0.9963988, -0.0001796088, -0.086522125, 0.007542407, -0.9962213, 0.17527221, 0.88827986, -0.015440379)
+bind/7/name = &"RightLeg1"
+bind/7/bone = -1
+bind/7/pose = Transform3D(0.99384236, -0.078508176, -0.078190796, -0.07873079, -0.9968957, 0.00023583224, -0.07796658, 0.005921749, -0.9969383, 0.17279224, 0.43306145, -0.013532106)
+bind/8/name = &"RightAnkle"
+bind/8/bone = -1
+bind/8/pose = Transform3D(1, 2.190063e-06, 2.175569e-06, 2.2292948e-06, -0.9999999, 1.0058767e-07, 2.2128222e-06, 4.8462198e-12, -0.9999999, 0.16603675, 0.0990682, 2.5338102e-07)
+bind/9/name = &"RightFoot0"
+bind/9/bone = -1
+bind/9/pose = Transform3D(-0.007898585, -0.9842932, -0.17636405, -0.17636406, -0.17223367, 0.96913946, -0.9842934, 0.03875917, -0.17223348, 0.035974875, -0.022758383, -0.16489726)
+bind/10/name = &"RightFoot1"
+bind/10/bone = -1
+bind/10/pose = Transform3D(0.57278264, -0.8145976, -0.0913828, -0.091382675, -0.17424431, 0.9804529, -0.8145977, -0.55323565, -0.1742441, 0.13053748, -0.10109658, -0.12080442)
+bind/11/name = &"Spine0"
+bind/11/bone = -1
+bind/11/pose = Transform3D(1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, 1, 0, -0.90000004, 0)
+bind/12/name = &"Spine1"
+bind/12/bone = -1
+bind/12/pose = Transform3D(1, 0, 7.1054274e-15, 0, 1.0000001, 0, -7.1054274e-15, 0, 1, 0, -1.1000001, 0)
+bind/13/name = &"Spine2"
+bind/13/bone = -1
+bind/13/pose = Transform3D(1, 0, 4.2351647e-22, 0, 1.0000001, 0, -4.2351647e-22, 0, 1, 0, -1.330793, 0)
+bind/14/name = &"LeftArm0"
+bind/14/bone = -1
+bind/14/pose = Transform3D(0.37324226, 0.4836657, 0.79168034, 0.7916803, -0.6109357, 7.450582e-08, 0.4836657, 0.62675786, -0.61093557, -0.77806234, 0.73017144, -1.0082515)
+bind/15/name = &"LeftArm1"
+bind/15/bone = -1
+bind/15/pose = Transform3D(0.30102405, 0.4587031, 0.8360478, 0.83604777, -0.54865664, 4.4703487e-08, 0.45870313, 0.6989761, -0.5486565, -0.7167237, 0.37883446, -1.0921501)
+bind/16/name = &"LeftHand"
+bind/16/bone = -1
+bind/16/pose = Transform3D(0.26515973, 0.31493154, 0.91132253, 0.9113224, -0.3905668, -0.13018897, 0.3149317, 0.86502945, -0.39056668, -0.53072953, -0.16134179, -1.1845884)
+bind/17/name = &"LeftFingers0"
+bind/17/bone = -1
+bind/17/pose = Transform3D(0.19936037, 0.27233216, 0.941324, 0.94132394, -0.32018492, -0.106728345, 0.27233213, 0.9073682, -0.32018492, -0.43734604, -0.2988997, -1.2017529)
+bind/18/name = &"LeftFingers1"
+bind/18/bone = -1
+bind/18/pose = Transform3D(0.72803324, 0.41384026, 0.54653805, 0.54653794, -0.8316438, -0.098309994, 0.41384023, 0.37027678, -0.8316438, -0.9879663, 0.5084564, -0.7213996)
+bind/19/name = &"LeftThumb0"
+bind/19/bone = -1
+bind/19/pose = Transform3D(0.97313845, 0.21836835, 0.072915785, 0.07291584, -0.59276336, 0.8020692, 0.21836817, -0.7752078, -0.5927631, -0.919997, 0.61351246, 0.7085412)
+bind/20/name = &"LeftThumb1"
+bind/20/bone = -1
+bind/20/pose = Transform3D(0.6586342, 0.55292356, 0.51036924, 0.5103691, -0.82666487, 0.23695736, 0.55292344, 0.104408674, -0.8266646, -1.0783474, 0.52952695, -0.46956933)
+bind/21/name = &"Neck"
+bind/21/bone = -1
+bind/21/pose = Transform3D(1, -5.169906e-30, 7.555398e-29, -2.9852145e-31, 0.99766725, 0.068267025, -5.0584737e-29, -0.06826703, 0.99766713, 7.856475e-30, -1.5161102, 0.103742346)
+bind/22/name = &"Head"
+bind/22/bone = -1
+bind/22/pose = Transform3D(1, 1.1995379e-36, -6.086686e-36, -3.2746538e-30, 0.9987304, -0.050375175, 2.4933577e-29, 0.050375175, 0.99873036, -1.8985667e-36, -1.6029527, -0.11653467)
+bind/23/name = &"RightArm0"
+bind/23/bone = -1
+bind/23/pose = Transform3D(0.37324226, -0.4836657, -0.79168034, -0.7916803, -0.6109357, 7.450582e-08, -0.4836657, 0.62675786, -0.61093557, 0.77806234, 0.73017144, -1.0082515)
+bind/24/name = &"RightArm1"
+bind/24/bone = -1
+bind/24/pose = Transform3D(0.30102405, -0.4587031, -0.8360478, -0.83604777, -0.54865664, 4.4703487e-08, -0.45870313, 0.6989761, -0.5486565, 0.7167237, 0.37883446, -1.0921501)
+bind/25/name = &"RightHand"
+bind/25/bone = -1
+bind/25/pose = Transform3D(0.26515973, -0.31493154, -0.91132253, -0.9113224, -0.3905668, -0.13018897, -0.3149317, 0.86502945, -0.39056668, 0.53072953, -0.16134179, -1.1845884)
+bind/26/name = &"RightFingers0"
+bind/26/bone = -1
+bind/26/pose = Transform3D(0.19936037, -0.27233216, -0.941324, -0.94132394, -0.32018492, -0.106728345, -0.27233213, 0.9073682, -0.32018492, 0.43734604, -0.2988997, -1.2017529)
+bind/27/name = &"RightFingers1"
+bind/27/bone = -1
+bind/27/pose = Transform3D(0.72803324, -0.41384026, -0.54653805, -0.54653794, -0.8316438, -0.098309994, -0.41384023, 0.37027678, -0.8316438, 0.9879663, 0.5084564, -0.7213996)
+bind/28/name = &"RightThumb0"
+bind/28/bone = -1
+bind/28/pose = Transform3D(0.97313845, -0.21836835, -0.072915785, -0.07291584, -0.59276336, 0.8020692, -0.21836817, -0.7752078, -0.5927631, 0.919997, 0.61351246, 0.7085412)
+bind/29/name = &"RightThumb1"
+bind/29/bone = -1
+bind/29/pose = Transform3D(0.6586342, -0.55292356, -0.51036924, -0.5103691, -0.82666487, 0.23695736, -0.55292344, 0.104408674, -0.8266646, 1.0783474, 0.52952695, -0.46956933)
+bind/30/name = &"neutral_bone"
+bind/30/bone = -1
+bind/30/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlvw5"]
+albedo_color = Color(0.16470589, 0.22352941, 0.4862745, 1)
 
 [node name="Chaser" unique_id=1131340803 instance=ExtResource("1_pa8or")]
 
-[node name="CopPlaceholder" parent="Model" parent_id_path=PackedInt32Array(1684608405) index="0" unique_id=841392340 instance=ExtResource("2_jjkjv")]
+[node name="CrowdNPC" parent="Model" parent_id_path=PackedInt32Array(1684608405) index="2" unique_id=1112065408 instance=ExtResource("3_drvj5")]
+
+[node name="Skeleton3D" parent="Model/CrowdNPC/Armature" parent_id_path=PackedInt32Array(1112065408, 237116648) index="0" unique_id=1844443186]
+bones/0/position = Vector3(0, 0.89016575, -1)
+bones/1/rotation = Quaternion(-0.012636524, -0.81543934, 0.5779945, 0.028659942)
+bones/2/rotation = Quaternion(0.06183894, 0.00079184386, 0.008164738, 0.9980524)
+bones/3/rotation = Quaternion(0.059771474, -0.03661439, 0.041693754, 0.99666864)
+bones/4/rotation = Quaternion(-0.41472378, 0.49105445, -0.5126559, 0.56925714)
+bones/5/rotation = Quaternion(-0.046013847, -0.30734158, -0.0035421425, 0.95047957)
+bones/6/rotation = Quaternion(0.034830663, -0.6168027, 0.7853589, -0.039403714)
+bones/7/rotation = Quaternion(0.07703564, -0.002047458, -0.0094198715, 0.9969818)
+bones/8/rotation = Quaternion(-0.0011502618, 0.039089937, -0.039382253, 0.99845874)
+bones/9/rotation = Quaternion(-0.43622437, -0.4710573, 0.53108907, 0.5529537)
+bones/10/rotation = Quaternion(-0.07133418, 0.31677905, 0.08545954, 0.9419444)
+bones/12/rotation = Quaternion(0.005165369, 4.37108e-08, -2.2578546e-10, 0.99998665)
+bones/13/rotation = Quaternion(-0.0034630299, 3.5526923e-15, 1.2303153e-17, 0.9999941)
+bones/14/rotation = Quaternion(0.81977046, 0.0100089, 0.45997846, -0.34102213)
+bones/15/rotation = Quaternion(-0.2747483, -0.022066647, -0.159487, 0.9479402)
+bones/23/rotation = Quaternion(0.8845477, -0.17477328, -0.41268748, 0.1293014)
+bones/24/rotation = Quaternion(-0.1966354, 0.017672405, 0.23156492, 0.9525754)
+
+[node name="GenericCharacter" parent="Model/CrowdNPC/Armature/Skeleton3D" index="0" unique_id=172217011]
+surface_material_override/0 = SubResource("StandardMaterial3D_mrg3t")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/CrowdNPC/Armature/Skeleton3D" index="1" unique_id=2009233014]
+transform = Transform3D(1, 7.5873686e-16, -1.4190693e-14, -3.761899e-17, 0.99889606, 0.046974488, 1.4211234e-14, -0.046974503, 0.998896, -5.0741106e-16, 1.5968187, 0.038961407)
+bone_name = "Head"
+bone_idx = 22
+
+[node name="Hat" type="MeshInstance3D" parent="Model/CrowdNPC/Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1743235813]
+transform = Transform3D(1, 4.440892e-16, -7.1054274e-15, 0, 0.99957186, 0.02926046, 7.1054274e-15, -0.029260464, 0.99957186, -5.8590803e-09, -1.5856564, 0.009902939)
+mesh = SubResource("ArrayMesh_drvj5")
+skin = SubResource("Skin_jdxq4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nlvw5")
+
+[node name="AnimationPlayer" parent="Model/CrowdNPC" index="1" unique_id=583774910]
+autoplay = &"CrowdWalk"
 
 [node name="ChaserAI" parent="." index="2" unique_id=1619019962]
 behaviour = ExtResource("2_gg1jf")
+
+[editable path="Model/CrowdNPC"]
