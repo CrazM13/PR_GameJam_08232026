@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://c8nhxlelw565s" path="res://Assets/Audio/Voice/response1.wav" id="5_rua0f"]
 [ext_resource type="AudioStream" uid="uid://e434fpgkvd58" path="res://Assets/Audio/Voice/response0.wav" id="6_kn6rr"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_imxm8"]
+font_size = 24
+
 [sub_resource type="LabelSettings" id="LabelSettings_b64ip"]
 font_size = 64
 font_color = Color(0, 0, 0, 1)
@@ -19,8 +22,8 @@ process_mode = 3
 script = ExtResource("1_8d21r")
 prefab = ExtResource("2_0kays")
 mainGame = NodePath("Minigame")
-activePiece = NodePath("Minigame/CenterContainer/DialoguePiecePrefab")
-targets = [NodePath("Minigame/CenterContainer/Panel/CenterContainer/Control/TargetW"), NodePath("Minigame/CenterContainer/Panel/CenterContainer/Control/TargetA"), NodePath("Minigame/CenterContainer/Panel/CenterContainer/Control/TargetS"), NodePath("Minigame/CenterContainer/Panel/CenterContainer/Control/TargetD")]
+activePiece = NodePath("Minigame/VBoxContainer/CenterContainer/DialoguePiecePrefab")
+targets = [NodePath("Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetW"), NodePath("Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetA"), NodePath("Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetS"), NodePath("Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetD")]
 timeBar = NodePath("Minigame/CenterContainer2/ProgressBar")
 audio = NodePath("AudioStreamPlayer")
 sfxs = Array[AudioStream]([ExtResource("3_rpfi8"), ExtResource("4_fakd7"), ExtResource("5_rua0f"), ExtResource("6_kn6rr")])
@@ -35,24 +38,31 @@ grow_vertical = 2
 offset_transform_enabled = true
 theme = ExtResource("1_m6osh")
 
-[node name="CenterContainer" type="CenterContainer" parent="Minigame" unique_id=1621402882]
-custom_minimum_size = Vector2(0, 128)
+[node name="VBoxContainer" type="VBoxContainer" parent="Minigame" unique_id=499410401]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
+offset_bottom = 128.0
 grow_horizontal = 2
-grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="Minigame/CenterContainer" unique_id=364320448]
+[node name="Label" type="Label" parent="Minigame/VBoxContainer" unique_id=1818736171]
+layout_mode = 2
+text = "Press the button when the dot is over the button"
+label_settings = SubResource("LabelSettings_imxm8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Minigame/VBoxContainer" unique_id=1621402882]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Minigame/VBoxContainer/CenterContainer" unique_id=364320448]
 z_index = -20
 z_as_relative = false
 custom_minimum_size = Vector2(1080, 64)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Minigame/CenterContainer/Panel" unique_id=2134406497]
+[node name="CenterContainer" type="CenterContainer" parent="Minigame/VBoxContainer/CenterContainer/Panel" unique_id=2134406497]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,11 +70,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Minigame/CenterContainer/Panel/CenterContainer" unique_id=2082999793]
+[node name="Control" type="Control" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer" unique_id=2082999793]
 custom_minimum_size = Vector2(1080, 64)
 layout_mode = 2
 
-[node name="TargetA" type="Panel" parent="Minigame/CenterContainer/Panel/CenterContainer/Control" unique_id=1560719471]
+[node name="TargetA" type="Panel" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control" unique_id=1560719471]
 modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 z_index = 10
 z_as_relative = false
@@ -83,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 
-[node name="BGContainer" type="MarginContainer" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetA" unique_id=978536820]
+[node name="BGContainer" type="MarginContainer" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetA" unique_id=978536820]
 z_index = -10
 z_as_relative = false
 layout_mode = 1
@@ -93,10 +103,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetA/BGContainer" unique_id=750309681]
+[node name="ColorRect" type="ColorRect" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetA/BGContainer" unique_id=750309681]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetA" unique_id=947588965]
+[node name="Label" type="Label" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetA" unique_id=947588965]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -108,7 +118,7 @@ label_settings = SubResource("LabelSettings_b64ip")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TargetD" type="Panel" parent="Minigame/CenterContainer/Panel/CenterContainer/Control" unique_id=1451388637]
+[node name="TargetD" type="Panel" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control" unique_id=1451388637]
 modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 z_index = 10
 z_as_relative = false
@@ -127,7 +137,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 
-[node name="BGContainer" type="MarginContainer" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetD" unique_id=2010677635]
+[node name="BGContainer" type="MarginContainer" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetD" unique_id=2010677635]
 z_index = -10
 z_as_relative = false
 layout_mode = 1
@@ -137,10 +147,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetD/BGContainer" unique_id=1500389471]
+[node name="ColorRect" type="ColorRect" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetD/BGContainer" unique_id=1500389471]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetD" unique_id=1768455919]
+[node name="Label" type="Label" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetD" unique_id=1768455919]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -152,7 +162,7 @@ label_settings = SubResource("LabelSettings_b64ip")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TargetS" type="Panel" parent="Minigame/CenterContainer/Panel/CenterContainer/Control" unique_id=375085768]
+[node name="TargetS" type="Panel" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control" unique_id=375085768]
 modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 z_index = 10
 z_as_relative = false
@@ -171,7 +181,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 
-[node name="BGContainer" type="MarginContainer" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetS" unique_id=912115468]
+[node name="BGContainer" type="MarginContainer" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetS" unique_id=912115468]
 z_index = -10
 z_as_relative = false
 layout_mode = 1
@@ -181,10 +191,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetS/BGContainer" unique_id=1984437759]
+[node name="ColorRect" type="ColorRect" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetS/BGContainer" unique_id=1984437759]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetS" unique_id=514194026]
+[node name="Label" type="Label" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetS" unique_id=514194026]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -196,7 +206,7 @@ label_settings = SubResource("LabelSettings_b64ip")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TargetW" type="Panel" parent="Minigame/CenterContainer/Panel/CenterContainer/Control" unique_id=367401906]
+[node name="TargetW" type="Panel" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control" unique_id=367401906]
 modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 z_index = 10
 z_as_relative = false
@@ -215,7 +225,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 
-[node name="BGContainer" type="MarginContainer" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetW" unique_id=2495314]
+[node name="BGContainer" type="MarginContainer" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetW" unique_id=2495314]
 z_index = -10
 z_as_relative = false
 layout_mode = 1
@@ -225,10 +235,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetW/BGContainer" unique_id=513972853]
+[node name="ColorRect" type="ColorRect" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetW/BGContainer" unique_id=513972853]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Minigame/CenterContainer/Panel/CenterContainer/Control/TargetW" unique_id=591953702]
+[node name="Label" type="Label" parent="Minigame/VBoxContainer/CenterContainer/Panel/CenterContainer/Control/TargetW" unique_id=591953702]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -240,7 +250,7 @@ label_settings = SubResource("LabelSettings_b64ip")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialoguePiecePrefab" parent="Minigame/CenterContainer" unique_id=83632773 instance=ExtResource("2_0kays")]
+[node name="DialoguePiecePrefab" parent="Minigame/VBoxContainer/CenterContainer" unique_id=83632773 instance=ExtResource("2_0kays")]
 layout_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="Minigame" unique_id=1965801076]
