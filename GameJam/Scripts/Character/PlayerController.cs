@@ -84,14 +84,18 @@ public partial class PlayerController : Node {
 
 	private void AttaptSlap() {
 
+		firstPersonAnimations.Stop();
 		firstPersonAnimations.Play("slap");
-		slapCooldown = 1f;
+		slapCooldown = 1.1f;
+
+		IsBusy = true;
 
 		GetTree().CreateTimer(0.2f).Timeout += () => {
 			PhysicsDirectSpaceState3D spaceState = playerInstance.GetWorld3D().DirectSpaceState;
 			PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition - (camera.GlobalTransform.Basis.Z * 3));
 			Dictionary result = spaceState.IntersectRay(query);
 
+			IsBusy = false;
 			if (result.Count <= 0) return;
 
 			Node target = (Node)result["collider"].AsGodotObject();
@@ -106,6 +110,7 @@ public partial class PlayerController : Node {
 				enemy.Knockback(hitDirection * 10 * this.attributes.Get(Attributes.ATTACK_POWER));
 
 				slapSFX.Play();
+
 			}
 		};
 	}

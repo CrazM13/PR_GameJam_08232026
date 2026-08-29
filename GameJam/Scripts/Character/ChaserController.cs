@@ -88,7 +88,7 @@ public partial class ChaserController : Node {
 						} else if (distance < 36) {
 							isClose = true;
 						} else if (isClose) {
-							isChasing = false;
+							//isChasing = false;
 						}
 					}
 				} else {

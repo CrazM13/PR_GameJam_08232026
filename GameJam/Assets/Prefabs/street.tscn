@@ -65,6 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.807327, 0, 6.8845997)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.491529, 0, -8.214016)
 
 [node name="LevelCollision" parent="." unique_id=384331929 instance=ExtResource("5_l2rh3")]
+collision_layer = 32769
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1684742798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
