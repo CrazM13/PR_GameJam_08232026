@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c6r1nledtl7wx"]
+
+[ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="1_w1jf7"]
+[ext_resource type="PackedScene" uid="uid://bn3navtyi16vg" path="res://Assets/Models/CrowdNPC/CrowdNPC.glb" id="2_s63iq"]
+[ext_resource type="Script" uid="uid://b3u4nlcbo6rje" path="res://Scripts/Character/RandomizeTexture.cs" id="3_0hq12"]
+[ext_resource type="Texture2D" uid="uid://crs0ckqd7ro28" path="res://Assets/Models/CrowdNPC/CrowdNPC_BasicTexture.png" id="4_ik8cs"]
+[ext_resource type="Texture2D" uid="uid://di1c6bi6dlbtb" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture1.png" id="5_dqaw8"]
+[ext_resource type="Texture2D" uid="uid://bbb8xikfiabbh" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture2.png" id="6_hirgp"]
+[ext_resource type="Texture2D" uid="uid://bg0t27gw4ug50" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture3.png" id="7_2hwxj"]
+[ext_resource type="Texture2D" uid="uid://gguxqnhu745b" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture4.png" id="8_ughbl"]
+[ext_resource type="Texture2D" uid="uid://cdoq2oo2dihw1" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture5.png" id="9_vfktv"]
+[ext_resource type="Texture2D" uid="uid://b4gikvytx30r8" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture6.png" id="10_liofn"]
+[ext_resource type="Texture2D" uid="uid://bkwu7r4ux53ui" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture7.png" id="11_2excs"]
+[ext_resource type="Texture2D" uid="uid://d18l8xhykfd2n" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture8.png" id="12_k1die"]
+[ext_resource type="Texture2D" uid="uid://dg1mtgpw2ui8x" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture9.png" id="13_5ijkx"]
+[ext_resource type="Texture2D" uid="uid://caymhdjcm7bho" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture10.png" id="14_utqwj"]
+[ext_resource type="Texture2D" uid="uid://cill83v0ux3vh" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture11.png" id="15_h5e3w"]
+[ext_resource type="Texture2D" uid="uid://cylnru148qkde" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture12.png" id="16_kvgii"]
+[ext_resource type="Texture2D" uid="uid://c68sifnx21413" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture13.png" id="17_ut6vk"]
+[ext_resource type="Texture2D" uid="uid://bqtk85a5iqy" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture14.png" id="18_omcem"]
+[ext_resource type="Texture2D" uid="uid://d1s5dprknjr0q" path="res://Assets/Models/CrowdNPC/CrowdNPC_VariantTexture15.png" id="19_urwdo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw5n1"]
+
+[node name="CrowdNPC" unique_id=375130802 instance=ExtResource("1_w1jf7")]
+
+[node name="CrowdNPC" parent="Model" parent_id_path=PackedInt32Array(1814071165) index="0" unique_id=1112065408 instance=ExtResource("2_s63iq")]
+
+[node name="Skeleton3D" parent="Model/CrowdNPC/Armature" parent_id_path=PackedInt32Array(1112065408, 237116648) index="0" unique_id=1844443186]
+bones/1/rotation = Quaternion(-0.03132759, -0.60948986, 0.7909705, 0.043660823)
+bones/2/rotation = Quaternion(0.083724976, 0.0026004035, 0.009972086, 0.99643564)
+bones/3/rotation = Quaternion(-0.0014237108, -0.039100718, 0.039371546, 0.9984583)
+bones/4/rotation = Quaternion(-0.36263636, 0.53456014, -0.46711487, 0.6037749)
+bones/5/rotation = Quaternion(-0.08804301, -0.3217829, -0.14012946, 0.9322381)
+bones/6/rotation = Quaternion(0.017135322, -0.81435114, 0.5798006, -0.019234158)
+bones/7/rotation = Quaternion(-0.00045783792, 0.00434452, -0.0030122553, 0.99998593)
+bones/8/rotation = Quaternion(-0.0014237023, 0.03910072, -0.039371543, 0.9984583)
+bones/9/rotation = Quaternion(-0.37873095, -0.52181405, 0.48131156, 0.59381163)
+bones/10/rotation = Quaternion(-0.041557707, 0.30545717, -0.010762751, 0.9512377)
+bones/14/rotation = Quaternion(0.887854, 0.18897851, 0.41947928, 0.006288357)
+bones/15/rotation = Quaternion(-0.17019044, 0.017219495, -0.0034479205, 0.98525476)
+bones/23/rotation = Quaternion(0.87788194, -0.029388633, -0.44721013, -0.16870879)
+bones/24/rotation = Quaternion(-0.18626523, 0.014223019, 0.21673998, 0.9581893)
+
+[node name="GenericCharacter" parent="Model/CrowdNPC/Armature/Skeleton3D" index="0" unique_id=172217011]
+surface_material_override/0 = SubResource("StandardMaterial3D_lw5n1")
+script = ExtResource("3_0hq12")
+variants = Array[Texture2D]([ExtResource("4_ik8cs"), ExtResource("5_dqaw8"), ExtResource("6_hirgp"), ExtResource("7_2hwxj"), ExtResource("8_ughbl"), ExtResource("9_vfktv"), ExtResource("10_liofn"), ExtResource("11_2excs"), ExtResource("12_k1die"), ExtResource("13_5ijkx"), ExtResource("14_utqwj"), ExtResource("15_h5e3w"), ExtResource("16_kvgii"), ExtResource("17_ut6vk"), ExtResource("18_omcem"), ExtResource("19_urwdo")])
+
+[node name="AnimationPlayer" parent="Model/CrowdNPC" index="1" unique_id=583774910]
+autoplay = &"CrowdWalk"
+
+[editable path="Model/CrowdNPC"]

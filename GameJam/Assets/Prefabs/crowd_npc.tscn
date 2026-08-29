@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c3xngehyqv1n5"]
 
 [ext_resource type="Script" uid="uid://bjtalvqke1hpv" path="res://Scripts/Character/Character.cs" id="1_cxcb8"]
-[ext_resource type="PackedScene" uid="uid://eejqyn38xer4" path="res://Assets/Models/Rigged base mesh.glb" id="2_rij8a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b64ip"]
 radius = 0.14501953
@@ -16,7 +15,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8129883, 0)
 shape = SubResource("CapsuleShape3D_b64ip")
 
 [node name="Model" type="Node3D" parent="." unique_id=1814071165]
-
-[node name="Rigged base mesh" parent="Model" unique_id=1565000082 instance=ExtResource("2_rij8a")]
-process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

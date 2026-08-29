@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://1wpmv07cy572" path="res://Assets/Prefabs/player.tscn" id="1_2wl7v"]
 [ext_resource type="Texture2D" uid="uid://dkgratqfg3i27" path="res://Assets/Models/LooseTextures/CityBG.png" id="1_odb6r"]
 [ext_resource type="Script" uid="uid://boths1im3cv72" path="res://Scripts/Character/CrowdBoid.cs" id="2_4bvgx"]
-[ext_resource type="PackedScene" uid="uid://c3xngehyqv1n5" path="res://Assets/Prefabs/crowd_npc.tscn" id="3_3mbwn"]
 [ext_resource type="AudioStream" uid="uid://c7i0h73sspypo" path="res://Assets/Audio/Voice/crowd0.wav" id="4_hgvmy"]
+[ext_resource type="PackedScene" uid="uid://c6r1nledtl7wx" path="res://Assets/Prefabs/crowd_npc_variants.tscn" id="4_odb6r"]
 [ext_resource type="AudioStream" uid="uid://bcgxa5lay1nq2" path="res://Assets/Audio/Voice/crowd1.wav" id="5_ebcm8"]
 [ext_resource type="AudioStream" uid="uid://csdilfdstrle4" path="res://Assets/Audio/Voice/crowd2.wav" id="6_4v654"]
 [ext_resource type="Script" uid="uid://c7dfkpigjhol4" path="res://Scripts/Generation/LevelGenerator.cs" id="6_kilg5"]
@@ -57,14 +57,17 @@ environment = SubResource("Environment_b64ip")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.606575)
 
 [node name="Skeleton3D" parent="Player/Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1400048558, 1471925360, 728882225) index="0" unique_id=1309671596]
-bones/32/scale = Vector3(1, 0.99999905, 0.99999976)
+bones/32/scale = Vector3(1, 0.999999, 0.99999976)
 
 [node name="BoneAttachment3D" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824648, 0.8140035, 0.8138224, 0.020066166, -0.5807665, -0.017252998, 0.999796, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824648, 0.8140035, 0.8138224, 0.020066166, -0.5807665, -0.017252998, 0.9997959, 0.010367741, -0.24445258, 1.097518, 0.11238017)
+
+[node name="BoneAttachment3D2" parent="Player/Camera3D/player_hands2/player_hands/Skeleton3D" index="2" unique_id=1163926088]
+transform = Transform3D(0.580857, -0.0015825147, -0.8140036, -0.8138225, 0.020066092, -0.58076644, 0.017252952, 0.9997969, 0.010367645, 0.24445258, 1.097518, 0.11238018)
 
 [node name="BoidArea" type="Node3D" parent="Player" unique_id=1810391309 node_paths=PackedStringArray("container")]
 script = ExtResource("2_4bvgx")
-prefabs = Array[PackedScene]([ExtResource("3_3mbwn")])
+prefabs = Array[PackedScene]([ExtResource("4_odb6r")])
 count = 64
 bounds = Vector3(25, 10, 25)
 container = NodePath("../../Container")
