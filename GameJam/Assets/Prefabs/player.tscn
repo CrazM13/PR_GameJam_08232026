@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://otm3mmr63ino" path="res://Assets/Models/LooseTextures/crosshair.png" id="2_x4ukv"]
 [ext_resource type="PackedScene" uid="uid://dkdue12cxh8pw" path="res://Assets/Prefabs/ui_item_container.tscn" id="4_1kvxw"]
 [ext_resource type="Script" uid="uid://cm6iaqo2lhqc2" path="res://Scripts/UI/Inventory.cs" id="4_iesjv"]
+[ext_resource type="Texture2D" uid="uid://63qs0wkc3s0m" path="res://Assets/Models/LooseTextures/Slap.png" id="4_imxiu"]
 [ext_resource type="PackedScene" uid="uid://tfv7kgyyd77c" path="res://Assets/Models/player_hands.glb" id="4_x4ukv"]
 [ext_resource type="AudioStream" uid="uid://chbybkrprafo7" path="res://Assets/Audio/SFX/Slap.wav" id="5_m0ojv"]
 [ext_resource type="Resource" uid="uid://0gavvtwshpin" path="res://Assets/Data/Items/MoneyItem.tres" id="7_j73l1"]
@@ -171,10 +172,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="Skeleton3D" parent="Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1471925360, 728882225) index="0" unique_id=1309671596]
 bones/10/position = Vector3(5.9604645e-08, 0.1861544, -1.7881393e-07)
 bones/10/rotation = Quaternion(0.0064828116, 0.7890775, 0.0075952252, 0.6142125)
-bones/10/scale = Vector3(1.0000001, 0.99999994, 0.9999997)
+bones/10/scale = Vector3(1.0000001, 0.9999999, 0.9999997)
 bones/32/position = Vector3(-5.9604645e-08, 0.1861544, -1.7881393e-07)
-bones/32/rotation = Quaternion(0.0064828023, -0.7890775, -0.007595279, 0.61421245)
-bones/32/scale = Vector3(0.99999994, 0.9999992, 0.9999995)
+bones/32/rotation = Quaternion(0.0064828033, -0.7890775, -0.007595279, 0.61421245)
+bones/32/scale = Vector3(0.99999994, 0.99999917, 0.99999946)
 bones/33/position = Vector3(0, 0.21043618, 0)
 bones/33/rotation = Quaternion(-0.12556261, 1.4082922e-08, -0.3564499, 0.9258388)
 bones/33/scale = Vector3(1, 1.0000001, 1)
@@ -186,13 +187,13 @@ bones/35/scale = Vector3(1, 0.99999994, 1.0000001)
 surface_material_override/0 = SubResource("StandardMaterial3D_6f4k2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.0015824653, 0.81400335, 0.8138223, 0.020066172, -0.5807664, -0.017252998, 0.9997962, 0.010367739, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824651, 0.8140033, 0.8138223, 0.02006617, -0.5807663, -0.017252998, 0.99979615, 0.010367738, -0.24445258, 1.097518, 0.11238017)
 bone_name = "forearm.R"
 bone_idx = 32
 override_pose = true
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="2" unique_id=1163926088]
-transform = Transform3D(0.580857, -0.0015825147, -0.8140036, -0.8138225, 0.020066092, -0.58076644, 0.017252952, 0.9997969, 0.010367645, 0.24445258, 1.097518, 0.11238018)
+transform = Transform3D(0.580857, -0.0015825147, -0.8140036, -0.8138225, 0.02006609, -0.58076644, 0.017252952, 0.99979687, 0.010367644, 0.24445258, 1.097518, 0.11238018)
 bone_name = "forearm.L"
 bone_idx = 10
 override_pose = true
@@ -209,6 +210,16 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="Camera3D/HUD/CenterContainer" unique_id=1715585943]
 layout_mode = 2
 texture = ExtResource("2_x4ukv")
+
+[node name="TextureRect2" type="TextureRect" parent="Camera3D/HUD/CenterContainer/TextureRect" unique_id=1811171475]
+z_index = -1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 56.0
+texture = ExtResource("4_imxiu")
+expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/HUD" unique_id=1615195916 node_paths=PackedStringArray("slots")]
 custom_minimum_size = Vector2(0, 128)
@@ -252,10 +263,11 @@ layout_mode = 2
 Action = "inv_6"
 actionDisplay = "6"
 
-[node name="Controller" type="Node" parent="." unique_id=4052710 node_paths=PackedStringArray("body", "camera", "slapSFX", "firstPersonAnimations", "inventory")]
+[node name="Controller" type="Node" parent="." unique_id=4052710 node_paths=PackedStringArray("body", "camera", "slapIndicator", "slapSFX", "firstPersonAnimations", "inventory")]
 script = ExtResource("2_ebihn")
 body = NodePath("..")
 camera = NodePath("../Camera3D")
+slapIndicator = NodePath("../Camera3D/HUD/CenterContainer/TextureRect/TextureRect2")
 slapSFX = NodePath("../SlapSFX")
 firstPersonAnimations = NodePath("../AnimationPlayer")
 inventory = NodePath("../Camera3D/HUD/HBoxContainer")
@@ -273,6 +285,7 @@ libraries/ = SubResource("AnimationLibrary_iesjv")
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2030631410 node_paths=PackedStringArray("subMenus")]
 process_mode = 3
 layer = 90
+visible = false
 script = ExtResource("9_8nnst")
 subMenus = [NodePath("../InGameOptions")]
 
@@ -358,6 +371,7 @@ strength = 5.0
 [node name="InGameOptions" type="CanvasLayer" parent="." unique_id=1856006690]
 process_mode = 3
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="InGameOptions" unique_id=692631479]
 material = SubResource("ShaderMaterial_b5xh7")

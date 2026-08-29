@@ -113,7 +113,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uqv8d")
 
-[node name="CrowdNPC" unique_id=375130802 instance=ExtResource("1_g7qsk")]
+[node name="CrowdNPC" unique_id=375130802 node_paths=PackedStringArray("ragdoll") instance=ExtResource("1_g7qsk")]
+ragdoll = NodePath("Model/CrowdNPCFemale/Armature/Skeleton3D/PhysicalBoneSimulator3D")
 
 [node name="CrowdNPCFemale" parent="Model" parent_id_path=PackedInt32Array(1814071165) index="0" unique_id=2132045497 instance=ExtResource("2_qldet")]
 
@@ -291,13 +292,13 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_oqw66")
 
 [node name="Physical Bone Spine2" type="PhysicalBone3D" parent="Model/CrowdNPCFemale/Armature/Skeleton3D/PhysicalBoneSimulator3D" index="9" unique_id=1319903758]
-transform = Transform3D(-7.1054274e-15, -0.5229805, -0.8523447, 0, 0.85234463, -0.5229805, 1, -7.1054274e-15, -1.4210855e-14, -0.00035025924, 1.3674784, -8.772898e-09)
+transform = Transform3D(-7.1054274e-15, -0.522974, -0.8523486, 0, 0.85234857, -0.5229741, 1, -7.1054274e-15, 0, -0.00035025924, 1.3674784, -8.772898e-09)
 collision_layer = 4096
 collision_mask = 32768
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 0.49999988, -0.86602527, 0, 0.86602527, 0.49999988, 8.772898e-09, -0.031451833, 0.01888724)
+joint_offset = Transform3D(1, 0, 0, 0, 0.49999988, -0.86602527, 0, 0.86602527, 0.49999988, 8.772898e-09, -0.031451978, 0.018887002)
 joint_rotation = Vector3(1.0471976, 0, 0)
-body_offset = Transform3D(0, -0.5229806, -0.85234463, 0, 0.8523448, -0.52298063, 1, 0, 0, -0.00035025924, 0.036685467, -8.772898e-09)
+body_offset = Transform3D(0, -0.5229741, -0.85234857, 0, 0.85234874, -0.5229741, 1, 0, 0, -0.00035025924, 0.036685467, -8.772898e-09)
 linear_damp = 10.0
 bone_name = "Spine2"
 joint_constraints/bias = 0.3
@@ -326,12 +327,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_03imq")
 
 [node name="Physical Bone RightArm0" type="PhysicalBone3D" parent="Model/CrowdNPCFemale/Armature/Skeleton3D/PhysicalBoneSimulator3D" index="11" unique_id=960738938]
-transform = Transform3D(0.5982786, -0.7752794, 0.20249587, -0.123711586, 0.16031227, 0.9792831, -0.7916806, -0.6109353, 3.4570206e-07, -0.22557782, 1.3306422, 0.00023822405)
+transform = Transform3D(0.5982786, -0.7752794, 0.20249587, -0.123711586, 0.16031227, 0.9792831, -0.7916806, -0.6109353, 3.4570206e-07, -0.2255778, 1.3306422, 0.00024893033)
 collision_layer = 4096
 collision_mask = 32768
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0001885429, 0.00014568018, 0.12631346)
-body_offset = Transform3D(1, -3.5762787e-07, -3.4162704e-07, -3.6507845e-07, -5.9604645e-08, -0.9999999, 3.2782555e-07, 1, -5.1374784e-08, -0.00018849969, 0.12631345, -0.00014567375)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00019700675, 0.0001522367, 0.12631346)
+body_offset = Transform3D(1, -3.5762787e-07, -3.4162704e-07, -3.6507845e-07, -5.9604645e-08, -0.9999999, 3.2782555e-07, 1, -5.1374784e-08, -0.00019696355, 0.12631345, -0.00015223026)
 linear_damp = 10.0
 bone_name = "RightArm0"
 joint_constraints/bias = 0.3

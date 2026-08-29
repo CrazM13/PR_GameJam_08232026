@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using static Godot.HttpRequest;
 
 public partial class PlayerController : Node {
 
@@ -11,6 +12,7 @@ public partial class PlayerController : Node {
 
 	[Export] private Character body;
 	[Export] private Camera3D camera;
+	[Export] private Control slapIndicator;
 	[Export] private AudioStreamPlayer slapSFX;
 	[Export] private AnimationPlayer firstPersonAnimations;
 	[Export] private Inventory inventory;
@@ -25,8 +27,6 @@ public partial class PlayerController : Node {
 
 	public override void _Ready() {
 		base._Ready();
-
-		
 
 		playerInstance = body;
 		controllerInstance = this;
@@ -51,8 +51,13 @@ public partial class PlayerController : Node {
 
 
 		slapCooldown -= (float) delta;
-		if (slapCooldown <= 0 && Input.IsMouseButtonPressed(MouseButton.Left)) {
-			AttaptSlap();
+		if (slapCooldown <= 0) {
+			if (Input.IsMouseButtonPressed(MouseButton.Left)) {
+				AttaptSlap();
+			} else {
+				Dictionary result = GetSlapTarget();
+				slapIndicator.Visible = result.Count > 0;
+			}
 		}
 
 		Vector3 forward = body.Transform.Basis.X;
@@ -91,11 +96,10 @@ public partial class PlayerController : Node {
 		IsBusy = true;
 
 		GetTree().CreateTimer(0.2f).Timeout += () => {
-			PhysicsDirectSpaceState3D spaceState = playerInstance.GetWorld3D().DirectSpaceState;
-			PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition - (camera.GlobalTransform.Basis.Z * 3));
-			Dictionary result = spaceState.IntersectRay(query);
+			Dictionary result = GetSlapTarget();
 
 			IsBusy = false;
+			slapIndicator.Visible = false;
 			if (result.Count <= 0) return;
 
 			Node target = (Node)result["collider"].AsGodotObject();
@@ -113,6 +117,14 @@ public partial class PlayerController : Node {
 
 			}
 		};
+	}
+
+	private Dictionary GetSlapTarget() {
+		PhysicsDirectSpaceState3D spaceState = playerInstance.GetWorld3D().DirectSpaceState;
+		PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(camera.GlobalPosition, camera.GlobalPosition - (camera.GlobalTransform.Basis.Z * 3));
+		Dictionary result = spaceState.IntersectRay(query);
+
+		return result;
 	}
 
 	public override void _ExitTree() {
