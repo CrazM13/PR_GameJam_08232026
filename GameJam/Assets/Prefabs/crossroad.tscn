@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cep8tk0skprib" path="res://Assets/Prefabs/building_marker_3d.tscn" id="3_rm7sr"]
 [ext_resource type="Script" uid="uid://ypy0tco68fi8" path="res://Scripts/Character/SimpleFollowPath.cs" id="4_fyc3x"]
 [ext_resource type="PackedScene" uid="uid://c53utd1stei38" path="res://Assets/Prefabs/car.tscn" id="5_7au06"]
+[ext_resource type="PackedScene" uid="uid://cwxmam8aaus0f" path="res://Assets/Models/arrow_sign.glb" id="6_rnbfn"]
+[ext_resource type="PackedScene" uid="uid://cd56t503xacse" path="res://Assets/Models/roadblock.glb" id="7_ap7u3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jmim"]
 resource_name = "Material.001"
@@ -151,3 +153,15 @@ script = ExtResource("4_fyc3x")
 speed = 30.0
 
 [node name="Car2" parent="Path3D/PathFollow3D4" unique_id=926010460 instance=ExtResource("5_7au06")]
+
+[node name="arrow_sign2" parent="." unique_id=1216125639 instance=ExtResource("6_rnbfn")]
+transform = Transform3D(4.371139e-08, 0, -1, 0, 1, 0, -1, 0, -4.371139e-08, 7.4000607, -2.3841858e-07, 0.78599524)
+
+[node name="roadblock2" parent="." unique_id=901213760 instance=ExtResource("7_ap7u3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.336468, 0, -1.2262018)
+
+[node name="arrow_sign3" parent="." unique_id=799497500 instance=ExtResource("6_rnbfn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.599939, -2.3841858e-07, 0.78599524)
+
+[node name="roadblock3" parent="." unique_id=1951277425 instance=ExtResource("7_ap7u3")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -8.663532, 0, -1.2262018)
