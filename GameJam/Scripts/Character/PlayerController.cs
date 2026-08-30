@@ -45,7 +45,7 @@ public partial class PlayerController : Node {
 
 		if (!Enabled) return;
 
-		if (Input.IsActionPressed("move_jump")) {
+		if (Input.IsActionJustPressed("move_jump")) {
 			body.AttemptJump();
 		}
 
