@@ -32,6 +32,8 @@ public partial class PlayerController : Node {
 		controllerInstance = this;
 		inventoryInstance = inventory;
 
+		
+
 		if (startingItems.Length > 0) {
 			foreach (Item item in startingItems) {
 				inventory.Add(item);

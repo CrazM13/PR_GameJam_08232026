@@ -23,6 +23,7 @@ public partial class ItemSlotContainer : Control {
 		this.OffsetTransformPosition = targetPosition = new Vector2(0, 128);
 		this.progressDisplay.Visible = false;
 
+		this.item = null;
 		UpdateVisuals();
 	}
 

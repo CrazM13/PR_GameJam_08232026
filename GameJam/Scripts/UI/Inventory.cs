@@ -16,7 +16,8 @@ public partial class Inventory : Control {
 
 	public void Add(Item item) {
 		foreach (ItemSlotContainer slot in slots) {
-			if (slot.GetItem() == null) {
+			Item oldItem = slot.GetItem();
+			if (oldItem == null) {
 				slot.SetItem(item);
 				break;
 			}

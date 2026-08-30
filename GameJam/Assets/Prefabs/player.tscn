@@ -171,11 +171,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 
 [node name="Skeleton3D" parent="Camera3D/player_hands2/player_hands" parent_id_path=PackedInt32Array(1471925360, 116688764) index="0" unique_id=661243318]
 bones/10/position = Vector3(5.9604645e-08, 0.1861544, -1.7881393e-07)
-bones/10/rotation = Quaternion(0.0064828126, 0.7890775, 0.0075952252, 0.6142125)
-bones/10/scale = Vector3(1.0000001, 0.9999998, 0.9999997)
+bones/10/rotation = Quaternion(0.0064828116, 0.7890775, 0.0075952252, 0.6142125)
+bones/10/scale = Vector3(1.0000001, 0.99999976, 0.9999997)
 bones/32/position = Vector3(-5.9604645e-08, 0.1861544, -1.7881393e-07)
 bones/32/rotation = Quaternion(0.006482802, -0.78907746, -0.0075952783, 0.6142125)
-bones/32/scale = Vector3(1, 0.9999991, 0.99999946)
+bones/32/scale = Vector3(1, 0.99999905, 0.99999946)
 bones/33/position = Vector3(0, 0.21043618, 0)
 bones/33/rotation = Quaternion(-0.12556261, 1.4082922e-08, -0.3564499, 0.9258388)
 bones/33/scale = Vector3(1, 1.0000001, 1)
@@ -187,13 +187,13 @@ bones/35/scale = Vector3(1, 0.99999994, 1.0000001)
 surface_material_override/0 = SubResource("StandardMaterial3D_6f4k2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="1" unique_id=1494153843]
-transform = Transform3D(0.580857, 0.001582465, 0.8140033, 0.8138223, 0.02006617, -0.5807663, -0.017252998, 0.9997961, 0.010367738, -0.24445258, 1.097518, 0.11238017)
+transform = Transform3D(0.580857, 0.0015824649, 0.8140033, 0.8138223, 0.020066168, -0.5807663, -0.017252998, 0.99979603, 0.010367738, -0.24445258, 1.097518, 0.11238017)
 bone_name = "forearm.R"
 bone_idx = 32
 override_pose = true
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Camera3D/player_hands2/player_hands/Skeleton3D" index="2" unique_id=1163926088]
-transform = Transform3D(0.580857, -0.0015825146, -0.8140036, -0.8138225, 0.020066088, -0.58076644, 0.017252952, 0.9997968, 0.010367644, 0.24445258, 1.097518, 0.11238018)
+transform = Transform3D(0.580857, -0.0015825145, -0.8140036, -0.8138225, 0.020066088, -0.58076644, 0.017252952, 0.99979675, 0.010367644, 0.24445258, 1.097518, 0.11238018)
 bone_name = "forearm.L"
 bone_idx = 10
 override_pose = true
