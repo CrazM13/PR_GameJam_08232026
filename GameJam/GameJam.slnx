@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="ExportDebug" />
+    <BuildType Name="ExportRelease" />
+  </Configurations>
+  <Project Path="GameJam.csproj" />
+  <Project Path="GameJam.web/GameJam.web.csproj">
+    <BuildType Project="Debug" />
+  </Project>
+</Solution>
