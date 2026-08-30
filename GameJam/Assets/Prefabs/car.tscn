@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c53utd1stei38"]
 
 [ext_resource type="Script" uid="uid://4apwmxnh0ntm" path="res://Scripts/Character/Car.cs" id="1_mp26c"]
+[ext_resource type="Script" uid="uid://bdk0ycd8v7ugc" path="res://Scripts/Character/RandomizeColour.cs" id="2_qxsan"]
 [ext_resource type="AudioStream" uid="uid://cyc1nt1xvnqf1" path="res://Assets/Audio/SFX/CarSound.wav" id="2_vgyvg"]
 [ext_resource type="AudioStream" uid="uid://m525ku54tipu" path="res://Assets/Audio/SFX/Honk.wav" id="3_81q3x"]
 
@@ -208,6 +209,8 @@ honk = NodePath("Engine/Honk")
 [node name="Car" type="MeshInstance3D" parent="." unique_id=1641593044]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.21191776, 0)
 mesh = SubResource("ArrayMesh_g6kac")
+script = ExtResource("2_qxsan")
+variants = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=684614931]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, -0.008934021, 0.8350873, 1.1911863)

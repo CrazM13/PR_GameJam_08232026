@@ -11,9 +11,10 @@ public partial class WinTrigger : Node {
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 
 			if (GameManager.Time > 138) {
-				// TODO LOSE
+				GameManager.Time = 0;
 				SceneManager.Instance.LoadScene("res://Scenes/LoseCutscene.tscn");
 			} else {
+				GameManager.Time = 0;
 				SceneManager.Instance.LoadScene("res://Scenes/WinCutscene.tscn");
 			}
 			
