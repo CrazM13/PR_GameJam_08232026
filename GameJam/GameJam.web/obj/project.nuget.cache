@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "oCgT0M7l1uc=",
+  "success": true,
+  "projectFilePath": "D:\\Code\\Github\\PR_GameJam_08232026\\GameJam\\GameJam.web\\GameJam.web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.browser-wasm\\4.7.2.2\\2dog.browser-wasm.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.browser-wasm.release\\4.7.2.2\\2dog.browser-wasm.release.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.engine\\4.7.2.77\\2dog.engine.4.7.2.77.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.linux-x64\\4.7.2.2\\2dog.linux-x64.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.linux-x64.debug\\4.7.2.2\\2dog.linux-x64.debug.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.linux-x64.editor\\4.7.2.2\\2dog.linux-x64.editor.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.linux-x64.release\\4.7.2.2\\2dog.linux-x64.release.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.osx-arm64\\4.7.2.2\\2dog.osx-arm64.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.osx-arm64.debug\\4.7.2.2\\2dog.osx-arm64.debug.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.osx-arm64.editor\\4.7.2.2\\2dog.osx-arm64.editor.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.osx-arm64.release\\4.7.2.2\\2dog.osx-arm64.release.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.tools\\4.7.2.2\\2dog.tools.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.win-x64\\4.7.2.2\\2dog.win-x64.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.win-x64.debug\\4.7.2.2\\2dog.win-x64.debug.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.win-x64.editor\\4.7.2.2\\2dog.win-x64.editor.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\2dog.win-x64.release\\4.7.2.2\\2dog.win-x64.release.4.7.2.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\godotsharp\\4.7.2\\godotsharp.4.7.2.nupkg.sha512",
+    "C:\\Users\\Joseph\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.11\\microsoft.net.illink.tasks.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

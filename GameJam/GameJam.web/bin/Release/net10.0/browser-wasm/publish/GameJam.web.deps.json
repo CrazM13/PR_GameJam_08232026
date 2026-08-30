@@ -1,0 +1,321 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0/browser-wasm",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {},
+    ".NETCoreApp,Version=v10.0/browser-wasm": {
+      "GameJam.web/1.0.0": {
+        "dependencies": {
+          "2dog.engine": "4.7.2.77",
+          "GameJam": "1.0.0",
+          "runtimepack.Microsoft.NETCore.App.Runtime.Mono.browser-wasm": "10.0.11"
+        },
+        "runtime": {
+          "GameJam.web.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.NETCore.App.Runtime.Mono.browser-wasm/10.0.11": {
+        "runtime": {
+          "System.Collections.Concurrent.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Collections.Immutable.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Collections.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Console.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Diagnostics.StackTrace.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Diagnostics.TraceSource.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Linq.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Memory.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Private.Uri.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Runtime.InteropServices.JavaScript.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Runtime.InteropServices.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Runtime.Loader.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Runtime.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Security.Cryptography.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Text.RegularExpressions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "System.Threading.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          }
+        },
+        "native": {
+          "System.Private.CoreLib.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1126.37416"
+          },
+          "dotnet.d.ts": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.diagnostics.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.diagnostics.js.map": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.js.map": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.native.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.native.js.symbols": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.native.wasm": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.runtime.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.runtime.js.map": {
+            "fileVersion": "0.0.0.0"
+          },
+          "icudt.dat": {
+            "fileVersion": "0.0.0.0"
+          },
+          "icudt_CJK.dat": {
+            "fileVersion": "0.0.0.0"
+          },
+          "icudt_EFIGS.dat": {
+            "fileVersion": "0.0.0.0"
+          },
+          "icudt_no_CJK.dat": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Globalization.Native.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.IO.Compression.Native.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Native.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libbrotlicommon.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libbrotlidec.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libbrotlienc.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libicudata.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libicui18n.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libicuuc.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-debugger-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-debugger-stub-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-diagnostics_tracing-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-diagnostics_tracing-stub-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-hot_reload-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-hot_reload-stub-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-marshal-ilgen-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-component-marshal-ilgen-stub-static.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-ee-interp.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-icall-table.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-profiler-aot.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-profiler-browser.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-profiler-log.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-wasm-eh-js.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-wasm-eh-wasm.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-wasm-nosimd.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmono-wasm-simd.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmonosgen-2.0.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libz.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "package.json": {
+            "fileVersion": "0.0.0.0"
+          },
+          "wasm-bundled-timezones.a": {
+            "fileVersion": "0.0.0.0"
+          },
+          "gc-common.h": {
+            "fileVersion": "0.0.0.0"
+          },
+          "pinvoke.h": {
+            "fileVersion": "0.0.0.0"
+          },
+          "runtime.h": {
+            "fileVersion": "0.0.0.0"
+          },
+          "wasm-config.h": {
+            "fileVersion": "0.0.0.0"
+          },
+          "corebindings.c": {
+            "fileVersion": "0.0.0.0"
+          },
+          "driver.c": {
+            "fileVersion": "0.0.0.0"
+          },
+          "emcc-default.rsp": {
+            "fileVersion": "0.0.0.0"
+          },
+          "emcc-link.rsp": {
+            "fileVersion": "0.0.0.0"
+          },
+          "pinvoke.c": {
+            "fileVersion": "0.0.0.0"
+          },
+          "runtime.c": {
+            "fileVersion": "0.0.0.0"
+          },
+          "wasm-props.json": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.es6.extpost.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.es6.lib.js": {
+            "fileVersion": "0.0.0.0"
+          },
+          "dotnet.es6.pre.js": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "2dog.engine/4.7.2.77": {
+        "runtime": {
+          "lib/net10.0/GodotSharp.dll": {
+            "assemblyVersion": "4.7.2.0",
+            "fileVersion": "4.7.2.0"
+          },
+          "lib/net10.0/twodog.dll": {
+            "assemblyVersion": "4.7.2.77",
+            "fileVersion": "4.7.2.77"
+          }
+        }
+      },
+      "GameJam/1.0.0": {
+        "runtime": {
+          "GameJam.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GameJam.web/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.NETCore.App.Runtime.Mono.browser-wasm/10.0.11": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "2dog.engine/4.7.2.77": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wSW/+F2Cd+IFx2TVn1nkJ7M73zGGvr1MroROZEG11Ytb3S14/PoBwZP9/mub3OS8Y03s8M/A1kruMfWr66DseA==",
+      "path": "2dog.engine/4.7.2.77",
+      "hashPath": "2dog.engine.4.7.2.77.nupkg.sha512"
+    },
+    "GameJam/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  },
+  "runtimes": {
+    "browser-wasm": [
+      "browser",
+      "any",
+      "base"
+    ]
+  }
+}

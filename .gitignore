@@ -2,8 +2,5 @@
 .godot/
 /android/
 .vs/
-GameJam.2dog/
-GameJam.tests/
-GameJam.web/
 GameJam/Directory.Build.targets
 GameJam/GameJam.web.zip
