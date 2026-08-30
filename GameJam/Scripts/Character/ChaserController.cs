@@ -4,7 +4,7 @@ using System;
 public partial class ChaserController : Node {
 
 	[Export] private Character body;
-	[Export] private AudioStreamPlayer audio;
+	[Export] private AudioStreamPlayer3D audio;
 	[Export] private PackedScene minigamePrefab;
 	[Export] private ChaserBehaviour behaviour;
 
@@ -20,6 +20,9 @@ public partial class ChaserController : Node {
 
 	private void OnSlapped() {
 		isChasing = false;
+
+		audio.Stream = behaviour.SlappedAudio;
+		audio.Play();
 	}
 
 	public override void _Process(double delta) {

@@ -10,6 +10,7 @@ public partial class ChaserBehaviour : Resource {
 
 	[Export] public AudioStream SuccessAudio { get; set; }
 	[Export] public AudioStream FailAudio { get; set; }
+	[Export] public AudioStream SlappedAudio { get; set; }
 
 
 

@@ -2,10 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://txu470544u5r" path="res://Assets/Data/Items/UmbrellaItem.tres" id="1_k7sww"]
 [ext_resource type="Script" uid="uid://c6xtinajdyx8u" path="res://Scripts/Character/ChaserBehaviour.cs" id="1_vwnlb"]
+[ext_resource type="AudioStream" uid="uid://cud51da5shagy" path="res://Assets/Audio/Voice/OldLadySlapped.wav" id="2_n3gkm"]
 [ext_resource type="AudioStream" uid="uid://bxos8273lwn2x" path="res://Assets/Audio/Voice/UmbrellaVoiceChanger.wav" id="2_q1r06"]
 
 [resource]
 script = ExtResource("1_vwnlb")
 GiftedItem = ExtResource("1_k7sww")
 SuccessAudio = ExtResource("2_q1r06")
+SlappedAudio = ExtResource("2_n3gkm")
 metadata/_custom_type_script = "uid://c6xtinajdyx8u"

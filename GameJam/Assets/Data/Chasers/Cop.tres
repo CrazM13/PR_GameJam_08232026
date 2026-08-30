@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ChaserBehaviour" format=3 uid="uid://dysni822pkw6c"]
 
+[ext_resource type="AudioStream" uid="uid://c7rtmbcnphcus" path="res://Assets/Audio/Voice/CopSlapped.wav" id="1_55hhh"]
 [ext_resource type="AudioStream" uid="uid://cqhl0p1xigrj2" path="res://Assets/Audio/Voice/chaser0.wav" id="1_jaumw"]
 [ext_resource type="Script" uid="uid://c6xtinajdyx8u" path="res://Scripts/Character/ChaserBehaviour.cs" id="1_q50db"]
 
 [resource]
 script = ExtResource("1_q50db")
 SuccessAudio = ExtResource("1_jaumw")
+SlappedAudio = ExtResource("1_55hhh")
 metadata/_custom_type_script = "uid://c6xtinajdyx8u"

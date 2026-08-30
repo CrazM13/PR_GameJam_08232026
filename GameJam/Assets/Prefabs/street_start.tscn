@@ -18,6 +18,9 @@ size = Vector3(1, 20, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_imxm8"]
 size = Vector3(40, 40, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_na2xt"]
+font_size = 36
+
 [node name="Street" unique_id=1885274950 instance=ExtResource("1_i6s7o")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="5" unique_id=903461446]
@@ -44,11 +47,28 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8
 [node name="MovementFrame" parent="." index="12" unique_id=713156138 instance=ExtResource("3_u0k01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
-[node name="LevelStartTrigger" type="Area3D" parent="." index="13" unique_id=2098516548]
+[node name="LevelStartTrigger" type="Area3D" parent="." index="13" unique_id=2098516548 node_paths=PackedStringArray("splash")]
 collision_mask = 64
 monitorable = false
 script = ExtResource("4_na2xt")
+splash = NodePath("../HUD/CenterContainer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelStartTrigger" index="0" unique_id=713032234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 shape = SubResource("BoxShape3D_imxm8")
+
+[node name="HUD" type="CanvasLayer" parent="." index="14" unique_id=513599685]
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD" index="0" unique_id=1728792008]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/CenterContainer" index="0" unique_id=1729842684]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -28)
+text = "Get to work by 9AM"
+label_settings = SubResource("LabelSettings_na2xt")
