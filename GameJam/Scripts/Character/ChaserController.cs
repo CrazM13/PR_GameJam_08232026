@@ -12,6 +12,16 @@ public partial class ChaserController : Node {
 	private bool isClose = false;
 	private bool hasCaught = false;
 
+	public override void _Ready() {
+		base._Ready();
+
+		body.OnSlapped += this.OnSlapped;
+	}
+
+	private void OnSlapped() {
+		isChasing = false;
+	}
+
 	public override void _Process(double delta) {
 		base._Process(delta);
 

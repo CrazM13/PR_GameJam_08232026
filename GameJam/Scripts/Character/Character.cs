@@ -5,6 +5,8 @@ public partial class Character : CharacterBody3D {
 
 	private const float RAGDOLL_POWER = 50f;
 
+	[Signal] public delegate void OnSlappedEventHandler();
+
 	[Export] private PhysicalBoneSimulator3D ragdoll;
 
 	private Vector3 controlledVelocity;
@@ -53,6 +55,8 @@ public partial class Character : CharacterBody3D {
 				}
 			}
 		}
+
+		EmitSignal(SignalName.OnSlapped);
 
 	}
 
