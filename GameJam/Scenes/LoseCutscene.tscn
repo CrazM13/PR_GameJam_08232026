@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcmf3wt1x5r4t" path="res://Assets/Models/LooseTextures/Fur.png" id="1_jwjk7"]
 [ext_resource type="Script" uid="uid://dsby45kuyo40g" path="res://Scripts/SceneManagement/SceneManager.cs" id="2_u3wi6"]
 [ext_resource type="AudioStream" uid="uid://cd6np7b64niyx" path="res://Assets/Audio/SFX/Click Failed.wav" id="3_ayukn"]
+[ext_resource type="AudioStream" uid="uid://4p6qedg3fsef" path="res://Assets/Audio/Voice/Noooooo.wav" id="4_u3wi6"]
 
 [sub_resource type="Environment" id="Environment_ug8s4"]
 
@@ -479,6 +480,21 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.8000001, 1.6000001, 2.4)
 }
 tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioVoice")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_u3wi6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qirdc"]
 length = 0.001
@@ -502,6 +518,17 @@ tracks/1/path = NodePath("Camera3D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -1.0791705, 1.3059112, -0.5538048)
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioVoice")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_b8klj"]
 resource_name = "WIn"
@@ -653,7 +680,7 @@ _data = {
 environment = SubResource("Environment_ug8s4")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1873595401]
-transform = Transform3D(0.61472464, -0.08711739, 0.78391594, -0.0026020445, 0.9936521, 0.11246605, -0.7887375, -0.07117544, 0.6105958, -1.0791705, 1.3059112, -0.5538048)
+transform = Transform3D(0.59199476, -0.08561397, 0.8013816, -0.0025063194, 0.99414134, 0.10805854, -0.8059378, -0.06597861, 0.588312, -1.0791705, 1.3059112, -0.5538048)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1543903783]
@@ -778,6 +805,7 @@ color = Color(0, 0, 0, 1)
 bus = &"SFX"
 
 [node name="AudioVoice" type="AudioStreamPlayer" parent="." unique_id=1034057430]
+pitch_scale = 0.56
 max_polyphony = 2
 bus = &"Voice"
 
