@@ -29,5 +29,3 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1993941314]
 stream = SubResource("AudioStreamRandomizer_b64ip")
 volume_db = -10.0
-
-[connection signal="OnSlapped" from="." to="AudioStreamPlayer3D" method="play" binds= [0.0]]
