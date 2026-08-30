@@ -92,8 +92,11 @@ public partial class ChaserController : Node {
 						}
 					}
 				} else {
-					body.LookAt(PlayerController.playerInstance.GlobalPosition);
-					PlayerController.playerInstance.LookAt(body.GlobalPosition);
+					Vector3 playerPos = new Vector3(PlayerController.playerInstance.GlobalPosition.X, body.GlobalPosition.Y, PlayerController.playerInstance.GlobalPosition.Z);
+					Vector3 chaserPos = new Vector3(body.GlobalPosition.X, PlayerController.playerInstance.GlobalPosition.Y, body.GlobalPosition.Z);
+
+					body.LookAt(playerPos);
+					PlayerController.playerInstance.LookAt(chaserPos);
 				}
 			} else {
 				body.Move(-body.GlobalTransform.Basis.Z);
